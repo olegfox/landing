@@ -1,0 +1,37 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Site\MainBundle\Entity\MediaPhoto
+ *
+ * @ORM\Table(name="media_photo")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\MediaPhotoRepository")
+ */
+class MediaPhoto
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="text", nullable=false)
+     */
+    private $link;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Media", inversedBy="photos")
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id")
+     **/
+    private $media;
+
+}

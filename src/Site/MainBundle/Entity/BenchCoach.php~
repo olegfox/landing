@@ -1,0 +1,45 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * BenchCoach
+ *
+ * @ORM\Table(name="bench_coach")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\BenchCoachRepository")
+ */
+class BenchCoach
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=false)
+     */
+    private $type = false;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="benchCoach")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     **/
+    private $event;
+
+}

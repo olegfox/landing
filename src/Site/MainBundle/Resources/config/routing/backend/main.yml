@@ -1,0 +1,15 @@
+backend_dashboard:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Dashboard:index" }
+
+backend_project:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/project.yml"
+    prefix: /project
+
+backend_page:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/page.yml"
+    prefix: /{project_id}/page
+
+backend_level:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/level.yml"
+    prefix: /{project_id}/{page_id}/level

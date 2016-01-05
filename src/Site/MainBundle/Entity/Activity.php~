@@ -1,0 +1,276 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Site\MainBundle\Entity\Activity
+ *
+ * @ORM\Table(name="activity")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\ActivityRepository")
+ */
+class Activity
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text", nullable=true)
+     */
+    private $text;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $img;
+
+    /**
+     * @Assert\File()
+     */
+    private $file;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $img2;
+
+    /**
+     * @Assert\File()
+     */
+    private $file2;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->img
+            ? null
+            : $this->getUploadRootDir().'/'.$this->img;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->img
+            ? null
+            : $this->getUploadDir().'/'.$this->img;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../../'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/activity';
+    }
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+
+        $this->upload();
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        if (isset($this->img)) {
+            if(file_exists($this->getUploadDir().'/'.$this->img)){
+                unlink($this->getUploadDir().'/'.$this->img);
+            }
+            $this->img = null;
+        }
+
+        $this->img = $this->getFile()->getClientOriginalName();
+
+        $this->getFile()->move(
+            $this->getUploadDir(),
+            $this->img
+        );
+
+        $this->file = null;
+    }
+
+    public function getAbsolutePath2()
+    {
+        return null === $this->img2
+            ? null
+            : $this->getUploadRootDir().'/'.$this->img2;
+    }
+
+    public function getWebPath2()
+    {
+        return null === $this->img2
+            ? null
+            : $this->getUploadDir().'/'.$this->img2;
+    }
+
+    protected function getUploadRootDir2()
+    {
+        return __DIR__.'/../../../../../'.$this->getUploadDir2();
+    }
+
+    protected function getUploadDir2()
+    {
+        return 'uploads/activity';
+    }
+
+    /**
+     * Sets file2.
+     *
+     * @param UploadedFile $file2
+     */
+    public function setFile2(UploadedFile $file2 = null)
+    {
+        $this->file2 = $file2;
+
+        $this->upload2();
+    }
+
+    /**
+     * Get file2.
+     *
+     * @return UploadedFile
+     */
+    public function getFile2()
+    {
+        return $this->file2;
+    }
+
+    public function upload2()
+    {
+        if (null === $this->getFile2()) {
+            return;
+        }
+
+        if (isset($this->img2)) {
+            if(file_exists($this->getUploadDir2().'/'.$this->img2)){
+                unlink($this->getUploadDir2().'/'.$this->img2);
+            }
+            $this->img2 = null;
+        }
+
+        $this->img2 = $this->getFile2()->getClientOriginalName();
+
+        $this->getFile2()->move(
+            $this->getUploadDir2(),
+            $this->img
+        );
+
+        $this->file2 = null;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Activity
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set text
+     *
+     * @param string $text
+     * @return Activity
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * Get text
+     *
+     * @return string 
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
+     * Set img
+     *
+     * @param string $img
+     * @return Activity
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * Get img
+     *
+     * @return string 
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+}

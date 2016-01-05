@@ -1,0 +1,60 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tariff
+ *
+ * @ORM\Table(name="tariff")
+ * @ORM\Entity
+ */
+class Tariff
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="text", nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description1", type="text", nullable=true)
+     */
+    private $description1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description2", type="text", nullable=true)
+     */
+    private $description2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price", type="integer", nullable=true)
+     */
+    private $price;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="disable", type="boolean", nullable=false)
+     */
+    private $disable = '0';
+
+
+}

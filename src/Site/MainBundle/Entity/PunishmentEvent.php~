@@ -1,0 +1,57 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Наказания в игре
+ * Site\MainBundle\Entity\PunishmentEvent
+ *
+ * @ORM\Table(name="punishment_event")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\PunishmentEventRepository")
+ */
+class PunishmentEvent
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="punishmentEvent")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     **/
+    private $event;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=false)
+     */
+    private $type = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_punishment", type="smallint", nullable=false)
+     */
+    private $typePunishment = 0;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="time", type="string", length = 50, nullable=true)
+     */
+    private $time;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Player", inversedBy="punishmentEvent")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     **/
+    private $player;
+
+}

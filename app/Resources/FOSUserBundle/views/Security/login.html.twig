@@ -1,0 +1,35 @@
+{% extends "SiteMainBundle:Backend:layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+    <div class="container container-login">
+        {% if error %}
+            <div class="alert alert-danger">
+                Неверный логин или пароль
+            </div>
+        {% endif %}
+        <div class="wrapper">
+            <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+                <h2 class="form-signin-heading">Вход</h2>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                <input class="form-control" placeholder="{{ 'security.login.username'|trans }}" type="text"
+                       id="username"
+                       name="_username" value="{{ last_username }}" required="required"/>
+
+                <input class="form-control" placeholder="{{ 'security.login.password'|trans }}" type="password"
+                       id="password" name="_password" required="required"/>
+
+                <label for="rememberMe" class="checkbox">
+                    <input type="checkbox" id="rememberMe" name="_remember_me"
+                           value="on"/>{{ 'security.login.remember_me'|trans }}
+                </label>
+
+                <input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit"
+                       value="{{ 'security.login.submit'|trans }}"/>
+            </form>
+        </div>
+    </div>
+{% endblock body %}

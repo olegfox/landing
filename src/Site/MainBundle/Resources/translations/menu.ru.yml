@@ -1,0 +1,60 @@
+backend:
+    project:
+        h1_show: Проект
+        h1_list: Список проектов
+        h1_edit: Редактирование проекта
+        h1_create: Добавление проекта
+        back_to_list: Назад к списку проектов
+        empty_list: Нет проектов
+        title: Название проекта
+        style: Стили
+        not_found: Проект не существует
+    style:
+        backgroundImg: Фоновое изображение
+        favicon: Фавикон
+        backgroundPosition: Позиция фонового изображения
+        backgroundAttachment: Фиксированный фон или нет?
+        backgroundSize: Размер фонового изображения
+        metaTitle: Мета-заголовок
+        metaDescription: Мета-описание
+        metaKeywords: Ключевые слова
+        heads: Заголовки
+    style_head:
+        add: Добавить стили заголовка
+        delete: Удалить стили заголовка
+        title: Название заголовка
+        link: Ссылка на шрифт
+        size: Размер шрифта
+        color: Цвет шрифта
+    page:
+        h1_show: Страница
+        h1_list: Список страниц проекта
+        h1_edit: Редактирование страницы
+        h1_create: Добавление страницы
+        back_to_list: Назад к проекту
+        empty_list: Нет страниц
+        title: Заголовок страницы
+        not_found: Страница не существует
+    level:
+        h1_show: Уровень
+        h1_list: Список уровней страницы
+        h1_edit: Редактирование уровня
+        h1_create: Добавление уровня
+        back_to_list: Назад к уровням
+        empty_list: Нет уровней
+        title: Заголовок уровня
+        not_found: Уровень не существует
+    actions: Действия
+    show: показать
+    edit: редактировать
+    update: сохранить
+    create: создать
+    delete: удалить
+
+frontend:
+    feedback:
+        placeholder:
+            name: Имя
+            phone: Телефон
+            email: Электронная почта
+            message: Сообщение

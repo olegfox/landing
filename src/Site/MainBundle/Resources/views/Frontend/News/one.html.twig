@@ -1,0 +1,28 @@
+{% if newsOne.slider|length > 0 %}
+    <div class="close"></div>
+    <div class="slider">
+        {% for slider in newsOne.slider %}
+            <div class="wrap-slider">
+                <div class="slider" style="background: url({{ image(slider.img).cropResize(800) }}) center center no-repeat; background-size: cover;">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="wrap-head">
+        <div class="head">
+            <h2>{{ newsOne.title }}</h2>
+        </div>
+    </div>
+{% else %}
+    <div class="close close-black"></div>
+    <h2>{{ newsOne.title }}</h2>
+{% endif %}
+{{ newsOne.text|raw }}
+<div id="social-block" class="clearfix">
+    <h4>Рассказать друзьям</h4>
+    <div class="social-likes" data-title="{% if newsOne.metaTitle|length > 0 %}{{ newsOne.metaTitle }}{% else %}{{ newsOne.title }}{% endif %}" data-url="http://{{ app.request.host }}{{ path('frontend_news_one', {slug : newsOne.slug}) }}" data-media="http://{{ app.request.host }}{{ image(newsOne.webPath).zoomCrop(300, 300) }}">
+        <div class="facebook" title="Поделиться ссылкой на Фейсбуке">Facebook</div>
+        <div class="vkontakte" title="Поделиться ссылкой во Вконтакте">Вконтакте</div>
+        <div class="twitter" title="Поделиться ссылкой в Твиттере">Twitter</div>
+    </div>
+</div>

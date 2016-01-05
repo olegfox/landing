@@ -1,0 +1,40 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Site\MainBundle\Entity\EventTeam
+ *
+ * @ORM\Table(name="event_team")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\EventTeamRepository")
+ */
+class EventTeam
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="eventTeam")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     **/
+    private $event;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="eventTeam")
+     * @ORM\JoinColumn(name="team_id", referencedColumnName="id")
+     **/
+    private $team;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="position", type="integer", nullable=true)
+     */
+    private $position = 0;
+}

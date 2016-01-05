@@ -1,0 +1,528 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Site\MainBundle\Entity\Team
+ *
+ * @ORM\Table(name="team")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\TeamRepository")
+ */
+class Team
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * Название команды
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * Герб команды
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $img;
+
+    /**
+     * Игры
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $games = 0;
+
+    /**
+     * Игры в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $gamesM = 0;
+
+    /**
+     * Победы
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $wins = 0;
+
+    /**
+     * Победы в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $winsM = 0;
+
+    /**
+     * Ничья
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $standoff = 0;
+
+    /**
+     * Ничья в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $standoffM = 0;
+
+    /**
+     * Поражения
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $defeat = 0;
+
+    /**
+     * Поражения в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $defeatM = 0;
+
+    /**
+     * Мячи
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $balls = 0;
+
+    /**
+     * Мячи в молодёжной сборной
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $ballsM = 0;
+
+    /**
+     * Очки
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $points = 0;
+
+    /**
+     * Очки в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $pointsM = 0;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128)
+     */
+    private $slug;
+
+    /**
+     * @ORM\OneToMany(targetEntity="EventTeam", mappedBy="team")
+     **/
+    private $eventTeam;
+
+    /**
+     * @Assert\File()
+     */
+    private $file;
+
+    /**
+     * Место отображения (только в кубке или везде)
+     * @ORM\Column(type="smallint", nullable=false)
+     */
+    private $visible = 0;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Player", inversedBy="teams")
+     * @ORM\JoinTable(name="team_player",
+     *       joinColumns={@ORM\JoinColumn(name="player_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="team_id", referencedColumnName="id")})
+     */
+    private $players;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->img
+            ? null
+            : $this->getUploadRootDir().'/'.$this->img;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->img
+            ? null
+            : $this->getUploadDir().'/'.$this->img;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../../'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/team';
+    }
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+
+        $this->upload();
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        if (isset($this->img)) {
+            if(file_exists($this->getUploadDir().'/'.$this->img)){
+                unlink($this->getUploadDir().'/'.$this->img);
+            }
+            $this->img = null;
+        }
+
+        $this->img = $this->getFile()->getClientOriginalName();
+
+        $this->getFile()->move(
+            $this->getUploadDir(),
+            $this->img
+        );
+
+        $this->file = null;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Team
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set img
+     *
+     * @param string $img
+     * @return Team
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * Get img
+     *
+     * @return string 
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add players
+     *
+     * @param \Site\MainBundle\Entity\Player $players
+     * @return Team
+     */
+    public function addPlayer(\Site\MainBundle\Entity\Player $players)
+    {
+        $this->players[] = $players;
+
+        return $this;
+    }
+
+    /**
+     * Remove players
+     *
+     * @param \Site\MainBundle\Entity\Player $players
+     */
+    public function removePlayer(\Site\MainBundle\Entity\Player $players)
+    {
+        $this->players->removeElement($players);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+    public function __toString(){
+        return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Team
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set games
+     *
+     * @param integer $games
+     * @return Team
+     */
+    public function setGames($games)
+    {
+        $this->games = $games;
+
+        return $this;
+    }
+
+    /**
+     * Get games
+     *
+     * @return integer 
+     */
+    public function getGames()
+    {
+        return $this->games;
+    }
+
+    /**
+     * Set standoff
+     *
+     * @param integer $standoff
+     * @return Team
+     */
+    public function setStandoff($standoff)
+    {
+        $this->standoff = $standoff;
+
+        return $this;
+    }
+
+    /**
+     * Get standoff
+     *
+     * @return integer 
+     */
+    public function getStandoff()
+    {
+        return $this->standoff;
+    }
+
+    /**
+     * Set defeat
+     *
+     * @param integer $defeat
+     * @return Team
+     */
+    public function setDefeat($defeat)
+    {
+        $this->defeat = $defeat;
+
+        return $this;
+    }
+
+    /**
+     * Get defeat
+     *
+     * @return integer 
+     */
+    public function getDefeat()
+    {
+        return $this->defeat;
+    }
+
+    /**
+     * Set balls
+     *
+     * @param string $balls
+     * @return Team
+     */
+    public function setBalls($balls)
+    {
+        $this->balls = $balls;
+
+        return $this;
+    }
+
+    /**
+     * Get balls
+     *
+     * @return string 
+     */
+    public function getBalls()
+    {
+        return $this->balls;
+    }
+
+    /**
+     * Set points
+     *
+     * @param integer $points
+     * @return Team
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return integer 
+     */
+    public function getPoints()
+    {
+        return $this->points;
+    }
+
+    /**
+     * Set wins
+     *
+     * @param integer $wins
+     * @return Team
+     */
+    public function setWins($wins)
+    {
+        $this->wins = $wins;
+
+        return $this;
+    }
+
+    /**
+     * Get wins
+     *
+     * @return integer 
+     */
+    public function getWins()
+    {
+        return $this->wins;
+    }
+
+    /**
+     * Add eventTeam
+     *
+     * @param \Site\MainBundle\Entity\EventTeam $eventTeam
+     * @return Team
+     */
+    public function addEventTeam(\Site\MainBundle\Entity\EventTeam $eventTeam)
+    {
+        $this->eventTeam[] = $eventTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventTeam
+     *
+     * @param \Site\MainBundle\Entity\EventTeam $eventTeam
+     */
+    public function removeEventTeam(\Site\MainBundle\Entity\EventTeam $eventTeam)
+    {
+        $this->eventTeam->removeElement($eventTeam);
+    }
+
+    /**
+     * Get eventTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEventTeam()
+    {
+        return $this->eventTeam;
+    }
+
+
+    /**
+     * Set visible
+     *
+     * @param integer $visible
+     * @return Team
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+
+        return $this;
+    }
+
+    /**
+     * Get visible
+     *
+     * @return integer 
+     */
+    public function getVisible()
+    {
+        return $this->visible;
+    }
+}

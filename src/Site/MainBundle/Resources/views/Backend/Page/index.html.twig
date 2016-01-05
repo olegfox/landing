@@ -1,0 +1,41 @@
+<h1>{{ 'backend.page.h1_list'|trans({}, 'menu') }}</h1>
+
+{% if entity.pages|length > 0 %}
+    <table class="records_list table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>{{ 'backend.page.title'|trans({}, 'menu') }}</th>
+            <th>{{ 'backend.actions'|trans({}, 'menu') }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for page in entity.pages %}
+            <tr>
+                <td><a href="{{ path('backend_page_show', { 'id': page.id, 'project_id': entity.id }) }}">{{ page.title }}</a></td>
+                <td>
+                    <ul class="nav nav-pills">
+                        <li>
+                            <a href="{{ path('backend_page_show', { 'id': page.id, 'project_id': entity.id }) }}">{{ 'backend.show'|trans({}, 'menu') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('backend_page_edit', { 'id': page.id, 'project_id': entity.id }) }}">{{ 'backend.edit'|trans({}, 'menu') }}</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="alert alert-warning">
+        {{ 'backend.page.empty_list'|trans({}, 'menu') }}
+    </div>
+{% endif %}
+
+<ul class="nav nav-pills">
+    <li class="active">
+        <a href="{{ path('backend_page_new', {'project_id': entity.id}) }}">
+            {{ 'backend.create'|trans({}, 'menu') }}
+        </a>
+    </li>
+</ul>

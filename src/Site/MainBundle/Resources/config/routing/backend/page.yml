@@ -1,0 +1,26 @@
+backend_page_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Page:show" }
+
+backend_page_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Page:new" }
+
+backend_page_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Page:create" }
+    methods:  POST
+
+backend_page_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Page:edit" }
+
+backend_page_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Page:update" }
+    methods:  [POST, PUT]
+
+backend_page_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Page:delete" }
+    methods:  [POST, DELETE]

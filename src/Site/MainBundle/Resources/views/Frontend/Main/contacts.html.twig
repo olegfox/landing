@@ -1,0 +1,41 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{#{% from 'SiteMainBundle:Frontend/GroupCompany:macros.html.twig' import listTabGroup %}#}
+
+{% block title %}{{ page.metaTitle }}{% endblock %}
+{% block meta_description %}{{ page.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
+{% block og_title %}{{ page.metaTitle }}{% endblock %}
+{% block og_description %}{{ page.metaDescription }}{% endblock %}
+
+{% block content %}
+    <div class="null-block"></div>
+    <!-- Contacts start -->
+    <div id="contacts" class="container contacts">
+        <h2>Напишите нам</h2>
+        <p>А эта форма служит для связи с нами</p>
+        <div class="wrap">
+            <div class="col-50 first">
+                <div class="flash-notice"></div>
+                <form id="form-feedback" action="{{ path('frontend_feedback') }}" method="post" novalidate="novalidate">
+                    {{ form_widget(form.name) }}
+                    {{ form_widget(form.phone) }}
+                    {{ form_widget(form.email) }}
+                    {{ form_widget(form.message) }}
+                    <button type="submit" class="btn btn-default">Отправить</button>
+                    {{ form_rest(form) }}
+                </form>
+            </div><div class="col-50 last">
+                <p>По всем вопросам можете обращаться</p>
+                <p>по Email: <a href="mailto:info@lab-developers.com">info@lab-developers.com</a></p>
+                <p>или по телефону: <span>+7 (962) 716-41-40</span></p>
+                <div class="social">
+                    <a href="#" class="tw" title="twitter"></a>
+                    <a href="#" class="inst" title="instagram"></a>
+                    <a href="#" class="fb" title="facebook"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contacts end -->
+{% endblock %}

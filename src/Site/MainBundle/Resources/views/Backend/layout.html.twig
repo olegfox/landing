@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{% block title %}Landing-service{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/backend/css/backend.css') }}" />
+    {% block stylesheets %}{% endblock %}
+    <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+    {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+
+</head>
+
+<body>
+{% block body %}
+{# Menu #}
+{% include 'SiteMainBundle:Backend:menu.html.twig' %}
+<div class="container-fluid">
+    <div class="row">
+        <div id="content" class="col-md-8">
+            <div class="row">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+<!-- Include all JavaScripts, compiled by Assetic -->
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/sitemain/backend/js/ckeditor/ckeditor.js') }}"></script>
+{% endblock %}
+</body>
+</html>

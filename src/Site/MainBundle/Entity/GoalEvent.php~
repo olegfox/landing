@@ -1,0 +1,57 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Голы в игре
+ * Site\MainBundle\Entity\GoalEvent
+ *
+ * @ORM\Table(name="goal_event")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\GoalEventRepository")
+ */
+class GoalEvent
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="goalEvent")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     **/
+    private $event;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=false)
+     */
+    private $type = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="score", type="string", length = 50, nullable=false)
+     */
+    private $score;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="time", type="string", length = 50, nullable=true)
+     */
+    private $time;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Player", inversedBy="goalEvent")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     **/
+    private $player;
+
+}

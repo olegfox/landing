@@ -1,0 +1,15 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.level.h1_create'|trans({}, 'menu') }}</h1>
+
+    {{ form(form, { 'style': 'horizontal', attr: {novalidate: 'novalidate'} }) }}
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_page_show', {'project_id': app.request.get('project_id'), 'id': app.request.get('page_id')}) }}">
+                {{ 'backend.level.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

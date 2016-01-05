@@ -1,0 +1,86 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/main.css') }}">
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="{{ asset('bundles/sitemain/frontend/bower_components/modernizr/modernizr.js') }}"></script>
+    <!-- endbuild -->
+{% endblock %}
+
+{% block body %}
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter34413290 = new Ya.Metrika({
+                        id:34413290,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/34413290" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <!-- Navigation start -->
+    <nav role="navigation">
+        <div class="wrap">
+            <a href="/" class="logo">lab-developers<span>.com</span></a>
+            <button type="button" class="menu-button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:mainMenu') }}
+        </div>
+    </nav>
+    <!-- Navigation end -->
+
+    {% block content %}
+    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/plugins.js -->
+    <script src="{{ asset('bundles/sitemain/frontend/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/bower_components/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/bower_components/masonry/dist/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/bower_components/vide/dist/jquery.vide.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/bower_components/slick-carousel/slick/slick.min.js') }}"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="{{ asset('bundles/sitemain/frontend/javascripts/main.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/javascripts/click.menu.js') }}"></script>
+    <!-- endbuild -->
+{% endblock %}

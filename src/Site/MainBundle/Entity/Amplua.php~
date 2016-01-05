@@ -1,0 +1,44 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Site\MainBundle\Entity\Amplua
+ *
+ * @ORM\Table(name="amplua")
+ * @ORM\Entity
+ */
+class Amplua
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * Амплуа
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     */
+    private $name;
+
+    /**
+     * Амплуа сокращенно
+     * @var string
+     *
+     * @ORM\Column(name="name_short", type="string", length=50, nullable=false)
+     */
+    private $nameShort;
+
+    /**
+     * Игроки
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="amplua")
+     **/
+    private $players;
+}

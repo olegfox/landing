@@ -1,0 +1,41 @@
+<h1>{{ 'backend.level.h1_list'|trans({}, 'menu') }}</h1>
+
+{% if entity.levels|length > 0 %}
+    <table class="records_list table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>{{ 'backend.level.title'|trans({}, 'menu') }}</th>
+            <th>{{ 'backend.actions'|trans({}, 'menu') }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for level in entity.levels %}
+            <tr>
+                <td><a href="{{ path('backend_level_show', { 'id': level.id, 'project_id': entity.project.id, 'page_id': entity.id }) }}">{{ level.title }}</a></td>
+                <td>
+                    <ul class="nav nav-pills">
+                        <li>
+                            <a href="{{ path('backend_level_show', { 'id': level.id, 'project_id': entity.project.id, 'page_id': entity.id }) }}">{{ 'backend.show'|trans({}, 'menu') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('backend_level_edit', { 'id': level.id, 'project_id': entity.project.id, 'page_id': entity.id }) }}">{{ 'backend.edit'|trans({}, 'menu') }}</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="alert alert-warning">
+        {{ 'backend.level.empty_list'|trans({}, 'menu') }}
+    </div>
+{% endif %}
+
+<ul class="nav nav-pills">
+    <li class="active">
+        <a href="{{ path('backend_level_new', {'project_id': entity.project.id, 'page_id': entity.id}) }}">
+            {{ 'backend.create'|trans({}, 'menu') }}
+        </a>
+    </li>
+</ul>

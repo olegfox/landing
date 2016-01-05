@@ -1,0 +1,26 @@
+backend_level_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Level:show" }
+
+backend_level_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Level:new" }
+
+backend_level_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Level:create" }
+    methods:  POST
+
+backend_level_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Level:edit" }
+
+backend_level_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Level:update" }
+    methods:  [POST, PUT]
+
+backend_level_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Level:delete" }
+    methods:  [POST, DELETE]

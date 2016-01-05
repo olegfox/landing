@@ -1,0 +1,46 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Site\MainBundle\Entity\PhotoReportPhotos
+ *
+ * @ORM\Table(name="photo_report_photos")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\PhotoReportPhotosRepository")
+ */
+class PhotoReportPhotos
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="text", nullable=false)
+     */
+    private $link;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="PhotoReport", inversedBy="photos")
+     * @ORM\JoinColumn(name="photo_report_id", referencedColumnName="id")
+     **/
+    private $photoReport;
+
+    /**
+     * @ORM\PreRemove
+     */
+    public function removeUpload()
+    {
+        if(file_exists($this->getLink())){
+            unlink($this->getLink());
+        }
+    }
+}

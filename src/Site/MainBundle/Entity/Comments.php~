@@ -1,0 +1,157 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Site\MainBundle\Entity\Comments
+ *
+ * @ORM\Table(name="comments")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\CommentsRepository")
+ */
+class Comments
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meta_title", type="string", length=100, nullable=true)
+     */
+    private $metaTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meta_description", type="string", length=500, nullable=true)
+     */
+    private $metaDescription;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meta_keywords", type="string", length=500, nullable=true)
+     */
+    private $metaKeywords;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text", nullable=true)
+     */
+    private $text;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $img;
+
+    /**
+     * @Assert\File()
+     */
+    private $file;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->img
+            ? null
+            : $this->getUploadRootDir().'/'.$this->img;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->img
+            ? null
+            : $this->getUploadDir().'/'.$this->img;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../../'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/comments';
+    }
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+
+        $this->upload();
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        if (isset($this->img)) {
+            if(file_exists($this->getUploadDir().'/'.$this->img)){
+                unlink($this->getUploadDir().'/'.$this->img);
+            }
+            $this->img = null;
+        }
+
+        $this->img = $this->getFile()->getClientOriginalName();
+
+        $this->getFile()->move(
+            $this->getUploadDir(),
+            $this->img
+        );
+
+        $this->file = null;
+    }
+}

@@ -1,0 +1,36 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{#{% from 'SiteMainBundle:Frontend/GroupCompany:macros.html.twig' import listTabGroup %}#}
+
+{% block title %}{{ page.metaTitle }}{% endblock %}
+{% block meta_description %}{{ page.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
+{% block og_title %}{{ page.metaTitle }}{% endblock %}
+{% block og_description %}{{ page.metaDescription }}{% endblock %}
+
+{% block content %}
+    <div class="null-block"></div>
+    <!-- Our Work start -->
+    <div id="our_work" class="container our-work">
+        <h2>Наши работы</h2>
+
+        <div class="box">
+            {% for project in projects %}
+                <figure>
+                    <div class="fig-wrap">
+                        <img src="{{ asset(project.webPath) }}" alt=""/>
+                        <figcaption>
+                            <div class="wrap">
+                                <h1>{{ project.title }}</h1>
+                                <p>{{ project.description }}</p>
+                                <a href="{{ project.site }}" target="_blank" class="btn btn-portfolio">Открыть</a>
+                            </div>
+                        </figcaption>
+                    </div>
+                </figure>
+            {% endfor %}
+        </div>
+
+    </div>
+    <!-- Our work end -->
+{% endblock %}

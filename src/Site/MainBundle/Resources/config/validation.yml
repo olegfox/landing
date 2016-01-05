@@ -1,0 +1,16 @@
+# src/Site/Bundle/MainBundle/Resources/config/validation.yml
+Site\MainBundle\Entity\Project:
+    properties:
+        title:
+            - NotBlank:
+                message: "Название проекта не может быть пустым"
+Site\MainBundle\Entity\Page:
+    properties:
+        title:
+            - NotBlank:
+                message: "Заголовок страницы не может быть пустым"
+Site\MainBundle\Entity\Level:
+    properties:
+        title:
+            - NotBlank:
+                message: "Заголовок уровня не может быть пустым"

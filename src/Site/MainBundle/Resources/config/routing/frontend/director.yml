@@ -1,0 +1,7 @@
+frontend_director_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/Director:index" }
+
+frontend_director_one:
+    path:     /{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Director:one" }

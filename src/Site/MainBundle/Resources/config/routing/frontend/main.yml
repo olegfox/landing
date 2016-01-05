@@ -1,0 +1,20 @@
+frontend_homepage:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/Main:index" }
+
+frontend_feedback:
+    path:     /feedback
+    defaults: { _controller: "SiteMainBundle:Frontend/Main:feedback" }
+    methods:  POST
+
+frontend_work:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/work.yml"
+    prefix: /nashi-raboty
+
+frontend_page_contacts:
+    path:     /kontakty
+    defaults: { _controller: "SiteMainBundle:Frontend/Main:contacts" }
+
+frontend_page_index:
+    path:     /{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Main:index" }

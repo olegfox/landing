@@ -1,0 +1,19 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.page.h1_edit'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    {{ form_start(edit_form, { 'style': 'horizontal' , attr: {novalidate: 'novalidate'} }) }}
+    {{ form_row(edit_form.title) }}
+    {{ form_end(edit_form) }}
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_project_show', {'id': app.request.get('project_id')}) }}">
+                {{ 'backend.page.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

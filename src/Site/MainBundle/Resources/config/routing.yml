@@ -1,0 +1,7 @@
+site_backend:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/main.yml"
+    prefix: /admin
+
+site_frontend:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/main.yml"
+    prefix: /

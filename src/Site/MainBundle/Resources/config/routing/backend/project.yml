@@ -1,0 +1,30 @@
+backend_project_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Project:index" }
+
+backend_project_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Project:show" }
+
+backend_project_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Project:new" }
+
+backend_project_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Project:create" }
+    methods:  POST
+
+backend_project_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Project:edit" }
+
+backend_project_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Project:update" }
+    methods:  [POST, PUT]
+
+backend_project_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Project:delete" }
+    methods:  [POST, DELETE]

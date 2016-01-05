@@ -1,0 +1,168 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Site\MainBundle\Entity\Project
+ *
+ * @ORM\Table(name="projects")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\ProjectRepository")
+ */
+class Project
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Page", mappedBy="project", cascade={"persist", "remove"})
+     **/
+    protected $pages;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Style", cascade={"persist", "remove"})
+     */
+    protected $style;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pages = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Project
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Project
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Add pages
+     *
+     * @param \Site\MainBundle\Entity\Page $pages
+     * @return Project
+     */
+    public function addPage(\Site\MainBundle\Entity\Page $pages)
+    {
+        $this->pages[] = $pages;
+
+        return $this;
+    }
+
+    /**
+     * Remove pages
+     *
+     * @param \Site\MainBundle\Entity\Page $pages
+     */
+    public function removePage(\Site\MainBundle\Entity\Page $pages)
+    {
+        $this->pages->removeElement($pages);
+    }
+
+    /**
+     * Get pages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPages()
+    {
+        return $this->pages;
+    }
+
+    /**
+     * Set style
+     *
+     * @param \Site\MainBundle\Entity\Style $style
+     * @return Project
+     */
+    public function setStyle(\Site\MainBundle\Entity\Style $style = null)
+    {
+        $this->style = $style;
+        $style->setProject($this);
+
+        return $this;
+    }
+
+    /**
+     * Get style
+     *
+     * @return \Site\MainBundle\Entity\Style 
+     */
+    public function getStyle()
+    {
+        return $this->style;
+    }
+}

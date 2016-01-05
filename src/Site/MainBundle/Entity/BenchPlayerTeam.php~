@@ -1,0 +1,43 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Запасные
+ * Site\MainBundle\Entity\BenchPlayerTeam
+ *
+ * @ORM\Table(name="bench_player_team")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\BenchPlayerTeamRepository")
+ */
+class BenchPlayerTeam
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="benchPlayerTeam")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     **/
+    private $event;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=false)
+     */
+    private $type = false;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Player", inversedBy="benchPlayerTeam")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     **/
+    private $player;
+
+}
