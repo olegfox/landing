@@ -4,6 +4,7 @@ namespace Site\MainBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Site\MainBundle\Entity\Project;
 use Site\MainBundle\Form\ProjectType;
@@ -50,7 +51,10 @@ class ProjectController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
+//          Заголовки
+            foreach ($entity->getStyle()->getHeads() as $head) {
+                $head->setStyle($entity->getStyle());
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -156,6 +160,7 @@ class ProjectController extends Controller
         $form = $this->createForm(new ProjectType(), $entity, array(
             'action' => $this->generateUrl('backend_project_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'allow_extra_fields' => true
         ));
 
         $form->add('submit', 'submit', array('label' => 'backend.update'));
@@ -176,11 +181,35 @@ class ProjectController extends Controller
             throw $this->createNotFoundException($this->get('translator')->trans('backend.project.not_found'));
         }
 
+//      Заголовки
+        $originalHeads = new ArrayCollection();
+
+        foreach ($entity->getStyle()->getHeads() as $head) {
+            $originalHeads->add($head);
+        }
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+//          Заголовки
+            foreach ($originalHeads as $head) {
+
+                if (false === $entity->getStyle()->getHeads()->contains($head)) {
+
+                    $entity->getStyle()->getHeads()->removeElement($head);
+
+                    $em->remove($head);
+
+                }
+
+            }
+
+            foreach ($entity->getStyle()->getHeads() as $head) {
+                $head->setStyle($entity->getStyle());
+            }
 
             $em->flush();
 

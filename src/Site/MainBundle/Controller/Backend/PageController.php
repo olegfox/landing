@@ -139,6 +139,7 @@ class PageController extends Controller
         $form = $this->createForm(new PageType(), $entity, array(
             'action' => $this->generateUrl('backend_page_update', array('id' => $entity->getId(), 'project_id' => $project_id)),
             'method' => 'PUT',
+            'allow_extra_fields' => true
         ));
 
         $form->add('submit', 'submit', array('label' => 'backend.update'));
@@ -167,7 +168,7 @@ class PageController extends Controller
 
             $em->flush();
 
-            return $this->redirect($this->generateUrl('backend_page_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('backend_page_edit', array('id' => $id, 'project_id' => $project_id)));
         }
 
         return $this->render('SiteMainBundle:Backend/Page:edit.html.twig', array(

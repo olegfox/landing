@@ -47,9 +47,9 @@ class Level
     protected $position = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="ModuleHeader", mappedBy="level", cascade={"persist", "remove"})
-     **/
-    protected $moduleHeaders;
+     * @ORM\OneToOne(targetEntity="ModuleHeader", cascade={"persist", "remove"})
+     */
+    protected $moduleHeader;
 
     /**
      * Get id
@@ -129,13 +129,6 @@ class Level
     {
         return $this->page;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->moduleHeaders = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Set position
@@ -161,35 +154,25 @@ class Level
     }
 
     /**
-     * Add moduleHeaders
+     * Set moduleHeader
      *
-     * @param \Site\MainBundle\Entity\ModuleHeader $moduleHeaders
+     * @param \Site\MainBundle\Entity\ModuleHeader $moduleHeader
      * @return Level
      */
-    public function addModuleHeader(\Site\MainBundle\Entity\ModuleHeader $moduleHeaders)
+    public function setModuleHeader(\Site\MainBundle\Entity\ModuleHeader $moduleHeader = null)
     {
-        $this->moduleHeaders[] = $moduleHeaders;
-
+        $this->moduleHeader = $moduleHeader;
+        $moduleHeader->setLevel($this);
         return $this;
     }
 
     /**
-     * Remove moduleHeaders
+     * Get moduleHeader
      *
-     * @param \Site\MainBundle\Entity\ModuleHeader $moduleHeaders
+     * @return \Site\MainBundle\Entity\ModuleHeader 
      */
-    public function removeModuleHeader(\Site\MainBundle\Entity\ModuleHeader $moduleHeaders)
+    public function getModuleHeader()
     {
-        $this->moduleHeaders->removeElement($moduleHeaders);
-    }
-
-    /**
-     * Get moduleHeaders
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getModuleHeaders()
-    {
-        return $this->moduleHeaders;
+        return $this->moduleHeader;
     }
 }

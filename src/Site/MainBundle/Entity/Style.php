@@ -24,6 +24,21 @@ class Style
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $font;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $cssFont;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $fontColor;
+
+    /**
      * @ORM\OneToOne(targetEntity="Project", inversedBy="style", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
@@ -485,5 +500,74 @@ class Style
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set font
+     *
+     * @param string $font
+     * @return Style
+     */
+    public function setFont($font)
+    {
+        $this->font = $font;
+
+        return $this;
+    }
+
+    /**
+     * Get font
+     *
+     * @return string 
+     */
+    public function getFont()
+    {
+        return $this->font;
+    }
+
+    /**
+     * Set cssFont
+     *
+     * @param string $cssFont
+     * @return Style
+     */
+    public function setCssFont($cssFont)
+    {
+        $this->cssFont = $cssFont;
+
+        return $this;
+    }
+
+    /**
+     * Get cssFont
+     *
+     * @return string 
+     */
+    public function getCssFont()
+    {
+        return $this->cssFont;
+    }
+
+    /**
+     * Set fontColor
+     *
+     * @param string $fontColor
+     * @return Style
+     */
+    public function setFontColor($fontColor)
+    {
+        $this->fontColor = $fontColor;
+
+        return $this;
+    }
+
+    /**
+     * Get fontColor
+     *
+     * @return string 
+     */
+    public function getFontColor()
+    {
+        return $this->fontColor;
     }
 }

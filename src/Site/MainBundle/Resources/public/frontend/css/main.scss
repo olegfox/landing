@@ -1,0 +1,107 @@
+@import "reset.css";
+
+html, body {
+  height: 100%;
+}
+
+// Module Header
+.wrap-header {
+
+  position: relative;
+  height: 100%;
+
+  .shadow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    z-index: 1;
+  }
+
+  .header {
+
+    position: relative;
+    height: 100%;
+    z-index: 2;
+
+    .top {
+
+      .hint-left {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        font-size: 24px;
+      }
+
+      .hint-right {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        font-size: 24px;
+      }
+
+    }
+
+    .wrap-center-block {
+
+      display: table;
+      height: 100%;
+      width: 100%;
+
+      .center-block {
+
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+
+        h1 {
+          padding: 20px 0px;
+        }
+
+        h2 {
+          padding: 10px 0px;
+        }
+
+        .btn {
+          font-size: 24px;
+          background: none;
+          border: solid 2px #fff;
+          height: 50px;
+          padding: 0 50px;
+          margin-top: 50px;
+          border-radius: 50px;
+          cursor: pointer;
+        }
+
+      }
+
+    }
+
+    .arrow {
+
+      position: absolute;
+      display: block;
+      bottom: 25px;
+      left: 0px;
+      right: 0px;
+      margin: 0 auto;
+      height: 28px;
+      width: 43px;
+      background: url("../images/icon-arrow.png") 0 0 no-repeat;
+      cursor: pointer !important;
+
+      &.arrow-blink {
+        animation: blinker 1s linear infinite;
+      }
+
+      @keyframes blinker {
+        50% { opacity: 0.0; }
+      }
+
+    }
+
+  }
+}
+// end Module Header

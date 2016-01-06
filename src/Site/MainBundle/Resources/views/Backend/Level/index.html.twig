@@ -5,6 +5,7 @@
         <thead>
         <tr>
             <th>{{ 'backend.level.title'|trans({}, 'menu') }}</th>
+            <th>{{ 'backend.level.position'|trans({}, 'menu') }}</th>
             <th>{{ 'backend.actions'|trans({}, 'menu') }}</th>
         </tr>
         </thead>
@@ -12,6 +13,7 @@
         {% for level in entity.levels %}
             <tr>
                 <td><a href="{{ path('backend_level_show', { 'id': level.id, 'project_id': entity.project.id, 'page_id': entity.id }) }}">{{ level.title }}</a></td>
+                <td>{{ level.position }}</td>
                 <td>
                     <ul class="nav nav-pills">
                         <li>

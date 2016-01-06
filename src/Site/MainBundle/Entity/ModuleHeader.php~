@@ -109,35 +109,9 @@ class ModuleHeader
     protected $isArrowFlashing = false;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="meta_title", type="string", length=255, nullable=true)
+     * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleHeader", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="level_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
-    private $metaTitle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="meta_description", type="string", length=500, nullable=true)
-     */
-    private $metaDescription;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="meta_keywords", type="string", length=500, nullable=true)
-     */
-    private $metaKeywords;
-
-    /**
-     * @ORM\OneToMany(targetEntity="StyleHead", mappedBy="style", cascade={"persist", "remove"})
-     **/
-    protected $heads;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Level", inversedBy="moduleHeaders")
-     * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
-     **/
     protected $level;
 
     public function getAbsolutePath()
@@ -277,13 +251,6 @@ class ModuleHeader
         );
 
         $this->fileVideo = null;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->heads = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -639,107 +606,5 @@ class ModuleHeader
     public function getIsArrowFlashing()
     {
         return $this->isArrowFlashing;
-    }
-
-    /**
-     * Set metaTitle
-     *
-     * @param string $metaTitle
-     * @return ModuleHeader
-     */
-    public function setMetaTitle($metaTitle)
-    {
-        $this->metaTitle = $metaTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get metaTitle
-     *
-     * @return string 
-     */
-    public function getMetaTitle()
-    {
-        return $this->metaTitle;
-    }
-
-    /**
-     * Set metaDescription
-     *
-     * @param string $metaDescription
-     * @return ModuleHeader
-     */
-    public function setMetaDescription($metaDescription)
-    {
-        $this->metaDescription = $metaDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get metaDescription
-     *
-     * @return string 
-     */
-    public function getMetaDescription()
-    {
-        return $this->metaDescription;
-    }
-
-    /**
-     * Set metaKeywords
-     *
-     * @param string $metaKeywords
-     * @return ModuleHeader
-     */
-    public function setMetaKeywords($metaKeywords)
-    {
-        $this->metaKeywords = $metaKeywords;
-
-        return $this;
-    }
-
-    /**
-     * Get metaKeywords
-     *
-     * @return string 
-     */
-    public function getMetaKeywords()
-    {
-        return $this->metaKeywords;
-    }
-
-    /**
-     * Add heads
-     *
-     * @param \Site\MainBundle\Entity\StyleHead $heads
-     * @return ModuleHeader
-     */
-    public function addHead(\Site\MainBundle\Entity\StyleHead $heads)
-    {
-        $this->heads[] = $heads;
-
-        return $this;
-    }
-
-    /**
-     * Remove heads
-     *
-     * @param \Site\MainBundle\Entity\StyleHead $heads
-     */
-    public function removeHead(\Site\MainBundle\Entity\StyleHead $heads)
-    {
-        $this->heads->removeElement($heads);
-    }
-
-    /**
-     * Get heads
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHeads()
-    {
-        return $this->heads;
     }
 }

@@ -15,6 +15,18 @@ class StyleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('font', 'text', array(
+                'required' => true,
+                'label' => 'backend.style.font'
+            ))
+            ->add('cssFont', 'text', array(
+                'required' => true,
+                'label' => 'backend.style.cssFont'
+            ))
+            ->add('fontColor', 'text', array(
+                'required' => true,
+                'label' => 'backend.style.fontColor'
+            ))
             ->add('file', 'file', array(
                 'required' => true,
                 'label' => 'backend.style.backgroundImg'
@@ -39,7 +51,7 @@ class StyleType extends AbstractType
                 'required' => true,
                 'label' => 'backend.style.metaTitle'
             ))
-            ->add('metaDescription', 'text', array(
+            ->add('metaDescription', 'textarea', array(
                 'required' => true,
                 'label' => 'backend.style.metaDescription'
             ))

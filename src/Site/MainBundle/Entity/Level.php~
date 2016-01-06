@@ -47,9 +47,9 @@ class Level
     protected $position = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="ModuleHeader", mappedBy="level", cascade={"persist", "remove"})
-     **/
-    protected $moduleHeaders;
+     * @ORM\OneToOne(targetEntity="ModuleHeader", cascade={"persist", "remove"})
+     */
+    protected $moduleHeader;
 
     /**
      * Get id
@@ -128,5 +128,28 @@ class Level
     public function getPage()
     {
         return $this->page;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Level
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

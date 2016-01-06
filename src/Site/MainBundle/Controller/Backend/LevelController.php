@@ -147,6 +147,7 @@ class LevelController extends Controller
                 'page_id' => $page_id
             )),
             'method' => 'PUT',
+            'allow_extra_fields' => true
         ));
 
         $form->add('submit', 'submit', array('label' => 'backend.update'));
@@ -175,7 +176,7 @@ class LevelController extends Controller
 
             $em->flush();
 
-            return $this->redirect($this->generateUrl('backend_level_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('backend_level_edit', array('id' => $id, 'project_id' => $project_id, 'page_id' => $page_id)));
         }
 
         return $this->render('SiteMainBundle:Backend/Level:edit.html.twig', array(

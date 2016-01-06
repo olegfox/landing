@@ -4,10 +4,10 @@ namespace Site\MainBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Site\MainBundle\Entity\Style;
 use Site\MainBundle\Form\StyleType;
-use Site\MainBundle\Entity\Slider;
 
 /**
  * Style controller.
@@ -48,6 +48,10 @@ class StyleController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+//          Заголовки
+            foreach ($entity->getHeads() as $head) {
+                $head->setStyle($entity);
+            }
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($entity);
@@ -154,6 +158,7 @@ class StyleController extends Controller
         $form = $this->createForm(new StyleType(), $entity, array(
             'action' => $this->generateUrl('backend_style_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'allow_extra_fields' => true
         ));
 
         $form->add('submit', 'submit', array('label' => 'backend.update'));
@@ -174,11 +179,36 @@ class StyleController extends Controller
             throw $this->createNotFoundException($this->get('translator')->trans('backend.style.not_found'));
         }
 
+//      Заголовки
+        $originalHeads = new ArrayCollection();
+
+        foreach ($entity->getHeads() as $head) {
+            $originalHeads->add($head);
+        }
+
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+//          Заголовки
+            foreach ($originalHeads as $head) {
+
+                if (false === $entity->getHeads()->contains($head)) {
+
+                    $entity->getHeads()->removeElement($head);
+
+                    $em->remove($head);
+
+                }
+
+            }
+
+            foreach ($entity->getHeads() as $head) {
+                $head->setStyle($entity);
+            }
 
             $em->flush();
 

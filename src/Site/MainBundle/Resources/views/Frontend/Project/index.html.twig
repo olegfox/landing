@@ -1,0 +1,47 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% from 'SiteMainBundle:Frontend/Modules/ModuleHeader:macros.html.twig' import moduleHeader %}
+
+{% block title %}{{ project.style.metaTitle }}{% endblock %}
+{% block meta_description %}{{ project.style.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ project.style.metaKeywords }}{% endblock %}
+{% block og_title %}{{ project.style.metaTitle }}{% endblock %}
+{% block og_description %}{{ project.style.metaDescription }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% if project.style.font|length > 0 %}
+        {{ project.style.font|raw }}
+    {% endif %}
+    <style type="text/css">
+        body{
+            {% if project.style.cssFont|length > 0 %}
+                {{ project.style.cssFont|raw }}
+            {% endif %}
+            {% if project.style.fontColor|length > 0 %}
+                color: {{ project.style.fontColor|raw }};
+            {% endif %}
+        }
+        .btn{
+            {% if project.style.fontColor|length > 0 %}
+                color: {{ project.style.fontColor|raw }};
+            {% endif %}
+        }
+        {% if project.style.heads|length > 0 %}
+            {% for head in project.style.heads %}
+                {{ head.title }} {
+                    {% if head.size | length > 0 %}
+                    font-size: {{ head.size|raw }};
+                    {% endif %}
+                    {% if head.color | length > 0 %}
+                    color: {{ head.color|raw }};
+                    {% endif %}
+                }
+            {% endfor %}
+        {% endif %}
+    </style>
+{% endblock %}
+
+{% block content %}
+    {{ moduleHeader(project.pages[0].levels[0].moduleHeader) }}
+{% endblock %}

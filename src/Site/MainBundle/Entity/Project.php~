@@ -41,7 +41,7 @@ class Project
     protected $pages;
 
     /**
-     * @ORM\OneToOne(targetEntity="Style")
+     * @ORM\OneToOne(targetEntity="Style", cascade={"persist", "remove"})
      */
     protected $style;
 
@@ -151,6 +151,7 @@ class Project
     public function setStyle(\Site\MainBundle\Entity\Style $style = null)
     {
         $this->style = $style;
+        $style->setProject($this);
 
         return $this;
     }

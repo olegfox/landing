@@ -1,0 +1,59 @@
+{% macro moduleHeader(module) %}
+    <style type="text/css">
+        {% if module.backgroundImg|length > 0 %}
+            .wrap-header {
+                {% if module.backgroundImg|length > 0 %}
+                    background-image: url('{{ asset(module.webPath) }}');
+                {% endif %}
+                {% if module.backgroundPosition|length > 0 %}
+                    background-position: {{ module.backgroundPosition }};
+                {% endif %}
+                {% if module.backgroundAttachment|length > 0 %}
+                    background-attachment: {{ module.backgroundAttachment }};
+                {% endif %}
+                {% if module.backgroundSize|length > 0 %}
+                    background-size: {{ module.backgroundSize }};
+                {% endif %}
+            }
+            {% if module.shadow > 0 %}
+                .shadow {
+                    opacity: {{ (100 - module.shadow) / 100 }};
+                }
+            {% endif %}
+        {% endif %}
+    </style>
+    <div class="wrap-header">
+        <div class="shadow"></div>
+        <div class="header">
+            <!-- Top -->
+            <div class="top">
+                <div class="hint-left">
+                    {{ module.hintLeft }}
+                </div>
+                <div class="hint-right">
+                    {{ module.hintRight1 }}
+                    {{ module.hintRight2 }}
+                </div>
+            </div>
+            <!-- end Top -->
+
+            <!-- Center Block -->
+            <div class="wrap-center-block">
+                <div class="center-block">
+                    <h1>{{ module.head1 }}</h1>
+                    <h2>{{ module.head2 }}</h2>
+                    {% if module.isButton %}
+                        <button class="btn">{{ module.textButton }}</button>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- end Center Block -->
+
+            {% if module.isArrow %}
+                <!-- Arrow Down -->
+                <a href="#" class="arrow {% if module.isArrowFlashing %}arrow-blink{% endif %}"></a>
+                <!-- end Arrow Down -->
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

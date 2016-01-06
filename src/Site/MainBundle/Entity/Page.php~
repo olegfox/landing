@@ -43,6 +43,7 @@ class Page
 
     /**
      * @ORM\OneToMany(targetEntity="Level", mappedBy="page", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"position" = "ASC"})
      **/
     protected $levels;
 

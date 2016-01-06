@@ -1,3 +1,0 @@
-frontend_work_index:
-    path:     /
-    defaults: { _controller: "SiteMainBundle:Frontend/Work:index" }

@@ -10,6 +10,9 @@ backend:
         style: Стили
         not_found: Проект не существует
     style:
+        font: Общий шрифт
+        cssFont: Css-код шрифта
+        fontColor: Цвет шрифта
         backgroundImg: Фоновое изображение
         favicon: Фавикон
         backgroundPosition: Позиция фонового изображения
@@ -43,9 +46,30 @@ backend:
         back_to_list: Назад к уровням
         empty_list: Нет уровней
         title: Заголовок уровня
+        position: Номер уровня
+        moduleHeader: Модуль шапки
         not_found: Уровень не существует
+    module_header:
+        backgroundImg: Ссылка на изображение
+        file: Выберите изображение
+        video: Ссылка на видео
+        fileVideo: Выберите видео
+        backgroundPosition: Позиция фонового изображения
+        backgroundAttachment: Фиксированный фон или нет?
+        backgroundSize: Размер фонового изображения
+        shadow: Тень (%)
+        head1: Заголовок 1
+        head2: Заголовок 2
+        isButton: Кнопка будет?
+        textButton: Текст кнопки
+        hintLeft: Надпись слева
+        hintRight1: Надпись справа 1
+        hintRight2: Надпись справа 2
+        isArrow: Стрелка вниз будет или нет?
+        isArrowFlashing: Стрелка моргает или нет?
     actions: Действия
     show: показать
+    show_result: показать лендинг
     edit: редактировать
     update: сохранить
     create: создать

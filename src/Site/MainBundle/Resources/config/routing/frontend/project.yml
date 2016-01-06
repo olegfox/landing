@@ -1,0 +1,3 @@
+frontend_project_index:
+    path:     /{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Project:index" }

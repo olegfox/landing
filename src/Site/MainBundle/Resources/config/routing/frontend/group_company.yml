@@ -1,7 +1,0 @@
-frontend_group_company_index:
-    path:     /
-    defaults: { _controller: "SiteMainBundle:Frontend/GroupCompany:index" }
-
-frontend_group_company_one:
-    path:     /{slug}
-    defaults: { _controller: "SiteMainBundle:Frontend/GroupCompany:one" }
