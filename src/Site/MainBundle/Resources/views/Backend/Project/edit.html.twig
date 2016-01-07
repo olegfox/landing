@@ -6,7 +6,32 @@
     {{ form(delete_form) }}
 
     {{ form_start(edit_form, { 'style': 'horizontal' , attr: {novalidate: 'novalidate'} }) }}
-    {{ form_row(edit_form.title) }}
+    {% for keyForm, form in edit_form %}
+        {% if keyForm != 'style' %}
+            {{ form_row(form) }}
+        {% elseif keyForm == 'style' %}
+            <div class="form-group">
+                {{ form_label(form) }}
+                <div class="col-lg-10">
+                    {% for keyField, field in form %}
+                        <div class="form-group">
+                            {{ form_label(field) }}
+                            <div class="col-lg-10">
+                                {% if keyField == 'backgroundImg' and field.vars.value | length > 0 %}
+                                    <div class="widget-img">
+                                        <a href="{{ asset('uploads/style/'~field.vars.value) }}" target="_blank">
+                                            <img src="{{ image('uploads/style/'~field.vars.value).cropResize(100) }}" width="100px" alt=""/>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                {{ form_widget(field) }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
     {{ form_end(edit_form) }}
 
     <ul class="record_actions nav nav-pills">

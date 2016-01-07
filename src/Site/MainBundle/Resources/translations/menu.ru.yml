@@ -13,8 +13,10 @@ backend:
         font: Общий шрифт
         cssFont: Css-код шрифта
         fontColor: Цвет шрифта
-        backgroundImg: Фоновое изображение
-        favicon: Фавикон
+        file: Выберите фоновое изображение
+        backgroundImg: Ссылка на фоновое изображение
+        fileFavicon: Выберите фавикон
+        favicon: Ссылка на фавикон
         backgroundPosition: Позиция фонового изображения
         backgroundAttachment: Фиксированный фон или нет?
         backgroundSize: Размер фонового изображения

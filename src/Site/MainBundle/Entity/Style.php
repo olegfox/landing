@@ -238,7 +238,7 @@ class Style
 
         $this->getFileFavicon()->move(
             $this->getUploadDirFavicon(),
-            $this->fileFavicon
+            $this->favicon
         );
 
         $this->fileFavicon = null;

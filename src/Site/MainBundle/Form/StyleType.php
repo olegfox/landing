@@ -27,13 +27,21 @@ class StyleType extends AbstractType
                 'required' => true,
                 'label' => 'backend.style.fontColor'
             ))
-            ->add('file', 'file', array(
+            ->add('backgroundImg', 'text', array(
                 'required' => true,
                 'label' => 'backend.style.backgroundImg'
             ))
-            ->add('fileFavicon', 'file', array(
+            ->add('file', 'file', array(
+                'required' => true,
+                'label' => 'backend.style.file'
+            ))
+            ->add('favicon', 'text', array(
                 'required' => true,
                 'label' => 'backend.style.favicon'
+            ))
+            ->add('fileFavicon', 'file', array(
+                'required' => true,
+                'label' => 'backend.style.fileFavicon'
             ))
             ->add('backgroundPosition', 'text', array(
                 'required' => true,

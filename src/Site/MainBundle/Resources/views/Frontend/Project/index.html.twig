@@ -7,6 +7,13 @@
 {% block meta_keywords %}{{ project.style.metaKeywords }}{% endblock %}
 {% block og_title %}{{ project.style.metaTitle }}{% endblock %}
 {% block og_description %}{{ project.style.metaDescription }}{% endblock %}
+{% block favicon %}
+    {% if project.style.favicon | length > 0 %}
+        <link rel="icon" type="image/x-icon" href="{{ asset(project.style.webPathFavicon) }}" />
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -44,4 +51,10 @@
 
 {% block content %}
     {{ moduleHeader(project.pages[0].levels[0].moduleHeader) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/vide/dist/jquery.vide.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/main.js') }}"></script>
 {% endblock %}

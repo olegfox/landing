@@ -46,26 +46,10 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0; }
 
+.widget-img {
+  margin-bottom: 10px; }
+
+.widget-video {
+  margin-bottom: 10px; }
+
 /*# sourceMappingURL=backend.css.map */
-
-.photos{
-    font-size: 0;
-}
-
-.photos .item{
-    display: inline-block;
-    width: 16.77%;
-}
-
-.photos .item div{
-    width: 100%;
-}
-
-.photos .item div img{
-    width: 100%;
-}
-
-.photos .item .inner-item{
-    margin: 0 0 10px 0;
-    padding-right: 10px;
-}

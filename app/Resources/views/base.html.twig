@@ -15,7 +15,9 @@
         <meta property="og:site_name" content="Landing-service" />
         <link rel="image_src" href="{% block image_src %}{% endblock %}" />
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{% block favicon %}{{ asset('favicon.ico') }}{% endblock %}" />
+        {% block favicon %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}

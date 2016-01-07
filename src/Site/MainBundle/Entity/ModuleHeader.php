@@ -247,7 +247,7 @@ class ModuleHeader
 
         $this->getFileVideo()->move(
             $this->getUploadDirVideo(),
-            $this->fileVideo
+            $this->video
         );
 
         $this->fileVideo = null;
@@ -271,6 +271,12 @@ class ModuleHeader
      */
     public function setBackgroundImg($backgroundImg)
     {
+        if (empty($backgroundImg)) {
+            if(file_exists($this->getUploadDir().'/'.$this->backgroundImg)){
+                unlink($this->getUploadDir().'/'.$this->backgroundImg);
+            }
+        }
+
         $this->backgroundImg = $backgroundImg;
 
         return $this;
@@ -294,6 +300,12 @@ class ModuleHeader
      */
     public function setVideo($video)
     {
+        if (empty($video)) {
+            if(file_exists($this->getUploadDirVideo().'/'.$this->video)){
+                unlink($this->getUploadDirVideo().'/'.$this->video);
+            }
+        }
+
         $this->video = $video;
 
         return $this;
