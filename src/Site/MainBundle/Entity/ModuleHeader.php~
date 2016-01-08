@@ -109,6 +109,11 @@ class ModuleHeader
     protected $isArrowFlashing = false;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $enable = false;
+
+    /**
      * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleHeader", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
@@ -205,7 +210,7 @@ class ModuleHeader
 
     protected function getUploadDirVideo()
     {
-        return 'uploads/module_header';
+        return 'uploads/moduleHeader';
     }
 
     /**
@@ -247,7 +252,7 @@ class ModuleHeader
 
         $this->getFileVideo()->move(
             $this->getUploadDirVideo(),
-            $this->fileVideo
+            $this->video
         );
 
         $this->fileVideo = null;
@@ -271,6 +276,12 @@ class ModuleHeader
      */
     public function setBackgroundImg($backgroundImg)
     {
+        if (empty($backgroundImg)) {
+            if(file_exists($this->getUploadDir().'/'.$this->backgroundImg)){
+                unlink($this->getUploadDir().'/'.$this->backgroundImg);
+            }
+        }
+
         $this->backgroundImg = $backgroundImg;
 
         return $this;
@@ -294,6 +305,12 @@ class ModuleHeader
      */
     public function setVideo($video)
     {
+        if (empty($video)) {
+            if(file_exists($this->getUploadDirVideo().'/'.$this->video)){
+                unlink($this->getUploadDirVideo().'/'.$this->video);
+            }
+        }
+
         $this->video = $video;
 
         return $this;
@@ -606,5 +623,28 @@ class ModuleHeader
     public function getIsArrowFlashing()
     {
         return $this->isArrowFlashing;
+    }
+
+    /**
+     * Set level
+     *
+     * @param \Site\MainBundle\Entity\Level $level
+     * @return ModuleHeader
+     */
+    public function setLevel(\Site\MainBundle\Entity\Level $level = null)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return \Site\MainBundle\Entity\Level 
+     */
+    public function getLevel()
+    {
+        return $this->level;
     }
 }

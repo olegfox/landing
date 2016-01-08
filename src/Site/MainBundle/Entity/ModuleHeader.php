@@ -109,6 +109,11 @@ class ModuleHeader
     protected $isArrowFlashing = false;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $enable = false;
+
+    /**
      * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleHeader", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
@@ -205,7 +210,7 @@ class ModuleHeader
 
     protected function getUploadDirVideo()
     {
-        return 'uploads/module_header';
+        return 'uploads/moduleHeader';
     }
 
     /**
@@ -641,5 +646,28 @@ class ModuleHeader
     public function getLevel()
     {
         return $this->level;
+    }
+
+    /**
+     * Set enable
+     *
+     * @param boolean $enable
+     * @return ModuleHeader
+     */
+    public function setEnable($enable)
+    {
+        $this->enable = $enable;
+
+        return $this;
+    }
+
+    /**
+     * Get enable
+     *
+     * @return boolean 
+     */
+    public function getEnable()
+    {
+        return $this->enable;
     }
 }

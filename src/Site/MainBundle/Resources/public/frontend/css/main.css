@@ -65,5 +65,17 @@ html, body {
 @keyframes blinker {
   50% {
     opacity: 0.0; } }
+.wrap-line {
+  position: relative;
+  height: 100%; }
+  .wrap-line .line {
+    position: relative;
+    height: 100%; }
+    .wrap-line .line .wrap-center-block {
+      display: table;
+      height: 100%;
+      width: 100%; }
+      .wrap-line .line .wrap-center-block .center-block {
+        display: table-cell; }
 
 /*# sourceMappingURL=main.css.map */

@@ -13,4 +13,12 @@ $(function(){
             resizing: true // Auto-resizing, read: https://github.com/VodkaBears/Vide#resizing...
         });
     }
+
+    $(".arrow").each(function(i, el) {
+        $(el).click(function(e){
+            e.preventDefault();
+            $("html, body").animate({scrollTop: $("#" + $(el).data('current-level')).nextAll('.level').first().offset().top}, 1000);
+        });
+    });
+
 });

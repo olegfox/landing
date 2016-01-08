@@ -1,6 +1,7 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
 {% from 'SiteMainBundle:Frontend/Modules/ModuleHeader:macros.html.twig' import moduleHeader %}
+{% from 'SiteMainBundle:Frontend/Modules/ModuleLine:macros.html.twig' import moduleLine %}
 
 {% block title %}{{ project.style.metaTitle }}{% endblock %}
 {% block meta_description %}{{ project.style.metaDescription }}{% endblock %}
@@ -50,7 +51,25 @@
 {% endblock %}
 
 {% block content %}
-    {{ moduleHeader(project.pages[0].levels[0].moduleHeader) }}
+    {% for level in project.pages[0].levels %}
+
+        {% if level.moduleHeader.id is defined %}
+            {% if level.moduleHeader.enable %}
+            <!-- Module Header -->
+                {{ moduleHeader(level.moduleHeader) }}
+            <!-- end Module Header -->
+            {% endif %}
+        {% endif %}
+
+        {% if level.moduleLine.id is defined %}
+            {% if level.moduleLine.enable %}
+            <!-- Module Line -->
+                {{ moduleLine(level.moduleLine) }}
+            <!-- end Module Line -->
+            {% endif %}
+        {% endif %}
+
+    {% endfor %}
 {% endblock %}
 
 {% block javascripts %}

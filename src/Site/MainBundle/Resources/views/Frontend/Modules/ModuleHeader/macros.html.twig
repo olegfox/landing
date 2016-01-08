@@ -22,7 +22,7 @@
         }
         {% endif %}
     </style>
-    <div class="wrap-header" {% if module.video|length > 0 %}data-video="{{ asset(module.webPathVideo) }}"{% endif %}>
+    <div class="wrap-header level" id="level{{ module.level.id }}" {% if module.video|length > 0 %}data-video="{{ asset(module.webPathVideo) }}"{% endif %}>
         <div class="shadow"></div>
         <div class="header">
             <!-- Top -->
@@ -51,7 +51,7 @@
 
             {% if module.isArrow %}
                 <!-- Arrow Down -->
-                <a href="#" class="arrow {% if module.isArrowFlashing %}arrow-blink{% endif %}"></a>
+                <a href="#" class="arrow {% if module.isArrowFlashing %}arrow-blink{% endif %}" data-current-level="level{{ module.level.id }}"></a>
                 <!-- end Arrow Down -->
             {% endif %}
         </div>

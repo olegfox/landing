@@ -52,6 +52,11 @@ class Level
     protected $moduleHeader;
 
     /**
+     * @ORM\OneToOne(targetEntity="ModuleLine", cascade={"persist", "remove"})
+     */
+    protected $moduleLine;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -151,5 +156,51 @@ class Level
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * Set moduleHeader
+     *
+     * @param \Site\MainBundle\Entity\ModuleHeader $moduleHeader
+     * @return Level
+     */
+    public function setModuleHeader(\Site\MainBundle\Entity\ModuleHeader $moduleHeader = null)
+    {
+        $this->moduleHeader = $moduleHeader;
+        $moduleHeader->setLevel($this);
+        return $this;
+    }
+
+    /**
+     * Get moduleHeader
+     *
+     * @return \Site\MainBundle\Entity\ModuleHeader 
+     */
+    public function getModuleHeader()
+    {
+        return $this->moduleHeader;
+    }
+
+    /**
+     * Set moduleLine
+     *
+     * @param \Site\MainBundle\Entity\ModuleLine $moduleLine
+     * @return Level
+     */
+    public function setModuleLine(\Site\MainBundle\Entity\ModuleLine $moduleLine = null)
+    {
+        $this->moduleLine = $moduleLine;
+
+        return $this;
+    }
+
+    /**
+     * Get moduleLine
+     *
+     * @return \Site\MainBundle\Entity\ModuleLine 
+     */
+    public function getModuleLine()
+    {
+        return $this->moduleLine;
     }
 }

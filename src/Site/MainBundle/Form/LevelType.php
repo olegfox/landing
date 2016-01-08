@@ -31,6 +31,10 @@ class LevelType extends AbstractType
                 'required' => true,
                 'label' => 'backend.level.moduleHeader'
             ))
+            ->add('moduleLine', new ModuleLineType(), array(
+                'required' => true,
+                'label' => 'backend.level.moduleLine'
+            ))
         ;
     }
     

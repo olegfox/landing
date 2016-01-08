@@ -50,6 +50,7 @@ backend:
         title: Заголовок уровня
         position: Номер уровня
         moduleHeader: Модуль шапки
+        moduleLine: Модуль Линия
         not_found: Уровень не существует
     module_header:
         backgroundImg: Ссылка на изображение
@@ -69,6 +70,20 @@ backend:
         hintRight2: Надпись справа 2
         isArrow: Стрелка вниз будет или нет?
         isArrowFlashing: Стрелка моргает или нет?
+        enable: Вкл/Выкл
+    module_line:
+        height: Высота
+        backgroundColor: Фоновый цвет
+        backgroundImg: Ссылка на изображение
+        file: Выберите изображение
+        video: Ссылка на видео
+        fileVideo: Выберите видео
+        backgroundPosition: Позиция фонового изображения
+        backgroundAttachment: Фиксированный фон или нет?
+        backgroundSize: Размер фонового изображения
+        text: Текст
+        verticalAlign: Вертикальное центрирование
+        enable: Вкл/Выкл
     actions: Действия
     show: показать
     show_result: показать лендинг

@@ -238,7 +238,7 @@ class Style
 
         $this->getFileFavicon()->move(
             $this->getUploadDirFavicon(),
-            $this->fileFavicon
+            $this->favicon
         );
 
         $this->fileFavicon = null;
@@ -546,5 +546,28 @@ class Style
     public function getCssFont()
     {
         return $this->cssFont;
+    }
+
+    /**
+     * Set fontColor
+     *
+     * @param string $fontColor
+     * @return Style
+     */
+    public function setFontColor($fontColor)
+    {
+        $this->fontColor = $fontColor;
+
+        return $this;
+    }
+
+    /**
+     * Get fontColor
+     *
+     * @return string 
+     */
+    public function getFontColor()
+    {
+        return $this->fontColor;
     }
 }

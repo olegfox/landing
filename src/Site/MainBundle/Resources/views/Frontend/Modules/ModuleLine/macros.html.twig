@@ -1,0 +1,47 @@
+{% macro moduleLine(module) %}
+    <style type="text/css">
+
+        .wrap-line {
+            {% if module.height|length > 0 %}
+                height: {{ module.height }};
+            {% endif %}
+            {% if module.backgroundImg|length > 0 %}
+                {% if module.backgroundImg|length > 0 %}
+                    background-image: url('{{ asset(module.webPath) }}');
+                {% endif %}
+                {% if module.backgroundPosition|length > 0 %}
+                    background-position: {{ module.backgroundPosition }};
+                {% endif %}
+                {% if module.backgroundAttachment|length > 0 %}
+                    background-attachment: {{ module.backgroundAttachment }};
+                {% endif %}
+                {% if module.backgroundSize|length > 0 %}
+                    background-size: {{ module.backgroundSize }};
+                {% endif %}
+            {% endif %}
+            {% if module.backgroundColor|length > 0 %}
+                background-color: {{ module.backgroundColor }};
+            {% endif %}
+        }
+
+        {% if module.verticalAlign|length > 0 %}
+            .wrap-line .line .wrap-center-block .center-block {
+                vertical-align: {{ module.verticalAlign }};
+            }
+        {% endif %}
+
+    </style>
+    <div class="wrap-line level" id="level{{ module.level.id }}">
+        <div class="line">
+
+            <!-- Center Block -->
+            <div class="wrap-center-block">
+                <div class="center-block">
+                    {{ module.text|raw }}
+                </div>
+            </div>
+            <!-- end Center Block -->
+
+        </div>
+    </div>
+{% endmacro %}

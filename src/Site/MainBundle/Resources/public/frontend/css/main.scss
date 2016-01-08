@@ -106,3 +106,33 @@ html, body {
   }
 }
 // end Module Header
+
+// Module Line
+.wrap-line {
+
+  position: relative;
+  height: 100%;
+
+  .line {
+
+    position: relative;
+    height: 100%;
+
+    .wrap-center-block {
+
+      display: table;
+      height: 100%;
+      width: 100%;
+
+      .center-block {
+
+        display: table-cell;
+
+      }
+
+    }
+
+  }
+
+}
+// end Module Line
