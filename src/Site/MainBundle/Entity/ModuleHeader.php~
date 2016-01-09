@@ -140,7 +140,7 @@ class ModuleHeader
 
     protected function getUploadDir()
     {
-        return 'uploads/module_header';
+        return 'uploads/moduleHeader';
     }
 
     /**
@@ -646,5 +646,28 @@ class ModuleHeader
     public function getLevel()
     {
         return $this->level;
+    }
+
+    /**
+     * Set enable
+     *
+     * @param boolean $enable
+     * @return ModuleHeader
+     */
+    public function setEnable($enable)
+    {
+        $this->enable = $enable;
+
+        return $this;
+    }
+
+    /**
+     * Get enable
+     *
+     * @return boolean 
+     */
+    public function getEnable()
+    {
+        return $this->enable;
     }
 }

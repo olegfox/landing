@@ -2,7 +2,6 @@
 
 namespace Site\MainBundle\Form;
 
-use Site\MainBundle\Entity\ModuleHeader;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -34,6 +33,10 @@ class LevelType extends AbstractType
             ->add('moduleLine', new ModuleLineType(), array(
                 'required' => true,
                 'label' => 'backend.level.moduleLine'
+            ))
+            ->add('moduleSquare', new ModuleSquareType(), array(
+                'required' => true,
+                'label' => 'backend.level.moduleSquare'
             ))
         ;
     }

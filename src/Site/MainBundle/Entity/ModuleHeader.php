@@ -140,7 +140,7 @@ class ModuleHeader
 
     protected function getUploadDir()
     {
-        return 'uploads/module_header';
+        return 'uploads/moduleHeader';
     }
 
     /**

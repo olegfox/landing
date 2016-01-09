@@ -51,6 +51,7 @@ backend:
         position: Номер уровня
         moduleHeader: Модуль шапки
         moduleLine: Модуль Линия
+        moduleSquare: Модуль Квадраты
         not_found: Уровень не существует
     module_header:
         backgroundImg: Ссылка на изображение
@@ -76,14 +77,40 @@ backend:
         backgroundColor: Фоновый цвет
         backgroundImg: Ссылка на изображение
         file: Выберите изображение
-        video: Ссылка на видео
-        fileVideo: Выберите видео
         backgroundPosition: Позиция фонового изображения
         backgroundAttachment: Фиксированный фон или нет?
         backgroundSize: Размер фонового изображения
         text: Текст
         verticalAlign: Вертикальное центрирование
         enable: Вкл/Выкл
+    module_square:
+        fontSize: Размер шрифта
+        countSquareInCol: Количество квадратов в строке
+        backgroundColor: Фоновый цвет
+        backgroundImg: Ссылка на изображение
+        file: Выберите изображение
+        backgroundPosition: Позиция фонового изображения
+        backgroundAttachment: Фиксированный фон или нет?
+        backgroundSize: Размер фонового изображения
+        blur: Размытие
+        shadow: Тень
+        squares: Квадраты
+        height: Высота
+        enable: Вкл/Выкл
+    module_square_square:
+        title: Текстовое описание
+        backgroundColor: Фоновый цвет
+        backgroundImg: Ссылка на изображение
+        file: Выберите изображение
+        icon: Ссылка на иконку
+        fileIcon: Выберите иконку
+        backgroundPosition: Позиция фонового изображения
+        backgroundAttachment: Фиксированный фон или нет?
+        backgroundSize: Размер фонового изображения
+        blur: Размытие
+        shadow: Тень
+        add: Добавить квадрат
+        delete: Удалить квадрат
     actions: Действия
     show: показать
     show_result: показать лендинг

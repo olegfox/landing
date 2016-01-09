@@ -4,6 +4,7 @@ namespace Site\MainBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Site\MainBundle\Entity\Level;
 use Site\MainBundle\Form\LevelType;
@@ -26,6 +27,11 @@ class LevelController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+//          Квадраты
+            foreach ($entity->getModuleSquare()->getSquares() as $square) {
+                $square->setStyle($entity->getModuleSquare()->getId());
+            }
 
             $em = $this->getDoctrine()->getManager();
             $page = $this->getDoctrine()->getRepository('SiteMainBundle:Page')->find($page_id);
@@ -168,11 +174,35 @@ class LevelController extends Controller
             throw $this->createNotFoundException($this->get('translator')->trans('backend.level.not_found'));
         }
 
+//      Квадраты
+        $originalSquares = new ArrayCollection();
+
+        foreach ($entity->getModuleSquare()->getSquares() as $square) {
+            $originalSquares->add($square);
+        }
+
         $deleteForm = $this->createDeleteForm($id, $project_id, $page_id);
         $editForm = $this->createEditForm($entity, $project_id, $page_id);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+//          Квадраты
+            foreach ($originalSquares as $square) {
+
+                if (false === $entity->getModuleSquare()->getSquares()->contains($square)) {
+
+                    $entity->getModuleSquare()->getSquares()->removeElement($square);
+
+                    $em->remove($square);
+
+                }
+
+            }
+
+            foreach ($entity->getModuleSquare()->getSquares() as $square) {
+                $square->setModuleSquare($entity->getModuleSquare());
+            }
 
             $em->flush();
 

@@ -1,6 +1,7 @@
 @import url(reset.css);
 html, body {
-  height: 100%; }
+  height: 100%;
+  line-height: 1.42857143; }
 
 .wrap-header {
   position: relative;
@@ -77,5 +78,43 @@ html, body {
       width: 100%; }
       .wrap-line .line .wrap-center-block .center-block {
         display: table-cell; }
+
+.wrap-square {
+  position: relative; }
+  .wrap-square .square {
+    position: relative;
+    height: 100%; }
+    .wrap-square .square ul {
+      font-size: 0; }
+      .wrap-square .square ul li {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        overflow: hidden; }
+        .wrap-square .square ul li .shadow {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: #000;
+          opacity: 0;
+          z-index: 1; }
+        .wrap-square .square ul li .blur {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 1; }
+        .wrap-square .square ul li .icon {
+          position: relative;
+          text-align: center;
+          padding: 50px;
+          z-index: 2; }
+        .wrap-square .square ul li .title {
+          position: relative;
+          padding: 50px;
+          z-index: 2; }
 
 /*# sourceMappingURL=main.css.map */

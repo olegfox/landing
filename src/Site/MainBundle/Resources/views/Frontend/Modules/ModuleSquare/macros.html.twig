@@ -1,0 +1,100 @@
+{% macro moduleSquare(module) %}
+    <style type="text/css">
+        .wrap-square ul li {
+            min-height: {{ module.height }};
+        {% if module.countSquareInCol > 0 %}
+            width: {{ 100/module.countSquareInCol }}%;
+        {% endif %}
+        }
+
+        .wrap-square ul li .blur {
+        {% if module.backgroundImg|length > 0 %}
+        {% if module.backgroundImg|length > 0 %}
+            background-image: url('{{ asset(module.webPath) }}');
+        {% endif %}
+        {% if module.backgroundColor|length > 0 %}
+            background-color: {{ module.backgroundColor }};
+        {% endif %}
+        {% if module.backgroundPosition|length > 0 %}
+            background-position: {{ module.backgroundPosition }};
+        {% endif %}
+        {% if module.backgroundAttachment|length > 0 %}
+            background-attachment: {{ module.backgroundAttachment }};
+        {% endif %}
+        {% if module.backgroundSize|length > 0 %}
+            background-size: {{ module.backgroundSize }};
+        {% endif %}
+        {% endif %}
+        }
+
+        .wrap-square ul li .title {
+        {% if module.fontSize|length > 0 %}
+            font-size: {{ module.fontSize }};
+        {% endif %}
+        }
+
+        {% if module.shadow > 0 %}
+        .wrap-square .square ul li .shadow {
+            opacity: {{ (100 - module.shadow) / 100 }};
+        }
+        {% endif %}
+    </style>
+    <div class="wrap-square level" id="level{{ module.level.id }}">
+        <div class="square">
+
+            {% if module.squares|length > 0 %}
+                <!-- Squares Block -->
+                <ul>
+                {% for square in module.squares %}
+                    <li>
+                        <div class="shadow"
+                                {% if square.shadow > 0 %}
+                                    style="
+                                    {% if square.shadow|length > 0 %}
+                                    opacity: {{ (100 - square.shadow) / 100 }};
+                                    {% endif %}
+                                            "
+                                {% endif %}>
+                        </div>
+                        <div class="blur"
+                            {% if square.blur|length > 0 or module.blur|length > 0 %}
+                            style="
+                                {% if square.blur|length > 0 or module.blur|length > 0 %}
+                                        {% if square.backgroundImg|length > 0 %}background-image: url('{{ image(square.webPath).cropResize(500) }}');{% endif %}
+                                        {% if square.backgroundColor|length > 0 %}background-color: {{ square.backgroundColor }};{% endif %}
+                                        {% if square.backgroundPosition|length > 0 %}background-position: {{ square.backgroundPosition }};{% endif %}
+                                        {% if square.backgroundSize|length > 0 %}background-size: {{ square.backgroundSize }};{% endif %}
+                                        {% if square.backgroundAttachment|length > 0 %}background-attachment: {{ square.backgroundAttachment }};{% endif %}
+                                        margin:{% if square.blur|length > 0 %}{{ '-' ~ ((square.blur|number_format) + 2) ~ 'px' }}{% endif %}{% if module.blur|length > 0 %}{{ '-' ~ ((module.blur|number_format) + 2) ~ 'px' }}{% endif %};
+                                        -webkit-filter: url(#blur);
+                                        filter: url(#blur);
+                                        -webkit-filter: blur({% if square.blur|length > 0 %}{{ square.blur }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur }}{% endif %});
+                                        filter: blur({% if square.blur|length > 0 %}{{ square.blur }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur }}{% endif %});
+                                        filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='{% if square.blur|length > 0 %}{{ square.blur|number_format }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur|number_format }}{% endif %}');
+                                {% endif %}
+                                    "
+                            {% endif %}
+                            >
+                            {% if square.blur|length > 0 or module.blur|length > 0 %}
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <filter id="blur">
+                                        <feGaussianBlur stdDeviation="{% if square.blur|length > 0 %}{{ square.blur|number_format }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur|number_format }}{% endif %}" />
+                                    </filter>
+                                </svg>
+                            {% endif %}
+                        </div>
+                        {% if square.icon|length > 0 %}
+                            <div class="icon"><img src="{{ image(square.webPathIcon).cropResize(400) }}" alt=""/></div>
+                        {% endif %}
+                        {% if square.title|length > 0 %}
+                            <div class="title">{{ square.title|raw }}</div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+                <!-- end Squares Block -->
+            {% endif %}
+
+        </div>
+    </div>
+{% endmacro %}

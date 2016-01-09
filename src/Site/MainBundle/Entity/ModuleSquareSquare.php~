@@ -8,12 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Site\MainBundle\Entity\ModuleLine
+ * Site\MainBundle\Entity\ModuleSquareSquare
  *
- * @ORM\Table(name="module_line")
- * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\ModuleLineRepository")
+ * @ORM\Table(name="module_square_square")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\ModuleSquareSquareRepository")
  */
-class ModuleLine
+class ModuleSquareSquare
 {
 
     /**
@@ -24,14 +24,9 @@ class ModuleLine
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $height;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $text;
+    protected $title;
 
     /**
      * @Assert\File()
@@ -66,18 +61,28 @@ class ModuleLine
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $verticalAlign;
+    protected $blur;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $enable = false;
+    protected $shadow;
 
     /**
-     * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleLine", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="level_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @Assert\File()
      */
-    protected $level;
+    protected $fileIcon;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $icon;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ModuleSquare", inversedBy="squareas")
+     * @ORM\JoinColumn(name="module_square_id", referencedColumnName="id")
+     **/
+    protected $moduleSquare;
 
     public function getAbsolutePath()
     {
@@ -100,7 +105,7 @@ class ModuleLine
 
     protected function getUploadDir()
     {
-        return 'uploads/moduleLine';
+        return 'uploads/moduleSquare';
     }
 
     /**
@@ -148,67 +153,80 @@ class ModuleLine
         $this->file = null;
     }
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
+    public function getAbsolutePathIcon()
     {
-        return $this->id;
+        return null === $this->icon
+            ? null
+            : $this->getUploadRootDirIcon().'/'.$this->icon;
+    }
+
+    public function getWebPathIcon()
+    {
+        return null === $this->icon
+            ? null
+            : $this->getUploadDirIcon().'/'.$this->icon;
+    }
+
+    protected function getUploadRootDirIcon()
+    {
+        return __DIR__.'/../../../../../'.$this->getUploadDirIcon();
+    }
+
+    protected function getUploadDirIcon()
+    {
+        return 'uploads/moduleSquare';
     }
 
     /**
-     * Set height
+     * Sets fileIcon.
      *
-     * @param string $height
-     * @return ModuleLine
+     * @param UploadedFile $fileIcon
      */
-    public function setHeight($height)
+    public function setFileIcon(UploadedFile $fileIcon = null)
     {
-        $this->height = $height;
+        $this->fileIcon = $fileIcon;
 
-        return $this;
+        $this->uploadIcon();
     }
 
     /**
-     * Get height
+     * Get fileIcon.
      *
-     * @return string 
+     * @return UploadedFile
      */
-    public function getHeight()
+    public function getFileIcon()
     {
-        return $this->height;
+        return $this->fileIcon;
     }
 
-    /**
-     * Set text
-     *
-     * @param string $text
-     * @return ModuleLine
-     */
-    public function setText($text)
+    public function uploadIcon()
     {
-        $this->text = $text;
+        if (null === $this->getFileIcon()) {
+            return;
+        }
 
-        return $this;
-    }
+        if (isset($this->icon)) {
+            if(file_exists($this->getUploadDirIcon().'/'.$this->icon)){
+                unlink($this->getUploadDirIcon().'/'.$this->icon);
+            }
+            $this->icon = null;
+        }
 
-    /**
-     * Get text
-     *
-     * @return string 
-     */
-    public function getText()
-    {
-        return $this->text;
+        $this->icon = $this->getFile()->getClientOriginalName();
+
+        $this->getFile()->move(
+            $this->getUploadDirIcon(),
+            $this->icon
+        );
+
+        $this->fileIcon= null;
     }
 
     /**
      * Set backgroundImg
      *
      * @param string $backgroundImg
-     * @return ModuleLine
+     * @return ModuleSquareSquare
      */
     public function setBackgroundImg($backgroundImg)
     {
@@ -221,6 +239,35 @@ class ModuleLine
         $this->backgroundImg = $backgroundImg;
 
         return $this;
+    }
+
+    /**
+     * Set icon
+     *
+     * @param string $icon
+     * @return ModuleLine
+     */
+    public function setIcon($icon)
+    {
+        if (empty($icon)) {
+            if(file_exists($this->getUploadDirIcon().'/'.$this->icon)){
+                unlink($this->getUploadDirIcon().'/'.$this->icon);
+            }
+        }
+
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -237,7 +284,7 @@ class ModuleLine
      * Set backgroundColor
      *
      * @param string $backgroundColor
-     * @return ModuleLine
+     * @return ModuleSquareSquare
      */
     public function setBackgroundColor($backgroundColor)
     {
@@ -260,7 +307,7 @@ class ModuleLine
      * Set backgroundPosition
      *
      * @param string $backgroundPosition
-     * @return ModuleLine
+     * @return ModuleSquareSquare
      */
     public function setBackgroundPosition($backgroundPosition)
     {
@@ -283,7 +330,7 @@ class ModuleLine
      * Set backgroundAttachment
      *
      * @param string $backgroundAttachment
-     * @return ModuleLine
+     * @return ModuleSquareSquare
      */
     public function setBackgroundAttachment($backgroundAttachment)
     {
@@ -306,7 +353,7 @@ class ModuleLine
      * Set backgroundSize
      *
      * @param string $backgroundSize
-     * @return ModuleLine
+     * @return ModuleSquareSquare
      */
     public function setBackgroundSize($backgroundSize)
     {
@@ -326,71 +373,81 @@ class ModuleLine
     }
 
     /**
-     * Set level
+     * Set blur
      *
-     * @param \Site\MainBundle\Entity\Level $level
-     * @return ModuleLine
+     * @param string $blur
+     * @return ModuleSquareSquare
      */
-    public function setLevel(\Site\MainBundle\Entity\Level $level = null)
+    public function setBlur($blur)
     {
-        $this->level = $level;
+        $this->blur = $blur;
 
         return $this;
     }
 
     /**
-     * Get level
-     *
-     * @return \Site\MainBundle\Entity\Level 
-     */
-    public function getLevel()
-    {
-        return $this->level;
-    }
-
-    /**
-     * Set verticalAlign
-     *
-     * @param string $verticalAlign
-     * @return ModuleLine
-     */
-    public function setVerticalAlign($verticalAlign)
-    {
-        $this->verticalAlign = $verticalAlign;
-
-        return $this;
-    }
-
-    /**
-     * Get verticalAlign
+     * Get blur
      *
      * @return string 
      */
-    public function getVerticalAlign()
+    public function getBlur()
     {
-        return $this->verticalAlign;
+        return $this->blur;
     }
 
     /**
-     * Set enable
+     * Set shadow
      *
-     * @param boolean $enable
-     * @return ModuleLine
+     * @param string $shadow
+     * @return ModuleSquareSquare
      */
-    public function setEnable($enable)
+    public function setShadow($shadow)
     {
-        $this->enable = $enable;
+        $this->shadow = $shadow;
 
         return $this;
     }
 
     /**
-     * Get enable
+     * Get shadow
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getEnable()
+    public function getShadow()
     {
-        return $this->enable;
+        return $this->shadow;
+    }
+
+    /**
+     * Get icon
+     *
+     * @return string 
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * Set moduleSquare
+     *
+     * @param \Site\MainBundle\Entity\ModuleSquare $moduleSquare
+     * @return ModuleSquareSquare
+     */
+    public function setModuleSquare(\Site\MainBundle\Entity\ModuleSquare $moduleSquare = null)
+    {
+        $this->moduleSquare = $moduleSquare;
+
+        return $this;
+    }
+
+    /**
+     * Get moduleSquare
+     *
+     * @return \Site\MainBundle\Entity\ModuleSquare 
+     */
+    public function getModuleSquare()
+    {
+        return $this->moduleSquare;
     }
 }

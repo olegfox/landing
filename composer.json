@@ -36,6 +36,7 @@
         "gregwar/image-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "~2",
         "knplabs/knp-paginator-bundle": "~2.4",
+        "knplabs/knp-snappy-bundle": "dev-master",
         "braincrafted/bootstrap-bundle": "~2.1",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
         "twbs/bootstrap": "3.0.*",

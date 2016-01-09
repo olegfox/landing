@@ -57,6 +57,11 @@ class Level
     protected $moduleLine;
 
     /**
+     * @ORM\OneToOne(targetEntity="ModuleSquare", cascade={"persist", "remove"})
+     */
+    protected $moduleSquare;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -203,5 +208,28 @@ class Level
     public function getModuleLine()
     {
         return $this->moduleLine;
+    }
+
+    /**
+     * Set moduleSquare
+     *
+     * @param \Site\MainBundle\Entity\ModuleSquare $moduleSquare
+     * @return Level
+     */
+    public function setModuleSquare(\Site\MainBundle\Entity\ModuleSquare $moduleSquare = null)
+    {
+        $this->moduleSquare = $moduleSquare;
+
+        return $this;
+    }
+
+    /**
+     * Get moduleSquare
+     *
+     * @return \Site\MainBundle\Entity\ModuleSquare 
+     */
+    public function getModuleSquare()
+    {
+        return $this->moduleSquare;
     }
 }

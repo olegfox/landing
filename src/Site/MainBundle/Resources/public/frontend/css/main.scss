@@ -2,6 +2,7 @@
 
 html, body {
   height: 100%;
+  line-height: 1.42857143;
 }
 
 // Module Header
@@ -136,3 +137,74 @@ html, body {
 
 }
 // end Module Line
+
+// Module Square
+.wrap-square {
+
+  position: relative;
+
+  .square {
+
+    position: relative;
+    height: 100%;
+
+    ul {
+
+      font-size: 0;
+
+      li {
+
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        overflow: hidden;
+
+        .shadow {
+
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: #000;
+          opacity: 0;
+          z-index: 1;
+
+        }
+
+        .blur {
+
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 1;
+
+        }
+
+        .icon {
+
+          position: relative;
+          text-align: center;
+          padding: 50px;
+          z-index: 2;
+
+          img {
+
+          }
+
+        }
+
+        .title {
+
+          position: relative;
+          padding: 50px;
+          z-index: 2;
+
+        }
+      }
+    }
+  }
+}
+// end Module Square

@@ -8,12 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Site\MainBundle\Entity\ModuleLine
+ * Site\MainBundle\Entity\ModuleSquare
  *
- * @ORM\Table(name="module_line")
- * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\ModuleLineRepository")
+ * @ORM\Table(name="module_square")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\ModuleSquareRepository")
  */
-class ModuleLine
+class ModuleSquare
 {
 
     /**
@@ -24,19 +24,24 @@ class ModuleLine
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
-    protected $height;
+    protected $countSquareInCol;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $text;
+    protected $fontSize;
 
     /**
      * @Assert\File()
      */
     protected $file;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $height;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -66,7 +71,12 @@ class ModuleLine
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $verticalAlign;
+    protected $blur;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $shadow;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -74,7 +84,12 @@ class ModuleLine
     protected $enable = false;
 
     /**
-     * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleLine", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="ModuleSquareSquare", mappedBy="moduleSquare", cascade={"persist", "remove"})
+     **/
+    protected $squares;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleSquare", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     protected $level;
@@ -100,7 +115,7 @@ class ModuleLine
 
     protected function getUploadDir()
     {
-        return 'uploads/moduleLine';
+        return 'uploads/moduleSquare';
     }
 
     /**
@@ -149,66 +164,10 @@ class ModuleLine
     }
 
     /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set height
-     *
-     * @param string $height
-     * @return ModuleLine
-     */
-    public function setHeight($height)
-    {
-        $this->height = $height;
-
-        return $this;
-    }
-
-    /**
-     * Get height
-     *
-     * @return string 
-     */
-    public function getHeight()
-    {
-        return $this->height;
-    }
-
-    /**
-     * Set text
-     *
-     * @param string $text
-     * @return ModuleLine
-     */
-    public function setText($text)
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
-     * Get text
-     *
-     * @return string 
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
-
-    /**
      * Set backgroundImg
      *
      * @param string $backgroundImg
-     * @return ModuleLine
+     * @return ModuleSquare
      */
     public function setBackgroundImg($backgroundImg)
     {
@@ -221,6 +180,46 @@ class ModuleLine
         $this->backgroundImg = $backgroundImg;
 
         return $this;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->squares = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set countSquareInCol
+     *
+     * @param integer $countSquareInCol
+     * @return ModuleSquare
+     */
+    public function setCountSquareInCol($countSquareInCol)
+    {
+        $this->countSquareInCol = $countSquareInCol;
+
+        return $this;
+    }
+
+    /**
+     * Get countSquareInCol
+     *
+     * @return integer 
+     */
+    public function getCountSquareInCol()
+    {
+        return $this->countSquareInCol;
     }
 
     /**
@@ -237,7 +236,7 @@ class ModuleLine
      * Set backgroundColor
      *
      * @param string $backgroundColor
-     * @return ModuleLine
+     * @return ModuleSquare
      */
     public function setBackgroundColor($backgroundColor)
     {
@@ -260,7 +259,7 @@ class ModuleLine
      * Set backgroundPosition
      *
      * @param string $backgroundPosition
-     * @return ModuleLine
+     * @return ModuleSquare
      */
     public function setBackgroundPosition($backgroundPosition)
     {
@@ -283,7 +282,7 @@ class ModuleLine
      * Set backgroundAttachment
      *
      * @param string $backgroundAttachment
-     * @return ModuleLine
+     * @return ModuleSquare
      */
     public function setBackgroundAttachment($backgroundAttachment)
     {
@@ -306,7 +305,7 @@ class ModuleLine
      * Set backgroundSize
      *
      * @param string $backgroundSize
-     * @return ModuleLine
+     * @return ModuleSquare
      */
     public function setBackgroundSize($backgroundSize)
     {
@@ -326,10 +325,112 @@ class ModuleLine
     }
 
     /**
+     * Set blur
+     *
+     * @param string $blur
+     * @return ModuleSquare
+     */
+    public function setBlur($blur)
+    {
+        $this->blur = $blur;
+
+        return $this;
+    }
+
+    /**
+     * Get blur
+     *
+     * @return string 
+     */
+    public function getBlur()
+    {
+        return $this->blur;
+    }
+
+    /**
+     * Set shadow
+     *
+     * @param string $shadow
+     * @return ModuleSquare
+     */
+    public function setShadow($shadow)
+    {
+        $this->shadow = $shadow;
+
+        return $this;
+    }
+
+    /**
+     * Get shadow
+     *
+     * @return string 
+     */
+    public function getShadow()
+    {
+        return $this->shadow;
+    }
+
+    /**
+     * Set enable
+     *
+     * @param boolean $enable
+     * @return ModuleSquare
+     */
+    public function setEnable($enable)
+    {
+        $this->enable = $enable;
+
+        return $this;
+    }
+
+    /**
+     * Get enable
+     *
+     * @return boolean 
+     */
+    public function getEnable()
+    {
+        return $this->enable;
+    }
+
+    /**
+     * Add squares
+     *
+     * @param \Site\MainBundle\Entity\ModuleSquareSquare $squares
+     * @return ModuleSquare
+     */
+    public function addSquare(\Site\MainBundle\Entity\ModuleSquareSquare $squares)
+    {
+        $this->squares[] = $squares;
+
+        return $this;
+    }
+
+    /**
+     * Remove squares
+     *
+     * @param \Site\MainBundle\Entity\ModuleSquareSquare $squares
+     */
+    public function removeSquare(\Site\MainBundle\Entity\ModuleSquareSquare $squares)
+    {
+        $this->squares->removeElement($squares);
+    }
+
+    /**
+     * Get squares
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSquares()
+    {
+        return $this->squares;
+    }
+
+    /**
      * Set level
      *
      * @param \Site\MainBundle\Entity\Level $level
-     * @return ModuleLine
+     * @return ModuleSquare
      */
     public function setLevel(\Site\MainBundle\Entity\Level $level = null)
     {
@@ -349,48 +450,48 @@ class ModuleLine
     }
 
     /**
-     * Set verticalAlign
+     * Set fontSize
      *
-     * @param string $verticalAlign
-     * @return ModuleLine
+     * @param string $fontSize
+     * @return ModuleSquare
      */
-    public function setVerticalAlign($verticalAlign)
+    public function setFontSize($fontSize)
     {
-        $this->verticalAlign = $verticalAlign;
+        $this->fontSize = $fontSize;
 
         return $this;
     }
 
     /**
-     * Get verticalAlign
+     * Get fontSize
      *
      * @return string 
      */
-    public function getVerticalAlign()
+    public function getFontSize()
     {
-        return $this->verticalAlign;
+        return $this->fontSize;
     }
 
     /**
-     * Set enable
+     * Set height
      *
-     * @param boolean $enable
-     * @return ModuleLine
+     * @param string $height
+     * @return ModuleSquare
      */
-    public function setEnable($enable)
+    public function setHeight($height)
     {
-        $this->enable = $enable;
+        $this->height = $height;
 
         return $this;
     }
 
     /**
-     * Get enable
+     * Get height
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getEnable()
+    public function getHeight()
     {
-        return $this->enable;
+        return $this->height;
     }
 }
