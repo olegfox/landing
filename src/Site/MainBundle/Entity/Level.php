@@ -48,16 +48,19 @@ class Level
 
     /**
      * @ORM\OneToOne(targetEntity="ModuleHeader", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="moduleHeader_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     protected $moduleHeader;
 
     /**
      * @ORM\OneToOne(targetEntity="ModuleLine", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="moduleLine_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     protected $moduleLine;
 
     /**
      * @ORM\OneToOne(targetEntity="ModuleSquare", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="moduleSquare_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     protected $moduleSquare;
 
@@ -219,6 +222,7 @@ class Level
     public function setModuleSquare(\Site\MainBundle\Entity\ModuleSquare $moduleSquare = null)
     {
         $this->moduleSquare = $moduleSquare;
+        $moduleSquare->setLevel($this);
 
         return $this;
     }

@@ -1,7 +1,7 @@
 {% macro moduleLine(module) %}
     <style type="text/css">
 
-        .wrap-line {
+        .wrap-line#level{{ module.level.id }} {
             {% if module.height|length > 0 %}
                 height: {{ module.height }};
             {% endif %}
@@ -25,9 +25,15 @@
         }
 
         {% if module.verticalAlign|length > 0 %}
-            .wrap-line .line .wrap-center-block .center-block {
+            .wrap-line#level{{ module.level.id }} .line .wrap-center-block .center-block {
                 vertical-align: {{ module.verticalAlign }};
             }
+        {% endif %}
+
+        {% if module.width|length > 0 %}
+        .wrap-line#level{{ module.level.id }} .line .wrap-center-block .center-block .text-block {
+            width: {{ module.width }};
+        }
         {% endif %}
 
     </style>
@@ -37,7 +43,9 @@
             <!-- Center Block -->
             <div class="wrap-center-block">
                 <div class="center-block">
-                    {{ module.text|raw }}
+                    <div class="text-block">
+                        {{ module.text|raw }}
+                    </div>
                 </div>
             </div>
             <!-- end Center Block -->

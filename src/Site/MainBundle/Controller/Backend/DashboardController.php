@@ -14,7 +14,7 @@ class DashboardController extends Controller
 
     public function indexAction()
     {
-        return $this->render('SiteMainBundle:Backend/Dashboard:index.html.twig');
+        return $this->redirect($this->generateUrl('backend_project_index'));
     }
 
 }

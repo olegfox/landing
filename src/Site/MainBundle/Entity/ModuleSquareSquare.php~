@@ -212,9 +212,9 @@ class ModuleSquareSquare
             $this->icon = null;
         }
 
-        $this->icon = $this->getFile()->getClientOriginalName();
+        $this->icon = $this->getFileIcon()->getClientOriginalName();
 
-        $this->getFile()->move(
+        $this->getFileIcon()->move(
             $this->getUploadDirIcon(),
             $this->icon
         );
@@ -449,5 +449,28 @@ class ModuleSquareSquare
     public function getModuleSquare()
     {
         return $this->moduleSquare;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return ModuleSquareSquare
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

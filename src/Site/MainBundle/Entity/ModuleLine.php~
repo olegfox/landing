@@ -29,6 +29,11 @@ class ModuleLine
     protected $height;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $width;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $text;

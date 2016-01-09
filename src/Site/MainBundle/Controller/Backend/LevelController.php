@@ -30,7 +30,7 @@ class LevelController extends Controller
 
 //          Квадраты
             foreach ($entity->getModuleSquare()->getSquares() as $square) {
-                $square->setStyle($entity->getModuleSquare()->getId());
+                $square->setModuleSquare($entity->getModuleSquare());
             }
 
             $em = $this->getDoctrine()->getManager();
@@ -177,8 +177,10 @@ class LevelController extends Controller
 //      Квадраты
         $originalSquares = new ArrayCollection();
 
-        foreach ($entity->getModuleSquare()->getSquares() as $square) {
-            $originalSquares->add($square);
+        if(is_object($entity->getModuleSquare())) {
+            foreach ($entity->getModuleSquare()->getSquares() as $square) {
+                $originalSquares->add($square);
+            }
         }
 
         $deleteForm = $this->createDeleteForm($id, $project_id, $page_id);
@@ -236,7 +238,11 @@ class LevelController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('backend_page_show', array('id' => $page_id)));
+        return $this->redirect($this->generateUrl('backend_page_show', array(
+            'id' => $page_id,
+            'project_id' => $project_id,
+            'page_id' => $page_id
+        )));
     }
 
     /**

@@ -8,6 +8,7 @@ backend:
         empty_list: Нет проектов
         title: Название проекта
         style: Стили
+        delete: удалить проект
         not_found: Проект не существует
     style:
         font: Общий шрифт
@@ -39,6 +40,7 @@ backend:
         back_to_list: Назад к проекту
         empty_list: Нет страниц
         title: Заголовок страницы
+        create: создать страницу
         not_found: Страница не существует
     level:
         h1_show: Уровень
@@ -74,6 +76,7 @@ backend:
         enable: Вкл/Выкл
     module_line:
         height: Высота
+        width: Ширина
         backgroundColor: Фоновый цвет
         backgroundImg: Ссылка на изображение
         file: Выберите изображение

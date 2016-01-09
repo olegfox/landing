@@ -75,7 +75,7 @@ class ModuleSquareType extends AbstractType
                 'allow_delete'       => true,
                 'add_button_text'    => 'backend.module_square_square.add',
                 'delete_button_text' => 'backend.module_square_square.delete',
-                'sub_widget_col'     => 9,
+                'sub_widget_col'     => 12,
                 'button_col'         => 3,
                 'prototype_name'     => 'inlinep',
                 'options'            => array(

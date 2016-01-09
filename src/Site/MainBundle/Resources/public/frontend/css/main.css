@@ -78,6 +78,9 @@ html, body {
       width: 100%; }
       .wrap-line .line .wrap-center-block .center-block {
         display: table-cell; }
+        .wrap-line .line .wrap-center-block .center-block .text-block {
+          display: inline-block;
+          margin: 0 auto; }
 
 .wrap-square {
   position: relative; }

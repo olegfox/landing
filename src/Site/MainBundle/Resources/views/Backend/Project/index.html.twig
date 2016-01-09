@@ -17,9 +17,9 @@
                     <td><a href="{{ path('backend_project_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
                     <td>
                         <ul class="nav nav-pills">
-                            <li>
-                                <a href="{{ path('backend_project_show', { 'id': entity.id }) }}">{{ 'backend.show'|trans({}, 'menu') }}</a>
-                            </li>
+                            {#<li>#}
+                                {#<a href="{{ path('backend_project_show', { 'id': entity.id }) }}">{{ 'backend.show'|trans({}, 'menu') }}</a>#}
+                            {#</li>#}
                             <li>
                                 <a href="{{ path('backend_project_edit', { 'id': entity.id }) }}">{{ 'backend.edit'|trans({}, 'menu') }}</a>
                             </li>

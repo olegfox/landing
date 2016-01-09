@@ -259,7 +259,7 @@ class ProjectController extends Controller
             ->setAction($this->generateUrl('backend_project_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array(
-                'label' => 'backend.delete',
+                'label' => 'backend.project.delete',
                 'translation_domain' => 'menu',
                 'attr' => array(
                     'class' => 'btn-danger'

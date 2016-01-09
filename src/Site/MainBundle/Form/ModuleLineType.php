@@ -27,6 +27,10 @@ class ModuleLineType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_line.height'
             ))
+            ->add('width', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_line.width'
+            ))
             ->add('backgroundColor', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_line.backgroundColor'

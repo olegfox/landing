@@ -1,13 +1,13 @@
 {% macro moduleSquare(module) %}
     <style type="text/css">
-        .wrap-square ul li {
+        .wrap-square#level{{ module.level.id }} ul li {
             min-height: {{ module.height }};
         {% if module.countSquareInCol > 0 %}
             width: {{ 100/module.countSquareInCol }}%;
         {% endif %}
         }
 
-        .wrap-square ul li .blur {
+        .wrap-square#level{{ module.level.id }} ul li .blur {
         {% if module.backgroundImg|length > 0 %}
         {% if module.backgroundImg|length > 0 %}
             background-image: url('{{ asset(module.webPath) }}');
@@ -27,14 +27,14 @@
         {% endif %}
         }
 
-        .wrap-square ul li .title {
+        .wrap-square#level{{ module.level.id }} ul li .title {
         {% if module.fontSize|length > 0 %}
             font-size: {{ module.fontSize }};
         {% endif %}
         }
 
         {% if module.shadow > 0 %}
-        .wrap-square .square ul li .shadow {
+        .wrap-square#level{{ module.level.id }} .square ul li .shadow {
             opacity: {{ (100 - module.shadow) / 100 }};
         }
         {% endif %}

@@ -29,6 +29,11 @@ class ModuleLine
     protected $height;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $width;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $text;
@@ -392,5 +397,28 @@ class ModuleLine
     public function getEnable()
     {
         return $this->enable;
+    }
+
+    /**
+     * Set width
+     *
+     * @param string $width
+     * @return ModuleLine
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    /**
+     * Get width
+     *
+     * @return string 
+     */
+    public function getWidth()
+    {
+        return $this->width;
     }
 }

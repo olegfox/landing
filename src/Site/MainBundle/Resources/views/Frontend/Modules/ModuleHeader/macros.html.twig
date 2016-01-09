@@ -1,7 +1,7 @@
 {% macro moduleHeader(module) %}
     <style type="text/css">
         {% if module.backgroundImg|length > 0 %}
-            .wrap-header {
+            .wrap-header#level{{ module.level.id }} {
                 {% if module.backgroundImg|length > 0 %}
                     background-image: url('{{ asset(module.webPath) }}');
                 {% endif %}
@@ -17,7 +17,7 @@
             }
         {% endif %}
         {% if module.shadow > 0 %}
-        .wrap-header .shadow {
+        .wrap-header#level{{ module.level.id }} .shadow {
             opacity: {{ (100 - module.shadow) / 100 }};
         }
         {% endif %}
