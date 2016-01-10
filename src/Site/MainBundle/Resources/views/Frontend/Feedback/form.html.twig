@@ -1,0 +1,28 @@
+<!-- Form Contact -->
+<div class="contact-form">
+    <form action="{{ path('frontend_feedback') }}" method="post" id="contact-form" novalidate>
+        <h2>Отправить письмо</h2>
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, {'attr' : {'class' : 'form-control', 'placeholder' : 'Имя'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.phone) }}
+            {{ form_widget(form.phone, {'attr' : {'class' : 'form-control', 'placeholder' : 'Телефон'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr' : {'class' : 'form-control', 'placeholder' : 'Email'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.theme) }}
+            {{ form_widget(form.theme, {'attr' : {'class' : 'form-control', 'placeholder' : 'Тема сообщения'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.message) }}
+            {{ form_widget(form.message, {'attr' : {'class' : 'form-control', 'placeholder' : 'Сообщение'}}) }}
+        </div>
+        <button type="submit" class="btn btn-default">Отправить</button>
+    </form>
+</div>
+<!-- end Form Contact -->

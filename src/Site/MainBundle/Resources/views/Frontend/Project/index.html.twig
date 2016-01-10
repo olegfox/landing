@@ -3,6 +3,7 @@
 {% from 'SiteMainBundle:Frontend/Modules/ModuleHeader:macros.html.twig' import moduleHeader %}
 {% from 'SiteMainBundle:Frontend/Modules/ModuleLine:macros.html.twig' import moduleLine %}
 {% from 'SiteMainBundle:Frontend/Modules/ModuleSquare:macros.html.twig' import moduleSquare %}
+{% from 'SiteMainBundle:Frontend/Modules/ModuleMap:macros.html.twig' import moduleMap %}
 
 {% block title %}{{ project.style.metaTitle }}{% endblock %}
 {% block meta_description %}{{ project.style.metaDescription }}{% endblock %}
@@ -32,7 +33,7 @@
     <style type="text/css">
         body{
             {% if project.style.cssFont|length > 0 %}
-                {{ project.style.cssFont|raw }}
+            {{ project.style.cssFont|raw }}
             {% endif %}
             {% if project.style.fontColor|length > 0 %}
                 color: {{ project.style.fontColor|raw }};
@@ -51,6 +52,15 @@
                     background-size: {{ project.style.backgroundSize }};
                 {% endif %}
             {% endif %}
+        }
+
+        input, textarea, keygen, select, button {
+        {% if project.style.cssFont|length > 0 %}
+        {{ project.style.cssFont|raw }}
+        {% endif %}
+        {% if project.style.fontColor|length > 0 %}
+            color: {{ project.style.fontColor|raw }};
+        {% endif %}
         }
         .btn{
             {% if project.style.fontColor|length > 0 %}
@@ -99,11 +109,26 @@
             {% endif %}
         {% endif %}
 
+        {% if level.moduleMap.id is defined %}
+            {% if level.moduleMap.enable %}
+                <!-- Module Map -->
+                {{ moduleMap(level.moduleMap) }}
+                <!-- end Module Map -->
+            {% endif %}
+        {% endif %}
+
     {% endfor %}
+
+    {# Forms #}
+    {{ render(url('frontend_feedback')) }}
+    {# end Forms #}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/jquery-form/jquery.form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/vide/dist/jquery.vide.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/main.js') }}"></script>
 {% endblock %}

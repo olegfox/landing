@@ -6,6 +6,10 @@ backend_project:
     resource: "@SiteMainBundle/Resources/config/routing/backend/project.yml"
     prefix: /project
 
+backend_settings:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/settings.yml"
+    prefix: /settings
+
 backend_page:
     resource: "@SiteMainBundle/Resources/config/routing/backend/page.yml"
     prefix: /{project_id}/page

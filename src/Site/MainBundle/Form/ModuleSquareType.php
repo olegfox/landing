@@ -60,9 +60,13 @@ class ModuleSquareType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_square.backgroundPosition'
             ))
-            ->add('backgroundAttachment', 'text', array(
+            ->add('backgroundAttachment', 'choice', array(
                 'required' => true,
-                'label' => 'backend.module_square.backgroundAttachment'
+                'label' => 'backend.module_square.backgroundAttachment',
+                'choices' => array(
+                    'scroll' => 'нефиксированный',
+                    'fixed' => 'фиксированный'
+                )
             ))
             ->add('backgroundSize', 'text', array(
                 'required' => true,
@@ -76,11 +80,7 @@ class ModuleSquareType extends AbstractType
                 'add_button_text'    => 'backend.module_square_square.add',
                 'delete_button_text' => 'backend.module_square_square.delete',
                 'sub_widget_col'     => 12,
-                'button_col'         => 3,
-                'prototype_name'     => 'inlinep',
-                'options'            => array(
-                    'attr' => array('style' => 'inline')
-                )
+                'button_col'         => 3
             ))
         ;
     }

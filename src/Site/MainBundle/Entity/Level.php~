@@ -65,6 +65,12 @@ class Level
     protected $moduleSquare;
 
     /**
+     * @ORM\OneToOne(targetEntity="ModuleMap", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="moduleMap_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     */
+    protected $moduleMap;
+
+    /**
      * Get id
      *
      * @return integer 

@@ -54,6 +54,7 @@ backend:
         moduleHeader: Модуль шапки
         moduleLine: Модуль Линия
         moduleSquare: Модуль Квадраты
+        moduleMap: Модуль Карта
         not_found: Уровень не существует
     module_header:
         backgroundImg: Ссылка на изображение
@@ -114,6 +115,19 @@ backend:
         shadow: Тень
         add: Добавить квадрат
         delete: Удалить квадрат
+    module_map:
+        code: Код карты
+        enable: Вкл/Выкл
+    settings:
+        h1_show: Настройки
+        h1_list: Список настроек
+        h1_edit: Редактирование настроек
+        h1_create: Добавление параметра
+        back_to_list: Назад к списку параметров
+        empty_list: Нет параметров
+        key: Ключ
+        value: Значение
+        not_found: Параметр не существует
     actions: Действия
     show: показать
     show_result: показать лендинг
@@ -128,4 +142,5 @@ frontend:
             name: Имя
             phone: Телефон
             email: Электронная почта
+            theme: Тема письма
             message: Сообщение

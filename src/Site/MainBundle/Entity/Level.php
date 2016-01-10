@@ -65,6 +65,12 @@ class Level
     protected $moduleSquare;
 
     /**
+     * @ORM\OneToOne(targetEntity="ModuleMap", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="moduleMap_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     */
+    protected $moduleMap;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -235,5 +241,29 @@ class Level
     public function getModuleSquare()
     {
         return $this->moduleSquare;
+    }
+
+    /**
+     * Set moduleMap
+     *
+     * @param \Site\MainBundle\Entity\ModuleMap $moduleMap
+     * @return Level
+     */
+    public function setModuleMap(\Site\MainBundle\Entity\ModuleMap $moduleMap = null)
+    {
+        $this->moduleMap = $moduleMap;
+        $moduleMap->setLevel($this);
+
+        return $this;
+    }
+
+    /**
+     * Get moduleMap
+     *
+     * @return \Site\MainBundle\Entity\ModuleMap 
+     */
+    public function getModuleMap()
+    {
+        return $this->moduleMap;
     }
 }

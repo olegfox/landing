@@ -43,9 +43,13 @@ class ModuleHeaderType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_header.backgroundPosition'
             ))
-            ->add('backgroundAttachment', 'text', array(
+            ->add('backgroundAttachment', 'choice', array(
                 'required' => true,
-                'label' => 'backend.module_header.backgroundAttachment'
+                'label' => 'backend.module_header.backgroundAttachment',
+                'choices' => array(
+                    'scroll' => 'нефиксированный',
+                    'fixed' => 'фиксированный'
+                )
             ))
             ->add('backgroundSize', 'text', array(
                 'required' => true,

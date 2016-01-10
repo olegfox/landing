@@ -398,4 +398,27 @@ class ModuleLine
     {
         return $this->enable;
     }
+
+    /**
+     * Set width
+     *
+     * @param string $width
+     * @return ModuleLine
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    /**
+     * Get width
+     *
+     * @return string 
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
 }

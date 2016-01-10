@@ -1,0 +1,74 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Site\MainBundle\Entity\ModuleMap
+ *
+ * @ORM\Table(name="module_map")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\ModuleMapRepository")
+ */
+class ModuleMap
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $code;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $enable = false;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleMap", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="level_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     */
+    protected $level;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return ModuleMap
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string 
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+}

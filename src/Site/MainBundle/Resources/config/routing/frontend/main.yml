@@ -5,3 +5,7 @@ frontend_homepage:
 frontend_work:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/project.yml"
     prefix: /project
+
+frontend_feedback:
+    path:     /feedback
+    defaults: { _controller: "SiteMainBundle:Frontend/Main:feedback" }

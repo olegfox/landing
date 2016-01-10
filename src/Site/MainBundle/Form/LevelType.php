@@ -38,6 +38,10 @@ class LevelType extends AbstractType
                 'required' => true,
                 'label' => 'backend.level.moduleSquare'
             ))
+            ->add('moduleMap', new ModuleMapType(), array(
+                'required' => true,
+                'label' => 'backend.level.moduleMap'
+            ))
         ;
     }
     

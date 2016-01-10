@@ -46,9 +46,13 @@ class ModuleSquareSquareType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_square_square.backgroundPosition'
             ))
-            ->add('backgroundAttachment', 'text', array(
+            ->add('backgroundAttachment', 'choice', array(
                 'required' => true,
-                'label' => 'backend.module_square_square.backgroundAttachment'
+                'label' => 'backend.module_square_square.backgroundAttachment',
+                'choices' => array(
+                    'scroll' => 'нефиксированный',
+                    'fixed' => 'фиксированный'
+                )
             ))
             ->add('backgroundSize', 'text', array(
                 'required' => true,

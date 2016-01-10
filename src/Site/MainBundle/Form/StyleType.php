@@ -47,9 +47,13 @@ class StyleType extends AbstractType
                 'required' => true,
                 'label' => 'backend.style.backgroundPosition'
             ))
-            ->add('backgroundAttachment', 'text', array(
+            ->add('backgroundAttachment', 'choice', array(
                 'required' => true,
-                'label' => 'backend.style.backgroundAttachment'
+                'label' => 'backend.style.backgroundAttachment',
+                'choices' => array(
+                    'scroll' => 'нефиксированный',
+                    'fixed' => 'фиксированный'
+                )
             ))
             ->add('backgroundSize', 'text', array(
                 'required' => true,

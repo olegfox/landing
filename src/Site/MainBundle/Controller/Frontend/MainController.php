@@ -51,46 +51,54 @@ class MainController extends Controller
         ));
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function feedbackAction(Request $request){
         $feedback = new Feedback();
         $form = $this->createForm(new FeedbackType(), $feedback);
 
-        $form->handleRequest($request);
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
 
-        if($form->isValid()){
-            $swift = \Swift_Message::newInstance()
-                ->setSubject('(Новое письмо)')
-                ->setFrom(array($this->container->getParameter('email_from') => "Новое письмо с сайта"))
-                ->setTo($this->container->getParameter('emails_admin'))
-                ->setBody(
-                    $this->renderView(
-                        'SiteMainBundle:Frontend/Feedback:message.html.twig',
-                        array(
-                            'form' => $feedback
+            if($form->isValid()){
+                $settings = $this->getDoctrine()->getRepository('SiteMainBundle:Settings')->findAllArray();
+
+                $transport = \Swift_SmtpTransport::newInstance($settings['mailer_host'], 465, 'ssl')
+                    ->setUsername($settings['mailer_user'])
+                    ->setPassword($settings['mailer_password']);
+
+                $mailer = \Swift_Mailer::newInstance($transport);
+
+                $swift = \Swift_Message::newInstance()
+                    ->setSubject($settings['theme_letter'])
+                    ->setFrom(array($settings['email_from'] => $settings['email_from_title']))
+                    ->setTo(array_map('trim', explode(',', $settings['email_to'])))
+                    ->setBody(
+                        $this->renderView(
+                            'SiteMainBundle:Frontend/Feedback:message.html.twig',
+                            array(
+                                'form' => $feedback,
+                                'settings' => $settings
+                            )
                         )
-                    )
-                    , 'text/html'
-                );
-            $this->get('mailer')->send($swift);
+                        , 'text/html'
+                    );
 
-            return new JsonResponse([
-                'status' => 'OK',
-                'message' => 'Ваше письмо успешно отправлено. Мы скоро с вами свяжемся!'
-            ]);
-        } else {
-            if ($form->count()) {
-                foreach ($form as $child) {
-                    if (!$child->isValid()) {
-                        $errors[$child->getName()]['status'] = 'ERROR';
-                    } else {
-                        $errors[$child->getName()]['status'] = "OK";
-                    }
-                }
+                $mailer->send($swift);
+
+                return new Response('Сообщение успешно отправлено!', 200);
             }
 
-            return new JsonResponse(array_merge(['status' => 'ERROR'], $errors));
+            return new Response('Ошибка!', 500);
         }
+
+        return $this->render('SiteMainBundle:Frontend/Feedback:form.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
+
 
     /**
      * Создание формы обратной связи

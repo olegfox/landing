@@ -47,17 +47,26 @@ class ModuleLineType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_line.backgroundPosition'
             ))
-            ->add('backgroundAttachment', 'text', array(
+            ->add('backgroundAttachment', 'choice', array(
                 'required' => true,
-                'label' => 'backend.module_line.backgroundAttachment'
+                'label' => 'backend.module_line.backgroundAttachment',
+                'choices' => array(
+                    'scroll' => 'нефиксированный',
+                    'fixed' => 'фиксированный'
+                )
             ))
             ->add('backgroundSize', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_line.backgroundSize'
             ))
-            ->add('verticalAlign', 'text', array(
+            ->add('verticalAlign', 'choice', array(
                 'required' => true,
-                'label' => 'backend.module_line.verticalAlign'
+                'label' => 'backend.module_line.verticalAlign',
+                'choices' => array(
+                    'top' => 'сверху',
+                    'middle' => 'по центру',
+                    'bottom' => 'снизу',
+                )
             ))
             ->add('text', 'textarea', array(
                 'required' => true,

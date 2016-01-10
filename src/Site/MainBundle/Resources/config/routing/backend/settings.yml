@@ -1,0 +1,30 @@
+backend_settings_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Settings:index" }
+
+backend_settings_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Settings:show" }
+
+backend_settings_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Settings:new" }
+
+backend_settings_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Settings:create" }
+    methods:  POST
+
+backend_settings_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Settings:edit" }
+
+backend_settings_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Settings:update" }
+    methods:  [POST, PUT]
+
+backend_settings_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Settings:delete" }
+    methods:  [POST, DELETE]
