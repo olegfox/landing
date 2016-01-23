@@ -23,6 +23,10 @@ class ModuleMapType extends AbstractType
                     true => 'Да',
                 )
             ))
+            ->add('height', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_map.height'
+            ))
             ->add('code', 'textarea', array(
                 'required' => true,
                 'label' => 'backend.module_map.code'

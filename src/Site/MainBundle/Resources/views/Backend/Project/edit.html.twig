@@ -19,8 +19,8 @@
                             <div class="col-lg-10">
                                 {% if keyField == 'backgroundImg' and field.vars.value | length > 0 %}
                                     <div class="widget-img">
-                                        <a href="{{ asset('uploads/style/'~field.vars.value) }}" target="_blank">
-                                            <img src="{{ image('uploads/style/'~field.vars.value).cropResize(100) }}" width="100px" alt=""/>
+                                        <a href="{{ asset('uploads/'~entity.slug~'/style/'~field.vars.value) }}" target="_blank">
+                                            <img src="{{ image('uploads/'~entity.slug~'/style/'~field.vars.value).cropResize(100) }}" width="100px" alt=""/>
                                         </a>
                                     </div>
                                 {% endif %}

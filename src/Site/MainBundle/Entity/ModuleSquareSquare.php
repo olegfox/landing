@@ -105,7 +105,7 @@ class ModuleSquareSquare
 
     protected function getUploadDir()
     {
-        return 'uploads/moduleSquare';
+        return 'uploads/' . $this->getLevel()->getPage()->getProject()->getSlug() . '/moduleSquare';
     }
 
     /**
@@ -174,7 +174,7 @@ class ModuleSquareSquare
 
     protected function getUploadDirIcon()
     {
-        return 'uploads/moduleSquare';
+        return 'uploads/' . $this->getLevel()->getPage()->getProject()->getSlug() . '/moduleSquare';
     }
 
     /**

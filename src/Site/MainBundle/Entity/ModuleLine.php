@@ -105,7 +105,7 @@ class ModuleLine
 
     protected function getUploadDir()
     {
-        return 'uploads/moduleLine';
+        return 'uploads/' . $this->getLevel()->getPage()->getProject()->getSlug() . '/moduleLine';
     }
 
     /**

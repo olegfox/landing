@@ -1,33 +1,12 @@
 {% extends 'SiteMainBundle:Backend:layout.html.twig' %}
 
 {% block content -%}
-    <h1>{{ 'backend.page.h1_show'|trans({}, 'menu') }}</h1>
-
-    {{ form(delete_form) }}
-
-    <table class="record_properties table table-striped table-bordered">
-        <tbody>
-        <tr>
-            <th>{{ 'backend.page.title'|trans({}, 'menu') }}</th>
-            <td>{{ entity.title }}</td>
-        </tr>
-        </tbody>
-    </table>
+    <h1>{{ 'backend.project.h1_show'|trans({}, 'menu') ~ ' ' ~ entity.project.title }}</h1>
 
     <ul class="record_actions nav nav-pills">
         <li>
-            <a href="{{ path('backend_project_show', {'id': app.request.get('project_id')}) }}">
-                {{ 'backend.page.back_to_list'|trans({}, 'menu') }}
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('backend_page_edit', { 'id': entity.id, 'project_id': app.request.get('project_id')}) }}">
-                {{ 'backend.edit'|trans({}, 'menu') }}
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('backend_page_new', {'project_id': app.request.get('project_id')}) }}">
-                {{ 'backend.create'|trans({}, 'menu') }}
+            <a href="{{ path('backend_project_show', {'id': entity.project.id}) }}">
+                {{ 'backend.project.back_to_list'|trans({}, 'menu') }}
             </a>
         </li>
     </ul>

@@ -64,9 +64,9 @@ class LevelController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Level $entity, $project_id, $page_id)
+    private function createCreateForm(Level $entity, $project_id, $page_id, $type)
     {
-        $form = $this->createForm(new LevelType(), $entity, array(
+        $form = $this->createForm(new LevelType($type), $entity, array(
             'action' => $this->generateUrl('backend_level_create', array('project_id' => $project_id, 'page_id' => $page_id)),
             'method' => 'POST',
         ));
@@ -80,10 +80,10 @@ class LevelController extends Controller
      * Displays a form to create a new Level entity.
      *
      */
-    public function newAction($project_id, $page_id)
+    public function newAction($project_id, $page_id, $type)
     {
         $entity = new Level();
-        $form   = $this->createCreateForm($entity, $project_id, $page_id);
+        $form   = $this->createCreateForm($entity, $project_id, $page_id, $type);
 
         return $this->render('SiteMainBundle:Backend/Level:new.html.twig', array(
             'entity' => $entity,

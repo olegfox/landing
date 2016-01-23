@@ -1,5 +1,3 @@
-<h1>{{ 'backend.level.h1_list'|trans({}, 'menu') }}</h1>
-
 {% if entity.levels|length > 0 %}
     <table class="records_list table table-striped table-bordered">
         <thead>
@@ -36,8 +34,23 @@
 
 <ul class="nav nav-pills">
     <li class="active">
-        <a href="{{ path('backend_level_new', {'project_id': entity.project.id, 'page_id': entity.id}) }}">
-            {{ 'backend.create'|trans({}, 'menu') }}
+        <a href="{{ path('backend_level_new', {'project_id': entity.project.id, 'page_id': entity.id, 'type': 'header'}) }}">
+            {{ 'backend.create_header'|trans({}, 'menu') }}
+        </a>
+    </li>
+    <li class="active">
+        <a href="{{ path('backend_level_new', {'project_id': entity.project.id, 'page_id': entity.id, 'type': 'line'}) }}">
+            {{ 'backend.create_line'|trans({}, 'menu') }}
+        </a>
+    </li>
+    <li class="active">
+        <a href="{{ path('backend_level_new', {'project_id': entity.project.id, 'page_id': entity.id, 'type': 'square'}) }}">
+            {{ 'backend.create_square'|trans({}, 'menu') }}
+        </a>
+    </li>
+    <li class="active">
+        <a href="{{ path('backend_level_new', {'project_id': entity.project.id, 'page_id': entity.id, 'type': 'map'}) }}">
+            {{ 'backend.create_map'|trans({}, 'menu') }}
         </a>
     </li>
 </ul>

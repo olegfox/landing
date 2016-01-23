@@ -1,9 +1,9 @@
-{% macro moduleHeader(module) %}
+{% macro moduleHeader(module, local = '') %}
     <style type="text/css">
         {% if module.backgroundImg|length > 0 %}
             .wrap-header#level{{ module.level.id }} {
                 {% if module.backgroundImg|length > 0 %}
-                    background-image: url('{{ asset(module.webPath) }}');
+                    background-image: url('{{ local }}{{ asset(module.webPath) }}');
                 {% endif %}
                 {% if module.backgroundPosition|length > 0 %}
                     background-position: {{ module.backgroundPosition }};
@@ -22,7 +22,7 @@
         }
         {% endif %}
     </style>
-    <div class="wrap-header level" id="level{{ module.level.id }}" {% if module.video|length > 0 %}data-video="{{ asset(module.webPathVideo) }}"{% endif %}>
+    <div class="wrap-header level" id="level{{ module.level.id }}" {% if module.video|length > 0 %}data-video="{{ local }}{{ asset(module.webPathVideo) }}"{% endif %}>
         <div class="shadow"></div>
         <div class="header">
             <!-- Top -->

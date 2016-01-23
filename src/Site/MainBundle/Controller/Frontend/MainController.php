@@ -55,7 +55,7 @@ class MainController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function feedbackAction(Request $request){
+    public function feedbackAction(Request $request, $local){
         $feedback = new Feedback();
         $form = $this->createForm(new FeedbackType(), $feedback);
 
@@ -95,7 +95,8 @@ class MainController extends Controller
         }
 
         return $this->render('SiteMainBundle:Frontend/Feedback:form.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'local' => $local
         ));
     }
 

@@ -126,7 +126,7 @@ class Style
 
     protected function getUploadDir()
     {
-        return 'uploads/style';
+        return 'uploads/' . $this->getProject()->getSlug() . '/style';
     }
 
     /**
@@ -196,7 +196,7 @@ class Style
 
     protected function getUploadDirFavicon()
     {
-        return 'uploads/favicon';
+        return 'uploads/' . $this->getProject()->getSlug() . '/favicon';
     }
 
     /**
@@ -255,7 +255,7 @@ class Style
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -278,7 +278,7 @@ class Style
     /**
      * Get backgroundImg
      *
-     * @return string 
+     * @return string
      */
     public function getBackgroundImg()
     {
@@ -301,7 +301,7 @@ class Style
     /**
      * Get favicon
      *
-     * @return string 
+     * @return string
      */
     public function getFavicon()
     {
@@ -324,7 +324,7 @@ class Style
     /**
      * Get backgroundPosition
      *
-     * @return string 
+     * @return string
      */
     public function getBackgroundPosition()
     {
@@ -347,7 +347,7 @@ class Style
     /**
      * Get backgroundAttachment
      *
-     * @return string 
+     * @return string
      */
     public function getBackgroundAttachment()
     {
@@ -370,7 +370,7 @@ class Style
     /**
      * Get backgroundSize
      *
-     * @return string 
+     * @return string
      */
     public function getBackgroundSize()
     {
@@ -393,7 +393,7 @@ class Style
     /**
      * Get metaTitle
      *
-     * @return string 
+     * @return string
      */
     public function getMetaTitle()
     {
@@ -416,7 +416,7 @@ class Style
     /**
      * Get metaDescription
      *
-     * @return string 
+     * @return string
      */
     public function getMetaDescription()
     {
@@ -439,7 +439,7 @@ class Style
     /**
      * Get metaKeywords
      *
-     * @return string 
+     * @return string
      */
     public function getMetaKeywords()
     {
@@ -472,7 +472,7 @@ class Style
     /**
      * Get heads
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getHeads()
     {
@@ -495,7 +495,7 @@ class Style
     /**
      * Get project
      *
-     * @return \Site\MainBundle\Entity\Project 
+     * @return \Site\MainBundle\Entity\Project
      */
     public function getProject()
     {
@@ -518,7 +518,7 @@ class Style
     /**
      * Get font
      *
-     * @return string 
+     * @return string
      */
     public function getFont()
     {
@@ -541,7 +541,7 @@ class Style
     /**
      * Get cssFont
      *
-     * @return string 
+     * @return string
      */
     public function getCssFont()
     {
@@ -564,7 +564,7 @@ class Style
     /**
      * Get fontColor
      *
-     * @return string 
+     * @return string
      */
     public function getFontColor()
     {

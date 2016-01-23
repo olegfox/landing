@@ -3,8 +3,8 @@ backend_level_show:
     defaults: { _controller: "SiteMainBundle:Backend/Level:show" }
 
 backend_level_new:
-    path:     /new
-    defaults: { _controller: "SiteMainBundle:Backend/Level:new" }
+    path:     /new/{type}
+    defaults: { _controller: "SiteMainBundle:Backend/Level:new", new: 'header' }
 
 backend_level_create:
     path:     /create

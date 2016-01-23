@@ -8,6 +8,12 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class LevelType extends AbstractType
 {
+    private $type;
+
+    public function __construct($type){
+        $this->type = $type;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -25,24 +31,45 @@ class LevelType extends AbstractType
                 'attr' => array(
                     'min' => 0
                 )
-            ))
-            ->add('moduleHeader', new ModuleHeaderType(), array(
-                'required' => true,
-                'label' => 'backend.level.moduleHeader'
-            ))
-            ->add('moduleLine', new ModuleLineType(), array(
-                'required' => true,
-                'label' => 'backend.level.moduleLine'
-            ))
-            ->add('moduleSquare', new ModuleSquareType(), array(
-                'required' => true,
-                'label' => 'backend.level.moduleSquare'
-            ))
-            ->add('moduleMap', new ModuleMapType(), array(
-                'required' => true,
-                'label' => 'backend.level.moduleMap'
-            ))
-        ;
+            ));
+
+        switch($this->type){
+            case 'header': {
+                $builder
+                    ->add('moduleHeader', new ModuleHeaderType(), array(
+                        'required' => true,
+                        'label' => 'backend.level.moduleHeader'
+                    ));
+            }break;
+            case 'line': {
+                $builder
+                    ->add('moduleLine', new ModuleLineType(), array(
+                        'required' => true,
+                        'label' => 'backend.level.moduleLine'
+                    ));
+            }break;
+            case 'square': {
+                $builder
+                    ->add('moduleSquare', new ModuleSquareType(), array(
+                        'required' => true,
+                        'label' => 'backend.level.moduleSquare'
+                    ));
+            }break;
+            case 'map': {
+                $builder
+                    ->add('moduleMap', new ModuleMapType(), array(
+                        'required' => true,
+                        'label' => 'backend.level.moduleMap'
+                    ));
+            }break;
+            default: {
+                $builder
+                    ->add('moduleHeader', new ModuleHeaderType(), array(
+                        'required' => true,
+                        'label' => 'backend.level.moduleHeader'
+                    ));
+            }break;
+        }
     }
     
     /**

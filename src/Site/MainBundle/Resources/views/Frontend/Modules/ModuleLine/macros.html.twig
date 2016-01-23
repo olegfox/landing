@@ -7,7 +7,7 @@
             {% endif %}
             {% if module.backgroundImg|length > 0 %}
                 {% if module.backgroundImg|length > 0 %}
-                    background-image: url('{{ asset(module.webPath) }}');
+                    background-image: url('{{ local }}{{ asset(module.webPath) }}');
                 {% endif %}
                 {% if module.backgroundPosition|length > 0 %}
                     background-position: {{ module.backgroundPosition }};

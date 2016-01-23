@@ -1,3 +1,11 @@
+frontend_project_generate_html:
+    path:     /{slug}/generate_html/
+    defaults: { _controller: "SiteMainBundle:Frontend/Project:generateHtml" }
+
+frontend_project_index_local:
+    path:     /{slug}/local
+    defaults: { _controller: "SiteMainBundle:Frontend/Project:indexLocal" }
+
 frontend_project_index:
     path:     /{slug}
     defaults: { _controller: "SiteMainBundle:Frontend/Project:index" }

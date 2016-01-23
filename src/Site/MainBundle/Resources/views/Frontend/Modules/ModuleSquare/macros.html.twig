@@ -10,7 +10,7 @@
         .wrap-square#level{{ module.level.id }} ul li .blur {
         {% if module.backgroundImg|length > 0 %}
         {% if module.backgroundImg|length > 0 %}
-            background-image: url('{{ asset(module.webPath) }}');
+            background-image: url('{{ local }}{{ asset(module.webPath) }}');
         {% endif %}
         {% if module.backgroundColor|length > 0 %}
             background-color: {{ module.backgroundColor }};
@@ -84,7 +84,7 @@
                             {% endif %}
                         </div>
                         {% if square.icon|length > 0 %}
-                            <div class="icon"><img src="{{ image(square.webPathIcon).cropResize(400) }}" alt=""/></div>
+                            <div class="icon"><img src="{{ local }}{{ image(square.webPathIcon).cropResize(400) }}" alt=""/></div>
                         {% endif %}
                         {% if square.title|length > 0 %}
                             <div class="title">{{ square.title|raw }}</div>

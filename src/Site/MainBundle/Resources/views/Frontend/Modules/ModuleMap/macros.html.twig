@@ -1,4 +1,10 @@
 {% macro moduleMap(module) %}
+    <style type="text/css">
+        .wrap-map#level{{ module.level.id }} {
+            {% if module.height|length > 0 %} height: {{ module.height }};
+            {% endif %}
+        }
+    </style>
     <div class="wrap-map level" id="level{{ module.level.id }}"}>
         {{ module.code|raw }}
     </div>

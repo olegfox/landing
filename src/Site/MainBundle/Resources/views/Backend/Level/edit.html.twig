@@ -19,15 +19,15 @@
                             <div class="col-lg-10">
                                 {% if keyField == 'backgroundImg' and field.vars.value | length > 0 %}
                                     <div class="widget-img">
-                                        <a href="{{ asset('uploads/'~keyForm~'/'~field.vars.value) }}" target="_blank">
-                                            <img src="{{ image('uploads/'~keyForm~'/'~field.vars.value).cropResize(100) }}" width="100px" alt=""/>
+                                        <a href="{{ asset('uploads/'~entity.page.project.slug~'/'~keyForm~'/'~field.vars.value) }}" target="_blank">
+                                            <img src="{{ image('uploads/'~entity.page.project.slug~'/'~keyForm~'/'~field.vars.value).cropResize(100) }}" width="100px" alt=""/>
                                         </a>
                                     </div>
                                 {% endif %}
                                 {% if keyField == 'video' and field.vars.value | length > 0 %}
                                     <div class="widget-video">
                                         <video width="320" height="240" controls>
-                                            <source src="{{ asset('uploads/'~keyForm~'/'~field.vars.value) }}">
+                                            <source src="{{ asset('uploads/'~entity.page.project.slug~'/'~keyForm~'/'~field.vars.value) }}">
                                         </video>
                                     </div>
                                 {% endif %}

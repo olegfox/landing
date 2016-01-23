@@ -140,7 +140,7 @@ class ModuleHeader
 
     protected function getUploadDir()
     {
-        return 'uploads/moduleHeader';
+        return 'uploads/' . $this->getLevel()->getPage()->getProject()->getSlug() . '/moduleHeader';
     }
 
     /**
@@ -210,7 +210,7 @@ class ModuleHeader
 
     protected function getUploadDirVideo()
     {
-        return 'uploads/moduleHeader';
+        return 'uploads/' . $this->getLevel()->getPage()->getProject()->getSlug() . '/moduleHeader';
     }
 
     /**

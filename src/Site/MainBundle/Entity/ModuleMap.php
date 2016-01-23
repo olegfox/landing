@@ -22,11 +22,15 @@ class ModuleMap
      */
     private $id;
 
-
     /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $code;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $height;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -116,5 +120,28 @@ class ModuleMap
     public function getLevel()
     {
         return $this->level;
+    }
+
+    /**
+     * Set height
+     *
+     * @param string $height
+     * @return ModuleMap
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    /**
+     * Get height
+     *
+     * @return string 
+     */
+    public function getHeight()
+    {
+        return $this->height;
     }
 }

@@ -1,6 +1,6 @@
 <!-- Form Contact -->
 <div class="contact-form">
-    <form action="{{ path('frontend_feedback') }}" method="post" id="contact-form" novalidate>
+    <form action="{% if local == true %}{{ app.request.scheme ~'://' ~ app.request.httpHost }}{% endif %}{{ path('frontend_feedback') }}" method="post" id="contact-form" novalidate>
         <h2>Отправить письмо</h2>
         <div class="form-group">
             {{ form_label(form.name) }}

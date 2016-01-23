@@ -12,7 +12,7 @@
 {% block og_description %}{{ project.style.metaDescription }}{% endblock %}
 {% block favicon %}
     {% if project.style.favicon | length > 0 %}
-        <link rel="icon" type="image/x-icon" href="{{ asset(project.style.webPathFavicon) }}" />
+        <link rel="icon" type="image/x-icon" href=".{{ asset(project.style.webPathFavicon) }}" />
     {% else %}
         {{ parent() }}
     {% endif %}
@@ -20,8 +20,8 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/js/jquery-colorbox/example3/colorbox.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/main.css') }}"/>
+    <link rel="stylesheet" href="./js/jquery-colorbox/example3/colorbox.css">
+    <link rel="stylesheet" href="./css/main.css"/>
     {% if project.style.font|length > 0 %}
         {{ project.style.font|raw }}
     {% endif %}
@@ -42,7 +42,7 @@
             {% endif %}
             {% if project.style.backgroundImg|length > 0 %}
                 {% if project.style.backgroundImg|length > 0 %}
-                    background-image: url('{{ asset(project.style.webPath) }}');
+                    background-image: url('.{{ asset(project.style.webPath) }}');
                 {% endif %}
                 {% if project.style.backgroundPosition|length > 0 %}
                     background-position: {{ project.style.backgroundPosition }};
@@ -90,7 +90,7 @@
         {% if level.moduleHeader.id is defined %}
             {% if level.moduleHeader.enable %}
             <!-- Module Header -->
-                {{ moduleHeader(level.moduleHeader) }}
+                {{ moduleHeader(level.moduleHeader, '.') }}
             <!-- end Module Header -->
             {% endif %}
         {% endif %}
@@ -98,7 +98,7 @@
         {% if level.moduleLine.id is defined %}
             {% if level.moduleLine.enable %}
             <!-- Module Line -->
-                {{ moduleLine(level.moduleLine) }}
+                {{ moduleLine(level.moduleLine, '.') }}
             <!-- end Module Line -->
             {% endif %}
         {% endif %}
@@ -106,7 +106,7 @@
         {% if level.moduleSquare.id is defined %}
             {% if level.moduleSquare.enable %}
             <!-- Module Square -->
-                {{ moduleSquare(level.moduleSquare) }}
+                {{ moduleSquare(level.moduleSquare, '.') }}
             <!-- end Module Square -->
             {% endif %}
         {% endif %}
@@ -114,7 +114,7 @@
         {% if level.moduleMap.id is defined %}
             {% if level.moduleMap.enable %}
                 <!-- Module Map -->
-                {{ moduleMap(level.moduleMap) }}
+                {{ moduleMap(level.moduleMap, '.') }}
                 <!-- end Module Map -->
             {% endif %}
         {% endif %}
@@ -122,15 +122,15 @@
     {% endfor %}
 
     {# Forms #}
-    {{ render(url('frontend_feedback')) }}
+    {{ render(url('frontend_feedback', {local: true})) }}
     {# end Forms #}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/jquery-validation/dist/jquery.validate.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/jquery-form/jquery.form.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/vide/dist/jquery.vide.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/main.js') }}"></script>
+    <script type="text/javascript" src="js/jquery-colorbox/jquery.colorbox-min.js"></script>
+    <script type="text/javascript" src="js/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/jquery-form/jquery.form.js"></script>
+    <script type="text/javascript" src="js/vide/dist/jquery.vide.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 {% endblock %}

@@ -26,6 +26,12 @@
                             <li>
                                 <a href="{{ path('frontend_project_index', { 'slug': entity.slug }) }}" target="_blank">{{ 'backend.show_result'|trans({}, 'menu') }}</a>
                             </li>
+                            <li>
+                                <a href="{{ path('frontend_project_generate_html', { 'slug': entity.slug }) }}" target="_blank">{{ 'backend.show_zip'|trans({}, 'menu') }}</a>
+                            </li>
+                            <li>
+                                {{ form(deleteForms[entity.id]) }}
+                            </li>
                         </ul>
                     </td>
                 </tr>

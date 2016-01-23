@@ -116,6 +116,7 @@ backend:
         add: Добавить квадрат
         delete: Удалить квадрат
     module_map:
+        height: Высота
         code: Код карты
         enable: Вкл/Выкл
     settings:
@@ -131,9 +132,14 @@ backend:
     actions: Действия
     show: показать
     show_result: показать лендинг
+    show_zip: скачать zip архив
     edit: редактировать
     update: сохранить
     create: создать
+    create_header: создать шапку
+    create_line: создать линию
+    create_map: создать карту
+    create_square: создать квадрат
     delete: удалить
 
 frontend:

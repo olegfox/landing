@@ -40,7 +40,8 @@
         "braincrafted/bootstrap-bundle": "~2.1",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
         "twbs/bootstrap": "3.0.*",
-        "jquery/jquery":  "1.11.*"
+        "jquery/jquery":  "1.11.*",
+        "cocur/build-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

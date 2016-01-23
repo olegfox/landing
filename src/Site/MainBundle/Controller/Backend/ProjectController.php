@@ -28,6 +28,12 @@ class ProjectController extends Controller
 
         $entities = $em->getRepository('SiteMainBundle:Project')->findAll();
 
+        $deleteForms = array();
+
+        foreach($entities as $project){
+            $deleteForms[$project->getId()] = $this->createDeleteForm($project->getId())->createView();
+        }
+
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $entities,
@@ -37,6 +43,7 @@ class ProjectController extends Controller
 
         return $this->render('SiteMainBundle:Backend/Project:index.html.twig', array(
             'entities' => $pagination,
+            'deleteForms' => $deleteForms
         ));
     }
 

@@ -8,6 +8,7 @@
 /web/fonts/*
 /web/js/*
 /web/uploads/*
+/web/export/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 /build/
