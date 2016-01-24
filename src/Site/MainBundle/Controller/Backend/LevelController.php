@@ -20,10 +20,10 @@ class LevelController extends Controller
      * Creates a new Level entity.
      *
      */
-    public function createAction(Request $request, $project_id, $page_id)
+    public function createAction(Request $request, $project_id, $page_id, $type)
     {
         $entity = new Level();
-        $form = $this->createCreateForm($entity, $project_id, $page_id);
+        $form = $this->createCreateForm($entity, $project_id, $page_id, $type);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -67,7 +67,11 @@ class LevelController extends Controller
     private function createCreateForm(Level $entity, $project_id, $page_id, $type)
     {
         $form = $this->createForm(new LevelType($type), $entity, array(
-            'action' => $this->generateUrl('backend_level_create', array('project_id' => $project_id, 'page_id' => $page_id)),
+            'action' => $this->generateUrl('backend_level_create', array(
+                'project_id' => $project_id,
+                'page_id' => $page_id,
+                'type' => $type
+            )),
             'method' => 'POST',
         ));
 

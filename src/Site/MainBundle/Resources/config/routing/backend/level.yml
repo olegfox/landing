@@ -7,8 +7,8 @@ backend_level_new:
     defaults: { _controller: "SiteMainBundle:Backend/Level:new", new: 'header' }
 
 backend_level_create:
-    path:     /create
-    defaults: { _controller: "SiteMainBundle:Backend/Level:create" }
+    path:     /create/{type}
+    defaults: { _controller: "SiteMainBundle:Backend/Level:create", new: 'header' }
     methods:  POST
 
 backend_level_edit:
