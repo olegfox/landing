@@ -15,14 +15,14 @@ class ModuleHeaderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('enable', 'choice', array(
-                'required' => true,
-                'label' => 'backend.module_header.enable',
-                'choices' => array(
-                    false => 'Нет',
-                    true => 'Да',
-                )
-            ))
+//            ->add('enable', 'choice', array(
+//                'required' => true,
+//                'label' => 'backend.module_header.enable',
+//                'choices' => array(
+//                    false => 'Нет',
+//                    true => 'Да',
+//                )
+//            ))
             ->add('backgroundImg', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_header.backgroundImg'

@@ -15,14 +15,14 @@ class ModuleMapType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('enable', 'choice', array(
-                'required' => true,
-                'label' => 'backend.module_map.enable',
-                'choices' => array(
-                    false => 'Нет',
-                    true => 'Да',
-                )
-            ))
+//            ->add('enable', 'choice', array(
+//                'required' => true,
+//                'label' => 'backend.module_map.enable',
+//                'choices' => array(
+//                    false => 'Нет',
+//                    true => 'Да',
+//                )
+//            ))
             ->add('height', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_map.height'

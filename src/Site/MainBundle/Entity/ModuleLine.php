@@ -76,7 +76,7 @@ class ModuleLine
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    protected $enable = false;
+    protected $enable = true;
 
     /**
      * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleLine", cascade={"persist", "remove"})

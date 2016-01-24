@@ -81,7 +81,7 @@ class ModuleSquare
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    protected $enable = false;
+    protected $enable = true;
 
     /**
      * @ORM\OneToMany(targetEntity="ModuleSquareSquare", mappedBy="moduleSquare", cascade={"persist", "remove"})
