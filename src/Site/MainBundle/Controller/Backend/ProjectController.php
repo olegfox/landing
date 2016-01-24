@@ -58,15 +58,22 @@ class ProjectController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-//          Заголовки
-            foreach ($entity->getStyle()->getHeads() as $head) {
-                $head->setStyle($entity->getStyle());
-            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('backend_project_show', array('id' => $entity->getId())));
+            // Create Style
+            $style = new Style();
+            $style->setProject($entity);
+            $em->persist($style);
+            $em->flush();
+
+            //Set Project Style
+            $entity->setStyle($style);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('backend_project_edit', array('id' => $entity->getId())));
         }
 
         return $this->render('SiteMainBundle:Backend/Project:new.html.twig', array(
@@ -88,6 +95,8 @@ class ProjectController extends Controller
             'action' => $this->generateUrl('backend_project_create'),
             'method' => 'POST',
         ));
+
+        $form->remove('style');
 
         $form->add('submit', 'submit', array('label' => 'backend.create'));
 
@@ -191,12 +200,17 @@ class ProjectController extends Controller
 //      Заголовки
         $originalHeads = new ArrayCollection();
 
-        foreach ($entity->getStyle()->getHeads() as $head) {
-            $originalHeads->add($head);
+        if(is_object($entity->getStyle())) {
+
+            foreach ($entity->getStyle()->getHeads() as $head) {
+                $originalHeads->add($head);
+            }
+
         }
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
+
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {

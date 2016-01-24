@@ -95,7 +95,8 @@ class StyleType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Site\MainBundle\Entity\Style',
-            'translation_domain' => 'menu'
+            'translation_domain' => 'menu',
+            'csrf_protection'   => false
         ));
     }
 
