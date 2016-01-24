@@ -25,7 +25,10 @@ class StyleType extends AbstractType
             ))
             ->add('fontColor', 'text', array(
                 'required' => true,
-                'label' => 'backend.style.fontColor'
+                'label' => 'backend.style.fontColor',
+                'attr' => array(
+                    'class' => 'colorSelector'
+                )
             ))
             ->add('backgroundImg', 'text', array(
                 'required' => true,

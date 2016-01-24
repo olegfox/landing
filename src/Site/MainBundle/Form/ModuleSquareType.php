@@ -46,7 +46,10 @@ class ModuleSquareType extends AbstractType
             ))
             ->add('backgroundColor', 'text', array(
                 'required' => true,
-                'label' => 'backend.module_square.backgroundColor'
+                'label' => 'backend.module_square.backgroundColor',
+                'attr' => array(
+                    'class' => 'colorSelector'
+                )
             ))
             ->add('backgroundImg', 'text', array(
                 'required' => true,

@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new Site\MainBundle\SiteMainBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+//            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle()
         );

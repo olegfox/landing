@@ -29,7 +29,10 @@ class StyleHeadType extends AbstractType
             ))
             ->add('color', 'text', array(
                 'required' => true,
-                'label' => 'backend.style_head.color'
+                'label' => 'backend.style_head.color',
+                'attr' => array(
+                    'class' => 'colorSelector'
+                )
             ))
         ;
     }

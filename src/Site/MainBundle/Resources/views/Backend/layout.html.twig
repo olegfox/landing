@@ -8,6 +8,7 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="{{ asset('bundles/sitemain/backend/css/backend.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/backend/css/colorpicker/colorpicker.css') }}" />
     {% block stylesheets %}{% endblock %}
     <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
     {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
@@ -34,6 +35,51 @@
 <!-- Include all JavaScripts, compiled by Assetic -->
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bundles/sitemain/backend/js/ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/sitemain/backend/js/colorpicker/colorpicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/sitemain/backend/js/colorpicker/eye.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/sitemain/backend/js/colorpicker/utils.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/sitemain/backend/js/colorpicker/layout.js') }}"></script>
+<script type="text/javascript">
+    if($('.colorSelector').length > 0) {
+        $('.colorSelector').ColorPicker({
+            color: '#0000ff',
+            onShow: function (colpkr) {
+                $(colpkr).fadeIn(500);
+                return false;
+            },
+            onHide: function (colpkr) {
+                $(colpkr).fadeOut(500);
+                return false;
+            },
+            onChange: function (hsb, hex, rgb) {
+                $('.colorSelector').val('#' + hex);
+            }
+        });
+    }
+
+    if($('*[data-collection="style_heads"]').length > 0) {
+        console.log('length');
+        $('*[data-collection="style_heads"]').click(function(){
+            console.log('click');
+            setTimeout(function(){
+                $('.colorSelector').ColorPicker({
+                    color: '#0000ff',
+                    onShow: function (colpkr) {
+                        $(colpkr).fadeIn(500);
+                        return false;
+                    },
+                    onHide: function (colpkr) {
+                        $(colpkr).fadeOut(500);
+                        return false;
+                    },
+                    onChange: function (hsb, hex, rgb) {
+                        $('.colorSelector').val('#' + hex);
+                    }
+                });
+            }, 1000);
+        });
+    }
+</script>
 {% endblock %}
 </body>
 </html>
