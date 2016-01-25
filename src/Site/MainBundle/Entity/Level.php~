@@ -71,6 +71,13 @@ class Level
     protected $moduleMap;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=100, nullable=true)
+     */
+    private $type;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -241,5 +248,29 @@ class Level
     public function getModuleSquare()
     {
         return $this->moduleSquare;
+    }
+
+    /**
+     * Set moduleMap
+     *
+     * @param \Site\MainBundle\Entity\ModuleMap $moduleMap
+     * @return Level
+     */
+    public function setModuleMap(\Site\MainBundle\Entity\ModuleMap $moduleMap = null)
+    {
+        $this->moduleMap = $moduleMap;
+        $moduleMap->setLevel($this);
+
+        return $this;
+    }
+
+    /**
+     * Get moduleMap
+     *
+     * @return \Site\MainBundle\Entity\ModuleMap 
+     */
+    public function getModuleMap()
+    {
+        return $this->moduleMap;
     }
 }

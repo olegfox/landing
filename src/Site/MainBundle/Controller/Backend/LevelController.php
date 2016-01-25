@@ -7,6 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Site\MainBundle\Entity\Level;
+use Site\MainBundle\Entity\ModuleHeader;
+use Site\MainBundle\Entity\ModuleLine;
+use Site\MainBundle\Entity\ModuleMap;
+use Site\MainBundle\Entity\ModuleSquare;
 use Site\MainBundle\Form\LevelType;
 
 /**
@@ -29,8 +33,10 @@ class LevelController extends Controller
         if ($form->isValid()) {
 
 //          Квадраты
-            foreach ($entity->getModuleSquare()->getSquares() as $square) {
-                $square->setModuleSquare($entity->getModuleSquare());
+            if(is_object($entity->getModuleSquare())) {
+                foreach ($entity->getModuleSquare()->getSquares() as $square) {
+                    $square->setModuleSquare($entity->getModuleSquare());
+                }
             }
 
             $em = $this->getDoctrine()->getManager();
@@ -44,10 +50,62 @@ class LevelController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('backend_level_show', array(
+            switch($type){
+                case 'header': {
+                    // Модуль шапка
+                    $moduleHeader = new ModuleHeader();
+                    $moduleHeader->setLevel($entity);
+                    $em->persist($moduleHeader);
+                    $em->flush();
+                    $entity->setModuleHeader($moduleHeader);
+                    $em->flush();
+                }break;
+                case 'line': {
+                    // Модуль линия
+                    $moduleLine = new ModuleLine();
+                    $moduleLine->setLevel($entity);
+                    $em->persist($moduleLine);
+                    $em->flush();
+                    $entity->setModuleLine($moduleLine);
+                    $em->flush();
+                }break;
+                case 'square': {
+                    // Модуль квадрат
+                    $moduleSquare = new ModuleSquare();
+                    $moduleSquare->setLevel($entity);
+                    $em->persist($moduleSquare);
+                    $em->flush();
+                    $entity->setModuleSquare($moduleSquare);
+                    $em->flush();
+                }break;
+                case 'map': {
+                    // Модуль карта
+                    $moduleMap = new ModuleMap();
+                    $moduleMap->setLevel($entity);
+                    $em->persist($moduleMap);
+                    $em->flush();
+                    $entity->setModuleMap($moduleMap);
+                    $em->flush();
+                }break;
+                default: {
+                    // Модуль шапка
+                    $moduleHeader = new ModuleHeader();
+                    $moduleHeader->setLevel($entity);
+                    $em->persist($moduleHeader);
+                    $em->flush();
+                    $entity->setModuleHeader($moduleHeader);
+                    $em->flush();
+                }break;
+            }
+
+            $entity->setType($type);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('backend_level_edit', array(
                 'id' => $entity->getId(),
+                'page_id' => $page_id,
                 'project_id' => $project_id,
-                'page_id' => $page_id
+                'type' => $type
             )));
         }
 
@@ -75,6 +133,10 @@ class LevelController extends Controller
             'method' => 'POST',
         ));
 
+        $form->remove('moduleHeader');
+        $form->remove('moduleLine');
+        $form->remove('moduleSquare');
+        $form->remove('moduleMap');
         $form->add('submit', 'submit', array('label' => 'backend.create'));
 
         return $form;
@@ -121,7 +183,7 @@ class LevelController extends Controller
      * Displays a form to edit an existing Level entity.
      *
      */
-    public function editAction($id, $project_id, $page_id)
+    public function editAction($id, $project_id, $page_id, $type)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -131,7 +193,7 @@ class LevelController extends Controller
             throw $this->createNotFoundException($this->get('translator')->trans('backend.level.not_found'));
         }
 
-        $editForm = $this->createEditForm($entity, $project_id, $page_id);
+        $editForm = $this->createEditForm($entity, $project_id, $page_id, $type);
         $deleteForm = $this->createDeleteForm($id, $project_id, $page_id);
 
         return $this->render('SiteMainBundle:Backend/Level:edit.html.twig', array(
@@ -148,13 +210,14 @@ class LevelController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Level $entity, $project_id, $page_id)
+    private function createEditForm(Level $entity, $project_id, $page_id, $type)
     {
-        $form = $this->createForm(new LevelType(), $entity, array(
+        $form = $this->createForm(new LevelType($type), $entity, array(
             'action' => $this->generateUrl('backend_level_update', array(
                 'id' => $entity->getId(),
                 'project_id' => $project_id,
-                'page_id' => $page_id
+                'page_id' => $page_id,
+                'type' => $type
             )),
             'method' => 'PUT',
             'allow_extra_fields' => true
@@ -168,7 +231,7 @@ class LevelController extends Controller
      * Edits an existing Level entity.
      *
      */
-    public function updateAction(Request $request, $id, $project_id, $page_id)
+    public function updateAction(Request $request, $id, $project_id, $page_id, $type)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -188,7 +251,7 @@ class LevelController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id, $project_id, $page_id);
-        $editForm = $this->createEditForm($entity, $project_id, $page_id);
+        $editForm = $this->createEditForm($entity, $project_id, $page_id, $type);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -206,13 +269,20 @@ class LevelController extends Controller
 
             }
 
-            foreach ($entity->getModuleSquare()->getSquares() as $square) {
-                $square->setModuleSquare($entity->getModuleSquare());
+            if(is_object($entity->getModuleSquare())) {
+                foreach ($entity->getModuleSquare()->getSquares() as $square) {
+                    $square->setModuleSquare($entity->getModuleSquare());
+                }
             }
 
             $em->flush();
 
-            return $this->redirect($this->generateUrl('backend_level_edit', array('id' => $id, 'project_id' => $project_id, 'page_id' => $page_id)));
+            return $this->redirect($this->generateUrl('backend_level_edit', array(
+                'id' => $id,
+                'project_id' => $project_id,
+                'page_id' => $page_id,
+                'type' => $type
+            )));
         }
 
         return $this->render('SiteMainBundle:Backend/Level:edit.html.twig', array(

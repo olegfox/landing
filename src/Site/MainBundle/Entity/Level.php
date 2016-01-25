@@ -71,6 +71,13 @@ class Level
     protected $moduleMap;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=100, nullable=true)
+     */
+    private $type;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -265,5 +272,28 @@ class Level
     public function getModuleMap()
     {
         return $this->moduleMap;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Level
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

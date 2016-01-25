@@ -14,21 +14,4 @@
         </tbody>
     </table>
 
-    <ul class="record_actions nav nav-pills">
-        <li>
-            <a href="{{ path('backend_page_show', {'id': app.request.get('page_id'), 'project_id': app.request.get('project_id')}) }}">
-                {{ 'backend.level.back_to_list'|trans({}, 'menu') }}
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('backend_level_edit', { 'id': entity.id, 'project_id': app.request.get('project_id'), 'page_id': app.request.get('page_id')}) }}">
-                {{ 'backend.edit'|trans({}, 'menu') }}
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('backend_level_new', {'project_id': app.request.get('project_id'), 'page_id': app.request.get('page_id')}) }}">
-                {{ 'backend.create'|trans({}, 'menu') }}
-            </a>
-        </li>
-    </ul>
 {% endblock %}

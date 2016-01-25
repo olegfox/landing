@@ -10,7 +10,7 @@
         <tbody>
         {% for level in entity.levels %}
             <tr>
-                <td><a href="{{ path('backend_level_show', { 'id': level.id, 'project_id': entity.project.id, 'page_id': entity.id }) }}">{{ level.title }}</a></td>
+                <td><a href="{{ path('backend_level_edit', { 'id': level.id, 'project_id': entity.project.id, 'page_id': entity.id, 'type': level.type }) }}">{{ level.title }}</a></td>
                 <td>{{ level.position }}</td>
                 <td>
                     <ul class="nav nav-pills">
@@ -18,7 +18,7 @@
                             <a href="{{ path('backend_level_show', { 'id': level.id, 'project_id': entity.project.id, 'page_id': entity.id }) }}">{{ 'backend.show'|trans({}, 'menu') }}</a>
                         </li>
                         <li>
-                            <a href="{{ path('backend_level_edit', { 'id': level.id, 'project_id': entity.project.id, 'page_id': entity.id }) }}">{{ 'backend.edit'|trans({}, 'menu') }}</a>
+                            <a href="{{ path('backend_level_edit', { 'id': level.id, 'project_id': entity.project.id, 'page_id': entity.id, 'type': level.type }) }}">{{ 'backend.edit'|trans({}, 'menu') }}</a>
                         </li>
                     </ul>
                 </td>

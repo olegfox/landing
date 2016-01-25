@@ -12,11 +12,11 @@ backend_level_create:
     methods:  POST
 
 backend_level_edit:
-    path:     /{id}/edit
+    path:     /{id}/edit/{type}
     defaults: { _controller: "SiteMainBundle:Backend/Level:edit" }
 
 backend_level_update:
-    path:     /{id}/update
+    path:     /{id}/update/{type}
     defaults: { _controller: "SiteMainBundle:Backend/Level:update" }
     methods:  [POST, PUT]
 
