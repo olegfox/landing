@@ -79,6 +79,39 @@
             }, 1000);
         });
     }
+
+    if($('*[data-collection="moduleSquare_squares"]').length > 0) {
+        $('*[data-collection="moduleSquare_squares"]').click(function(){
+            setTimeout(function(){
+                $('.colorSelector').ColorPicker({
+                    color: '#0000ff',
+                    onShow: function (colpkr) {
+                        $(colpkr).fadeIn(500);
+                        return false;
+                    },
+                    onHide: function (colpkr) {
+                        $(colpkr).fadeOut(500);
+                        return false;
+                    },
+                    onChange: function (hsb, hex, rgb) {
+                        $('.colorSelector').val('#' + hex);
+                    }
+                });
+
+                if ($('.ckeditor').length) {
+                    $('.ckeditor').each(function() {
+                        console.log($(this).attr("id"));
+                        var editorID = $(this).attr("id"),
+                            instance = CKEDITOR.instances[editorID];
+
+                        if (!instance) {
+                            CKEDITOR.replace(editorID);
+                        }
+                    });
+                }
+            }, 1000);
+        });
+    }
 </script>
 {% endblock %}
 </body>

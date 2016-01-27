@@ -33,7 +33,10 @@ class ModuleLineType extends AbstractType
             ))
             ->add('backgroundColor', 'text', array(
                 'required' => true,
-                'label' => 'backend.module_line.backgroundColor'
+                'label' => 'backend.module_line.backgroundColor',
+                'attr' => array(
+                    'class' => 'colorSelector'
+                )
             ))
             ->add('backgroundImg', 'text', array(
                 'required' => true,

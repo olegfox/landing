@@ -105,7 +105,7 @@ class ModuleSquareSquare
 
     protected function getUploadDir()
     {
-        return 'uploads/' . $this->getLevel()->getPage()->getProject()->getSlug() . '/moduleSquare';
+        return 'uploads/' . $this->getModuleSquare()->getLevel()->getPage()->getProject()->getSlug() . '/moduleSquare';
     }
 
     /**
@@ -116,8 +116,6 @@ class ModuleSquareSquare
     public function setFile(UploadedFile $file = null)
     {
         $this->file = $file;
-
-        $this->upload();
     }
 
     /**
@@ -174,7 +172,7 @@ class ModuleSquareSquare
 
     protected function getUploadDirIcon()
     {
-        return 'uploads/' . $this->getLevel()->getPage()->getProject()->getSlug() . '/moduleSquare';
+        return 'uploads/' . $this->getModuleSquare()->getLevel()->getPage()->getProject()->getSlug() . '/moduleSquare';
     }
 
     /**
@@ -185,8 +183,6 @@ class ModuleSquareSquare
     public function setFileIcon(UploadedFile $fileIcon = null)
     {
         $this->fileIcon = $fileIcon;
-
-        $this->uploadIcon();
     }
 
     /**

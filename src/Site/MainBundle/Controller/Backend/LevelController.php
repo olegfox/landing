@@ -272,6 +272,8 @@ class LevelController extends Controller
             if(is_object($entity->getModuleSquare())) {
                 foreach ($entity->getModuleSquare()->getSquares() as $square) {
                     $square->setModuleSquare($entity->getModuleSquare());
+                    $square->upload();
+                    $square->uploadIcon();
                 }
             }
 

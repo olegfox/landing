@@ -35,7 +35,7 @@
 
         {% if module.shadow > 0 %}
         .wrap-square#level{{ module.level.id }} .square ul li .shadow {
-            opacity: {{ (100 - module.shadow) / 100 }};
+            opacity: {{ (module.shadow) / 100 }};
         }
         {% endif %}
     </style>
@@ -51,7 +51,7 @@
                                 {% if square.shadow > 0 %}
                                     style="
                                     {% if square.shadow|length > 0 %}
-                                    opacity: {{ (100 - square.shadow) / 100 }};
+                                    opacity: {{ (square.shadow) / 100 }};
                                     {% endif %}
                                             "
                                 {% endif %}>

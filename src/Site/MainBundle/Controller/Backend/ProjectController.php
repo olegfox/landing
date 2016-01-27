@@ -10,6 +10,7 @@ use Site\MainBundle\Entity\Project;
 use Site\MainBundle\Form\ProjectType;
 use Site\MainBundle\Entity\Style;
 use Site\MainBundle\Form\StyleType;
+use Site\MainBundle\Service\Export;
 
 /**
  * Project controller.
@@ -258,6 +259,11 @@ class ProjectController extends Controller
 
             if (!$entity) {
                 throw $this->createNotFoundException($this->get('translator')->trans('backend.project.not_found'));
+            }
+
+            // Remove directory project
+            if(is_dir($entity->getProjectDirectory())) {
+                Export::rrmdir($entity->getProjectDirectory());
             }
 
             $em->remove($entity);

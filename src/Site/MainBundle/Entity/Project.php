@@ -165,4 +165,8 @@ class Project
     {
         return $this->style;
     }
+
+    public function getProjectDirectory(){
+        return 'uploads/' . $this->getSlug();
+    }
 }
