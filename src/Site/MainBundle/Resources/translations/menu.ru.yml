@@ -113,8 +113,10 @@ backend:
         backgroundSize: Размер фонового изображения
         blur: Размытие
         shadow: Тень
+        paddingTitle: padding заголовка квадрата
+        paddingIcon: padding иконки квадрат
         add: Добавить квадрат
-        delete: Удалить квадрат
+        delete: Удалить квадрата
     module_map:
         height: Высота
         code: Код карты

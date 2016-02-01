@@ -29,6 +29,11 @@ class ModuleSquareSquare
     protected $title;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $paddingTitle;
+
+    /**
      * @Assert\File()
      */
     protected $file;
@@ -79,6 +84,11 @@ class ModuleSquareSquare
     protected $icon;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $paddingIcon;
+
+    /**
      * @ORM\ManyToOne(targetEntity="ModuleSquare", inversedBy="squareas")
      * @ORM\JoinColumn(name="module_square_id", referencedColumnName="id")
      **/
@@ -105,7 +115,7 @@ class ModuleSquareSquare
 
     protected function getUploadDir()
     {
-        return 'uploads/moduleSquare';
+        return 'uploads/' . $this->getModuleSquare()->getLevel()->getPage()->getProject()->getSlug() . '/moduleSquare';
     }
 
     /**
@@ -116,8 +126,6 @@ class ModuleSquareSquare
     public function setFile(UploadedFile $file = null)
     {
         $this->file = $file;
-
-        $this->upload();
     }
 
     /**
@@ -174,7 +182,7 @@ class ModuleSquareSquare
 
     protected function getUploadDirIcon()
     {
-        return 'uploads/moduleSquare';
+        return 'uploads/' . $this->getModuleSquare()->getLevel()->getPage()->getProject()->getSlug() . '/moduleSquare';
     }
 
     /**
@@ -185,8 +193,6 @@ class ModuleSquareSquare
     public function setFileIcon(UploadedFile $fileIcon = null)
     {
         $this->fileIcon = $fileIcon;
-
-        $this->uploadIcon();
     }
 
     /**

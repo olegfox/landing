@@ -22,6 +22,10 @@ class ModuleSquareSquareType extends AbstractType
                     "class" => "ckeditor"
                 )
             ))
+            ->add('paddingTitle', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_square_square.paddingTitle'
+            ))
             ->add('blur', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_square_square.blur'
@@ -64,6 +68,10 @@ class ModuleSquareSquareType extends AbstractType
             ->add('icon', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_square_square.icon'
+            ))
+            ->add('paddingIcon', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_square_square.paddingIcon'
             ))
             ->add('fileIcon', 'file', array(
                 'required' => true,

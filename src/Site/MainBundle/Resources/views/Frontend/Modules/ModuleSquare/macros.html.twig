@@ -82,10 +82,10 @@
                             {% endif %}
                         </div>
                         {% if square.icon|length > 0 %}
-                            <div class="icon"><img src="{{ local }}{{ image(square.webPathIcon).cropResize(400) }}" alt=""/></div>
+                            <div class="icon" {% if square.paddingIcon|length > 0 %}style="padding: {{ square.paddingIcon }};"{% endif %}><img src="{{ local }}{{ image(square.webPathIcon).cropResize(400) }}" alt=""/></div>
                         {% endif %}
                         {% if square.title|length > 0 %}
-                            <div class="title">{{ square.title|raw }}</div>
+                            <div class="title" {% if square.paddingTitle|length > 0 %}style="padding: {{ square.paddingTitle }};"{% endif %}>{{ square.title|raw }}</div>
                         {% endif %}
                     </li>
                 {% endfor %}

@@ -29,6 +29,11 @@ class ModuleSquareSquare
     protected $title;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $paddingTitle;
+
+    /**
      * @Assert\File()
      */
     protected $file;
@@ -77,6 +82,11 @@ class ModuleSquareSquare
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $icon;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $paddingIcon;
 
     /**
      * @ORM\ManyToOne(targetEntity="ModuleSquare", inversedBy="squareas")
@@ -468,5 +478,51 @@ class ModuleSquareSquare
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set paddingTitle
+     *
+     * @param string $paddingTitle
+     * @return ModuleSquareSquare
+     */
+    public function setPaddingTitle($paddingTitle)
+    {
+        $this->paddingTitle = $paddingTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get paddingTitle
+     *
+     * @return string 
+     */
+    public function getPaddingTitle()
+    {
+        return $this->paddingTitle;
+    }
+
+    /**
+     * Set paddingIcon
+     *
+     * @param string $paddingIcon
+     * @return ModuleSquareSquare
+     */
+    public function setPaddingIcon($paddingIcon)
+    {
+        $this->paddingIcon = $paddingIcon;
+
+        return $this;
+    }
+
+    /**
+     * Get paddingIcon
+     *
+     * @return string 
+     */
+    public function getPaddingIcon()
+    {
+        return $this->paddingIcon;
     }
 }
