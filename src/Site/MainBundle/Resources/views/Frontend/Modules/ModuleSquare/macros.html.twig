@@ -44,49 +44,56 @@
                 <!-- Squares Block -->
                 <ul>
                 {% for square in module.squares %}
-                    <li>
-                        <div class="shadow"
-                                {% if square.shadow > 0 %}
-                                    style="
-                                    {% if square.shadow|length > 0 %}
-                                    opacity: {{ (square.shadow) / 100 }};
+                    <li style="
+                            {% if square.backgroundImg|length > 0 %}background-image: url('{{ image(square.webPath).cropResize(500) }}');{% endif %}
+                            {% if square.backgroundColor|length > 0 %}background-color: {{ square.backgroundColor }};{% endif %}
+                            {% if square.backgroundPosition|length > 0 %}background-position: {{ square.backgroundPosition }};{% endif %}
+                            {% if square.backgroundSize|length > 0 %}background-size: {{ square.backgroundSize }};{% endif %}
+                            {% if square.backgroundAttachment|length > 0 %}background-attachment: {{ square.backgroundAttachment }};{% endif %}
+                        ">
+                        <div class="wrap_wrap">
+                            <div class="wrap">
+                                <div class="inner">
+                                    <div class="shadow"
+                                            {% if square.shadow > 0 %}
+                                        style="
+                                        {% if square.shadow|length > 0 %}
+                                                opacity: {{ (square.shadow) / 100 }};
+                                        {% endif %}
+                                                "
+                                            {% endif %}>
+                                    </div>
+                                    <div class="blur"
+                                         style="
+                                         {% if square.blur|length > 0 or module.blur|length > 0 %}
+                                             {% if square.blur|length > 0 or module.blur|length > 0 %}
+                                                     margin:{% if square.blur|length > 0 %}{{ '-' ~ ((square.blur|number_format) + 2) ~ 'px' }}{% endif %}{% if module.blur|length > 0 %}{{ '-' ~ ((module.blur|number_format) + 2) ~ 'px' }}{% endif %};
+                                                     -webkit-filter: url(#blur);
+                                                     filter: url(#blur);
+                                                     -webkit-filter: blur({% if square.blur|length > 0 %}{{ square.blur }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur }}{% endif %});
+                                                     filter: blur({% if square.blur|length > 0 %}{{ square.blur }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur }}{% endif %});
+                                                     filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='{% if square.blur|length > 0 %}{{ square.blur|number_format }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur|number_format }}{% endif %}');
+                                             {% endif %}
+                                         {% endif %}
+                                                 "
+                                            >
+                                        {% if square.blur|length > 0 or module.blur|length > 0 %}
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <filter id="blur">
+                                                    <feGaussianBlur stdDeviation="{% if square.blur|length > 0 %}{{ square.blur|number_format }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur|number_format }}{% endif %}" />
+                                                </filter>
+                                            </svg>
+                                        {% endif %}
+                                    </div>
+                                    {% if square.icon|length > 0 %}
+                                        <div class="icon" {% if square.paddingIcon|length > 0 %}style="padding: {{ square.paddingIcon }};"{% endif %}><img src="{{ local }}{{ image(square.webPathIcon).cropResize(400) }}" alt=""/></div>
                                     {% endif %}
-                                            "
-                                {% endif %}>
-                        </div>
-                        <div class="blur"
-                            style="
-                                {% if square.backgroundImg|length > 0 %}background-image: url('{{ image(square.webPath).cropResize(500) }}');{% endif %}
-                                {% if square.backgroundColor|length > 0 %}background-color: {{ square.backgroundColor }};{% endif %}
-                                {% if square.backgroundPosition|length > 0 %}background-position: {{ square.backgroundPosition }};{% endif %}
-                                {% if square.backgroundSize|length > 0 %}background-size: {{ square.backgroundSize }};{% endif %}
-                                {% if square.backgroundAttachment|length > 0 %}background-attachment: {{ square.backgroundAttachment }};{% endif %}
-                                {% if square.blur|length > 0 or module.blur|length > 0 %}
-                                    {% if square.blur|length > 0 or module.blur|length > 0 %}
-                                            margin:{% if square.blur|length > 0 %}{{ '-' ~ ((square.blur|number_format) + 2) ~ 'px' }}{% endif %}{% if module.blur|length > 0 %}{{ '-' ~ ((module.blur|number_format) + 2) ~ 'px' }}{% endif %};
-                                            -webkit-filter: url(#blur);
-                                            filter: url(#blur);
-                                            -webkit-filter: blur({% if square.blur|length > 0 %}{{ square.blur }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur }}{% endif %});
-                                            filter: blur({% if square.blur|length > 0 %}{{ square.blur }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur }}{% endif %});
-                                            filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='{% if square.blur|length > 0 %}{{ square.blur|number_format }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur|number_format }}{% endif %}');
+                                    {% if square.title|length > 0 %}
+                                        <div class="title" {% if square.paddingTitle|length > 0 %}style="padding: {{ square.paddingTitle }};"{% endif %}>{{ square.title|raw }}</div>
                                     {% endif %}
-                                {% endif %}
-                                    "
-                            >
-                            {% if square.blur|length > 0 or module.blur|length > 0 %}
-                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <filter id="blur">
-                                        <feGaussianBlur stdDeviation="{% if square.blur|length > 0 %}{{ square.blur|number_format }}{% endif %}{% if module.blur|length > 0 %}{{ module.blur|number_format }}{% endif %}" />
-                                    </filter>
-                                </svg>
-                            {% endif %}
+                                </div>
+                            </div>
                         </div>
-                        {% if square.icon|length > 0 %}
-                            <div class="icon" {% if square.paddingIcon|length > 0 %}style="padding: {{ square.paddingIcon }};"{% endif %}><img src="{{ local }}{{ image(square.webPathIcon).cropResize(400) }}" alt=""/></div>
-                        {% endif %}
-                        {% if square.title|length > 0 %}
-                            <div class="title" {% if square.paddingTitle|length > 0 %}style="padding: {{ square.paddingTitle }};"{% endif %}>{{ square.title|raw }}</div>
-                        {% endif %}
                     </li>
                 {% endfor %}
                 </ul>

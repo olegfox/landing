@@ -99,6 +99,17 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
         display: inline-block;
         vertical-align: top;
         overflow: hidden; }
+        .wrap-square .square ul li .wrap_wrap {
+          position: absolute;
+          height: 100%;
+          width: 100%; }
+          .wrap-square .square ul li .wrap_wrap .wrap {
+            display: table;
+            height: 100%;
+            width: 100%; }
+            .wrap-square .square ul li .wrap_wrap .wrap .inner {
+              display: table-cell;
+              vertical-align: middle; }
         .wrap-square .square ul li .shadow {
           position: absolute;
           top: 0;

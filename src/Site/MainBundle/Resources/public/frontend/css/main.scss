@@ -185,6 +185,21 @@ input, textarea, keygen, select, button {
         vertical-align: top;
         overflow: hidden;
 
+        .wrap_wrap{
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          .wrap{
+            display: table;
+            height: 100%;
+            width: 100%;
+            .inner{
+              display: table-cell;
+              vertical-align: middle;
+            }
+          }
+        }
+
         .shadow {
 
           position: absolute;
