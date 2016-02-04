@@ -224,6 +224,7 @@ class LevelController extends Controller
         ));
 
         $form->add('submit', 'submit', array('label' => 'backend.update'));
+        $form->add('submitBack', 'submit', array('label' => 'backend.level.updateBack'));
 
         return $form;
     }
@@ -278,6 +279,13 @@ class LevelController extends Controller
             }
 
             $em->flush();
+
+            if($request->get('back')) {
+                return $this->redirect($this->generateUrl('backend_page_show', array(
+                    'project_id' => $project_id,
+                    'id' => $page_id
+                )));
+            }
 
             return $this->redirect($this->generateUrl('backend_level_edit', array(
                 'id' => $id,

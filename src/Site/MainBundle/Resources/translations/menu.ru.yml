@@ -56,6 +56,7 @@ backend:
         moduleSquare: Модуль Квадраты
         moduleMap: Модуль Карта
         not_found: Уровень не существует
+        updateBack: сохранить и перейти к уровням
     module_header:
         logo: Ссылк на логотип
         fileLogo: Выберите изображение для логотипа
