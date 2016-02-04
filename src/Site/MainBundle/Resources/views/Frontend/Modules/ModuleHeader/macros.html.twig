@@ -28,7 +28,16 @@
             <!-- Top -->
             <div class="top">
                 <div class="hint-left">
-                    {{ module.hintLeft }}
+                    <div class="table">
+                        <div class="table-cell">
+                            {% if module.logo|length > 0 %}
+                                <img src="{{ local }}{{ asset(module.webPathLogo) }}" width="100px" alt=""/>
+                            {% endif %}
+                            <div class="text">
+                                {{ module.hintLeft }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="hint-right">
                     {{ module.hintRight1 }}

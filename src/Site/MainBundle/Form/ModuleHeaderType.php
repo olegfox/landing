@@ -23,6 +23,14 @@ class ModuleHeaderType extends AbstractType
 //                    true => 'Да',
 //                )
 //            ))
+            ->add('logo', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_header.logo'
+            ))
+            ->add('fileLogo', 'file', array(
+                'required' => true,
+                'label' => 'backend.module_header.fileLogo'
+            ))
             ->add('backgroundImg', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_header.backgroundImg'

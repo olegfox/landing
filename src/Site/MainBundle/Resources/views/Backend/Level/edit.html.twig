@@ -17,7 +17,7 @@
                         <div class="form-group">
                             {{ form_label(field) }}
                             <div class="col-lg-10">
-                                {% if keyField == 'backgroundImg' and field.vars.value | length > 0 %}
+                                {% if (keyField == 'backgroundImg' or keyField == 'logo') and field.vars.value | length > 0 %}
                                     <div class="widget-img">
                                         <a href="{{ asset('uploads/'~entity.page.project.slug~'/'~keyForm~'/'~field.vars.value) }}" target="_blank">
                                             <img src="{{ image('uploads/'~entity.page.project.slug~'/'~keyForm~'/'~field.vars.value).cropResize(100) }}" width="100px" alt=""/>

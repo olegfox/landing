@@ -57,6 +57,8 @@ backend:
         moduleMap: Модуль Карта
         not_found: Уровень не существует
     module_header:
+        logo: Ссылк на логотип
+        fileLogo: Выберите изображение для логотипа
         backgroundImg: Ссылка на изображение
         file: Выберите изображение
         video: Ссылка на видео

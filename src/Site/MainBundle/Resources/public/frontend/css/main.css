@@ -30,6 +30,17 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
       top: 50px;
       left: 50px;
       font-size: 24px; }
+      .wrap-header .header .top .hint-left .table {
+        display: table; }
+        .wrap-header .header .top .hint-left .table .table-cell {
+          display: table-cell;
+          vertical-align: middle; }
+          .wrap-header .header .top .hint-left .table .table-cell div.text {
+            display: inline-block;
+            width: 100%; }
+      .wrap-header .header .top .hint-left img {
+        display: inline-block;
+        margin-bottom: 20px; }
     .wrap-header .header .top .hint-right {
       position: absolute;
       top: 50px;

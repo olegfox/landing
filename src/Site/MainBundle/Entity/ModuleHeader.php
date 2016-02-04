@@ -36,6 +36,16 @@ class ModuleHeader
     /**
      * @Assert\File()
      */
+    protected $fileLogo;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $logo;
+
+    /**
+     * @Assert\File()
+     */
     protected $fileVideo;
 
     /**
@@ -256,6 +266,75 @@ class ModuleHeader
         );
 
         $this->fileVideo = null;
+    }
+
+    public function getAbsolutePathLogo()
+    {
+        return null === $this->logo
+            ? null
+            : $this->getUploadRootDirLogo().'/'.$this->logo;
+    }
+
+    public function getWebPathLogo()
+    {
+        return null === $this->logo
+            ? null
+            : $this->getUploadDirLogo().'/'.$this->logo;
+    }
+
+    protected function getUploadRootDirLogo()
+    {
+        return __DIR__.'/../../../../../'.$this->getUploadDirLogo();
+    }
+
+    protected function getUploadDirLogo()
+    {
+        return 'uploads/' . $this->getLevel()->getPage()->getProject()->getSlug() . '/moduleHeader';
+    }
+
+    /**
+     * Sets fileLogo.
+     *
+     * @param UploadedFile $fileLogo
+     */
+    public function setFileLogo(UploadedFile $fileLogo = null)
+    {
+        $this->fileLogo = $fileLogo;
+
+        $this->uploadLogo();
+    }
+
+    /**
+     * Get fileLogo.
+     *
+     * @return UploadedFile
+     */
+    public function getFileLogo()
+    {
+        return $this->fileLogo;
+    }
+
+    public function uploadLogo()
+    {
+        if (null === $this->getFileLogo()) {
+            return;
+        }
+
+        if (isset($this->logo)) {
+            if(file_exists($this->getUploadDirLogo().'/'.$this->logo)){
+                unlink($this->getUploadDirLogo().'/'.$this->logo);
+            }
+            $this->logo = null;
+        }
+
+        $this->logo = $this->getFileLogo()->getClientOriginalName();
+
+        $this->getFileLogo()->move(
+            $this->getUploadDirLogo(),
+            $this->logo
+        );
+
+        $this->fileLogo = null;
     }
 
     /**
@@ -669,5 +748,28 @@ class ModuleHeader
     public function getEnable()
     {
         return $this->enable;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param string $logo
+     * @return ModuleHeader
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return string 
+     */
+    public function getLogo()
+    {
+        return $this->logo;
     }
 }
