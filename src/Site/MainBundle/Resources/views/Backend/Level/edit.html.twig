@@ -1,6 +1,14 @@
 {% extends 'SiteMainBundle:Backend:layout.html.twig' %}
 
 {% block content -%}
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_page_show', {'id': app.request.get('page_id'), 'project_id': app.request.get('project_id')}) }}">
+                {{ 'backend.level.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+
     <h1>{{ 'backend.level.h1_edit'|trans({}, 'menu') }}</h1>
 
     {{ form(delete_form) }}
