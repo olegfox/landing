@@ -87,6 +87,7 @@ backend:
         text: Текст
         verticalAlign: Вертикальное центрирование
         enable: Вкл/Выкл
+        shadow: Тень (%)
     module_square:
         fontSize: Размер шрифта
         countSquareInCol: Количество квадратов в строке

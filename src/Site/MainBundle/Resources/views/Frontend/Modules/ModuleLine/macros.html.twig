@@ -36,8 +36,14 @@
         }
         {% endif %}
 
+        {% if module.shadow > 0 %}
+        .wrap-line#level{{ module.level.id }} .shadow {
+            opacity: {{ (module.shadow) / 100 }};
+        }
+        {% endif %}
     </style>
     <div class="wrap-line level" id="level{{ module.level.id }}">
+        <div class="shadow"></div>
         <div class="line">
 
             <!-- Center Block -->

@@ -79,6 +79,11 @@ class ModuleLine
     protected $enable = true;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $shadow;
+
+    /**
      * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleLine", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
@@ -420,5 +425,28 @@ class ModuleLine
     public function getWidth()
     {
         return $this->width;
+    }
+
+    /**
+     * Set shadow
+     *
+     * @param string $shadow
+     * @return ModuleLine
+     */
+    public function setShadow($shadow)
+    {
+        $this->shadow = $shadow;
+
+        return $this;
+    }
+
+    /**
+     * Get shadow
+     *
+     * @return string 
+     */
+    public function getShadow()
+    {
+        return $this->shadow;
     }
 }

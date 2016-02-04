@@ -23,6 +23,10 @@ class ModuleLineType extends AbstractType
 //                    true => 'Да',
 //                )
 //            ))
+            ->add('shadow', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_line.shadow'
+            ))
             ->add('height', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_line.height'

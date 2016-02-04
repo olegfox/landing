@@ -134,6 +134,19 @@ input, textarea, keygen, select, button {
   position: relative;
   height: 100%;
 
+  .shadow {
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0;
+    z-index: 1;
+
+  }
+
   .line {
 
     position: relative;
