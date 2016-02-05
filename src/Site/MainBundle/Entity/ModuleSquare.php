@@ -79,6 +79,11 @@ class ModuleSquare
     protected $shadow;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $shadowHover;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     protected $enable = true;
@@ -493,5 +498,28 @@ class ModuleSquare
     public function getHeight()
     {
         return $this->height;
+    }
+
+    /**
+     * Set shadowHover
+     *
+     * @param string $shadowHover
+     * @return ModuleSquare
+     */
+    public function setShadowHover($shadowHover)
+    {
+        $this->shadowHover = $shadowHover;
+
+        return $this;
+    }
+
+    /**
+     * Get shadowHover
+     *
+     * @return string 
+     */
+    public function getShadowHover()
+    {
+        return $this->shadowHover;
     }
 }

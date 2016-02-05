@@ -102,6 +102,7 @@ backend:
         backgroundSize: Размер фонового изображения
         blur: Размытие
         shadow: Тень
+        shadowHover: Тень при наведении
         squares: Квадраты
         height: Высота
         enable: Вкл/Выкл

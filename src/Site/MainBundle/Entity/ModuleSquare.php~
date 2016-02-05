@@ -79,9 +79,14 @@ class ModuleSquare
     protected $shadow;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $shadowHover;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    protected $enable = false;
+    protected $enable = true;
 
     /**
      * @ORM\OneToMany(targetEntity="ModuleSquareSquare", mappedBy="moduleSquare", cascade={"persist", "remove"})
@@ -115,7 +120,7 @@ class ModuleSquare
 
     protected function getUploadDir()
     {
-        return 'uploads/moduleSquare';
+        return 'uploads/' . $this->getLevel()->getPage()->getProject()->getSlug() . '/moduleSquare';
     }
 
     /**
