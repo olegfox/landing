@@ -45,6 +45,11 @@
         .wrap-square#level{{ module.level.id }} .square ul li:hover .shadow {
             opacity: {{ (module.shadowHover) / 100 }};
         }
+
+        {% if module.shadowText|length > 0 %}
+        .wrap-square#level{{ module.level.id }} .square ul li .title {
+            text-shadow: {{ module.shadowText }};
+        }
         {% endif %}
     </style>
     <div class="wrap-square level" id="level{{ module.level.id }}">

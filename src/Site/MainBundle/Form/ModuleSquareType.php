@@ -48,6 +48,10 @@ class ModuleSquareType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_square.shadowHover'
             ))
+            ->add('shadowText', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_square.shadowText'
+            ))
             ->add('backgroundColor', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_square.backgroundColor',

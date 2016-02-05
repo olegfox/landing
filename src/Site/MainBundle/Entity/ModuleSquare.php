@@ -84,6 +84,11 @@ class ModuleSquare
     protected $shadowHover;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $shadowText;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     protected $enable = true;
@@ -521,5 +526,28 @@ class ModuleSquare
     public function getShadowHover()
     {
         return $this->shadowHover;
+    }
+
+    /**
+     * Set shadowText
+     *
+     * @param string $shadowText
+     * @return ModuleSquare
+     */
+    public function setShadowText($shadowText)
+    {
+        $this->shadowText = $shadowText;
+
+        return $this;
+    }
+
+    /**
+     * Get shadowText
+     *
+     * @return string 
+     */
+    public function getShadowText()
+    {
+        return $this->shadowText;
     }
 }

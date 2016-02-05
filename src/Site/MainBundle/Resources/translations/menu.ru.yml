@@ -67,7 +67,7 @@ backend:
         backgroundPosition: Позиция фонового изображения
         backgroundAttachment: Фиксированный фон или нет?
         backgroundSize: Размер фонового изображения
-        shadow: Тень (%)
+        shadow: Затемнение (%)
         head1: Заголовок 1
         head2: Заголовок 2
         isButton: Кнопка будет?
@@ -90,7 +90,7 @@ backend:
         text: Текст
         verticalAlign: Вертикальное центрирование
         enable: Вкл/Выкл
-        shadow: Тень (%)
+        shadow: Затемнение (%)
     module_square:
         fontSize: Размер шрифта
         countSquareInCol: Количество квадратов в строке
@@ -101,8 +101,9 @@ backend:
         backgroundAttachment: Фиксированный фон или нет?
         backgroundSize: Размер фонового изображения
         blur: Размытие
-        shadow: Тень
-        shadowHover: Тень при наведении
+        shadow: Затемнение
+        shadowHover: Затемнение при наведении
+        shadowText: Тень текста
         squares: Квадраты
         height: Высота
         enable: Вкл/Выкл
@@ -117,7 +118,7 @@ backend:
         backgroundAttachment: Фиксированный фон или нет?
         backgroundSize: Размер фонового изображения
         blur: Размытие
-        shadow: Тень
+        shadow: Затемнение
         paddingTitle: padding заголовка квадрата
         paddingIcon: padding иконки квадрат
         add: Добавить квадрат
