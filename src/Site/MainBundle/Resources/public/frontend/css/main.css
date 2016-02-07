@@ -3,6 +3,9 @@ html, body {
   height: 100%;
   line-height: 1.42857143; }
 
+a {
+  text-decoration: none; }
+
 button:focus {
   outline: 0; }
 
@@ -97,7 +100,8 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
     z-index: 1; }
   .wrap-line .line {
     position: relative;
-    height: 100%; }
+    height: 100%;
+    z-index: 2; }
     .wrap-line .line .wrap-center-block {
       display: table;
       height: 100%;

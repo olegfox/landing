@@ -5,6 +5,10 @@ html, body {
   line-height: 1.42857143;
 }
 
+a {
+  text-decoration: none;
+}
+
 button{
 
   &:focus{
@@ -166,6 +170,7 @@ input, textarea, keygen, select, button {
 
     position: relative;
     height: 100%;
+    z-index: 2;
 
     .wrap-center-block {
 

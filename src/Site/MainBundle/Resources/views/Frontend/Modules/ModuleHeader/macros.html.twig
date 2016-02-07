@@ -30,9 +30,6 @@
                 <div class="hint-left">
                     <div class="table">
                         <div class="table-cell">
-                            {% if module.logo|length > 0 %}
-                                <img src="{{ local }}{{ asset(module.webPathLogo) }}" width="100px" alt=""/>
-                            {% endif %}
                             <div class="text">
                                 {{ module.hintLeft }}
                             </div>
@@ -49,6 +46,9 @@
             <!-- Center Block -->
             <div class="wrap-center-block">
                 <div class="center-block">
+                    {% if module.logo|length > 0 %}
+                        <img src="{{ local }}{{ asset(module.webPathLogo) }}" alt=""/>
+                    {% endif %}
                     <h1>{{ module.head1 }}</h1>
                     <h2>{{ module.head2 }}</h2>
                     {% if module.isButton %}
