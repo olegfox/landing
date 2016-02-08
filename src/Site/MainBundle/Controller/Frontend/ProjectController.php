@@ -78,6 +78,8 @@ class ProjectController extends Controller
 
         // Сохранение стилей, скриптов и картинок во временный каталог
         Export::rcopy('bundles/sitemain/frontend/', $dir);
+        Export::rcopy('uploads/images/', $dir . 'uploads/images/');
+        Export::rcopy('cache/', $dir . 'cache/');
         Export::rcopy('uploads/' . $project->getSlug() . '/', $dir . 'uploads/' . $project->getSlug() . '/');
 
         // Создание zip архива
