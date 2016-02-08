@@ -381,3 +381,68 @@ form {
   }
 
 }
+
+@media screen and (max-width: 768px) {
+  .wrap-header {
+    .header {
+      .top {
+        .hint-left {
+          position: relative;
+          top: 25px;
+          left: 0;
+          right: 0;
+          font-size: 24px;
+          text-align: center;
+          .table {
+            display: table;
+            width: 100%;
+            .table-cell {
+              div.text {
+                display: inline-block;
+                width: 100%;
+              }
+            }
+          }
+        }
+        .hint-right {
+          position: relative;
+          top: 50px;
+          left: 0;
+          right: 0;
+          font-size: 24px;
+          text-align: center
+        }
+      }
+      .wrap-center-block {
+        .center-block {
+          img {
+            max-width: 100px;
+          }
+        }
+      }
+    }
+  }
+
+  .wrap-line {
+    height: auto!important;
+    .line {
+      .wrap-center-block {
+        .center-block {
+          .text-block{
+            margin: 0 auto;
+            padding: 20px 0;
+            width: auto!important;
+          }
+        }
+      }
+    }
+  }
+
+  .wrap-square {
+    ul {
+      li {
+        width: 100%;
+      }
+    }
+  }
+}
