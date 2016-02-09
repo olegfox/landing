@@ -21,7 +21,9 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="./js/jquery-colorbox/example3/colorbox.css">
+    <link rel="stylesheet" href="./css/animate.min.css"/>
     <link rel="stylesheet" href="./css/main.css"/>
+
     {% if project.style.font|length > 0 %}
         {{ project.style.font|raw }}
     {% endif %}
@@ -132,5 +134,6 @@
     <script type="text/javascript" src="js/jquery-validation/dist/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/jquery-form/jquery.form.js"></script>
     <script type="text/javascript" src="js/vide/dist/jquery.vide.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 {% endblock %}
