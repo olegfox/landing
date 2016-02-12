@@ -124,6 +124,11 @@ class ModuleHeader
     protected $enable = true;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $shadowText;
+
+    /**
      * @ORM\OneToOne(targetEntity="Level", inversedBy="moduleHeader", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
@@ -748,5 +753,28 @@ class ModuleHeader
     public function getEnable()
     {
         return $this->enable;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param string $logo
+     * @return ModuleHeader
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return string 
+     */
+    public function getLogo()
+    {
+        return $this->logo;
     }
 }

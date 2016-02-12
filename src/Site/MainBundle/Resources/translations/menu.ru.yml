@@ -68,6 +68,7 @@ backend:
         backgroundAttachment: Фиксированный фон или нет?
         backgroundSize: Размер фонового изображения
         shadow: Затемнение (%)
+        shadowText: Тень текста
         head1: Заголовок 1
         head2: Заголовок 2
         isButton: Кнопка будет?
@@ -91,6 +92,7 @@ backend:
         verticalAlign: Вертикальное центрирование
         enable: Вкл/Выкл
         shadow: Затемнение (%)
+        shadowText: Тень текста
     module_square:
         fontSize: Размер шрифта
         countSquareInCol: Количество квадратов в строке

@@ -27,6 +27,10 @@ class ModuleLineType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_line.shadow'
             ))
+            ->add('shadowText', 'text', array(
+                'required' => false,
+                'label' => 'backend.module_line.shadowText'
+            ))
             ->add('height', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_line.height'

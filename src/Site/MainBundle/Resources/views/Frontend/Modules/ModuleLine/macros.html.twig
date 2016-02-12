@@ -41,6 +41,12 @@
             opacity: {{ (module.shadow) / 100 }};
         }
         {% endif %}
+
+        {% if module.shadowText > 0 %}
+        .wrap-line#level{{ module.level.id }} * {
+            text-shadow: {{ module.shadowText }};
+        }
+        {% endif %}
     </style>
     <div class="wrap-line level" id="level{{ module.level.id }}">
         <div class="shadow"></div>

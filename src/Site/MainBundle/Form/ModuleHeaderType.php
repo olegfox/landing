@@ -67,6 +67,10 @@ class ModuleHeaderType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_header.shadow'
             ))
+            ->add('shadowText', 'text', array(
+                'required' => false,
+                'label' => 'backend.module_header.shadowText'
+            ))
             ->add('head1', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_header.head1'
