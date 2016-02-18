@@ -11,6 +11,7 @@ use Site\MainBundle\Entity\ModuleHeader;
 use Site\MainBundle\Entity\ModuleLine;
 use Site\MainBundle\Entity\ModuleMap;
 use Site\MainBundle\Entity\ModuleSquare;
+use Site\MainBundle\Entity\ModuleComment;
 use Site\MainBundle\Form\LevelType;
 
 /**
@@ -36,6 +37,13 @@ class LevelController extends Controller
             if(is_object($entity->getModuleSquare())) {
                 foreach ($entity->getModuleSquare()->getSquares() as $square) {
                     $square->setModuleSquare($entity->getModuleSquare());
+                }
+            }
+
+//          Отзывы
+            if(is_object($entity->getModuleComment())) {
+                foreach ($entity->getModuleComment()->getComment() as $comment) {
+                    $comment->setModuleComment($entity->getModuleComment());
                 }
             }
 
@@ -85,6 +93,15 @@ class LevelController extends Controller
                     $em->persist($moduleMap);
                     $em->flush();
                     $entity->setModuleMap($moduleMap);
+                    $em->flush();
+                }break;
+                case 'comment': {
+                    // Модуль отзывов
+                    $moduleComment = new ModuleComment();
+                    $moduleComment->setLevel($entity);
+                    $em->persist($moduleComment);
+                    $em->flush();
+                    $entity->setModuleComment($moduleComment);
                     $em->flush();
                 }break;
                 default: {
@@ -137,6 +154,7 @@ class LevelController extends Controller
         $form->remove('moduleLine');
         $form->remove('moduleSquare');
         $form->remove('moduleMap');
+        $form->remove('moduleComment');
         $form->add('submit', 'submit', array('label' => 'backend.create'));
 
         return $form;
@@ -251,6 +269,15 @@ class LevelController extends Controller
             }
         }
 
+//      Отзывы
+        $originalComments = new ArrayCollection();
+
+        if(is_object($entity->getModuleComment())) {
+            foreach ($entity->getModuleComment()->getComments() as $comment) {
+                $originalComments->add($comment);
+            }
+        }
+
         $deleteForm = $this->createDeleteForm($id, $project_id, $page_id);
         $editForm = $this->createEditForm($entity, $project_id, $page_id, $type);
         $editForm->handleRequest($request);
@@ -275,6 +302,26 @@ class LevelController extends Controller
                     $square->setModuleSquare($entity->getModuleSquare());
                     $square->upload();
                     $square->uploadIcon();
+                }
+            }
+
+//          Отзывы
+            foreach ($originalComments as $comment) {
+
+                if (false === $entity->getModuleComment()->getComments()->contains($comment)) {
+
+                    $entity->getModuleComment()->getComments()->removeElement($comment);
+
+                    $em->remove($comment);
+
+                }
+
+            }
+
+            if(is_object($entity->getModuleComment())) {
+                foreach ($entity->getModuleComment()->getComments() as $comment) {
+                    $comment->setModuleComment($entity->getModuleComment());
+                    $comment->upload();
                 }
             }
 

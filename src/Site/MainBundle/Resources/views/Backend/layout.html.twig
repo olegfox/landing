@@ -80,8 +80,8 @@
         });
     }
 
-    if($('*[data-collection="moduleSquare_squares"]').length > 0) {
-        $('*[data-collection="moduleSquare_squares"]').click(function(){
+    if($('*[data-collection="moduleSquare_squares"], *[data-collection="moduleComment_comments"]').length > 0) {
+        $('*[data-collection="moduleSquare_squares"], *[data-collection="moduleComment_comments"]').click(function(){
             setTimeout(function(){
                 $('.colorSelector').ColorPicker({
                     color: '#0000ff',

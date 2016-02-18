@@ -62,6 +62,13 @@ class LevelType extends AbstractType
                         'label' => 'backend.level.moduleMap'
                     ));
             }break;
+            case 'comment': {
+                $builder
+                    ->add('moduleComment', new ModuleCommentType(), array(
+                        'required' => true,
+                        'label' => 'backend.level.moduleComment'
+                    ));
+            }break;
             default: {
                 $builder
                     ->add('moduleHeader', new ModuleHeaderType(), array(

@@ -71,6 +71,12 @@ class Level
     protected $moduleMap;
 
     /**
+     * @ORM\OneToOne(targetEntity="ModuleComment", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="moduleComment_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     */
+    protected $moduleComment;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=100, nullable=true)
@@ -295,5 +301,28 @@ class Level
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set moduleComment
+     *
+     * @param \Site\MainBundle\Entity\ModuleComment $moduleComment
+     * @return Level
+     */
+    public function setModuleComment(\Site\MainBundle\Entity\ModuleComment $moduleComment = null)
+    {
+        $this->moduleComment = $moduleComment;
+
+        return $this;
+    }
+
+    /**
+     * Get moduleComment
+     *
+     * @return \Site\MainBundle\Entity\ModuleComment 
+     */
+    public function getModuleComment()
+    {
+        return $this->moduleComment;
     }
 }

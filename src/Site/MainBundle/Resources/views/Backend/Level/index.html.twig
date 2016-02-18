@@ -53,4 +53,9 @@
             {{ 'backend.create_map'|trans({}, 'menu') }}
         </a>
     </li>
+    <li class="active">
+        <a href="{{ path('backend_level_new', {'project_id': entity.project.id, 'page_id': entity.id, 'type': 'comment'}) }}">
+            {{ 'backend.create_comment'|trans({}, 'menu') }}
+        </a>
+    </li>
 </ul>

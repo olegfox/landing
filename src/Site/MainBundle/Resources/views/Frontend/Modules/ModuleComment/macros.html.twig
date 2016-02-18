@@ -1,0 +1,70 @@
+{% macro moduleComment(module, local = '') %}
+    <style type="text/css">
+        .wrap-comment#level{{ module.level.id }} ul li {
+            min-height: {{ module.height }};
+            min-width: {{ module.width }};
+        }
+
+        .wrap-comment#level{{ module.level.id }} ul li .blur {
+        {% if module.backgroundImg|length > 0 %}
+            background-image: url('{{ local }}{{ asset(module.webPath) }}');
+            {% if module.backgroundColor|length > 0 %}
+                background-color: {{ module.backgroundColor }};
+            {% endif %}
+            {% if module.backgroundPosition|length > 0 %}
+                background-position: {{ module.backgroundPosition }};
+            {% endif %}
+            {% if module.backgroundAttachment|length > 0 %}
+                background-attachment: {{ module.backgroundAttachment }};
+            {% endif %}
+            {% if module.backgroundSize|length > 0 %}
+                background-size: {{ module.backgroundSize }};
+            {% endif %}
+        {% endif %}
+        }
+
+        {% if module.shadow > 0 %}
+        .wrap-comment#level{{ module.level.id }} .comment ul li .shadow {
+            opacity: {{ (module.shadow) / 100 }};
+            -webkit-transition: opacity 0.5s;
+            -moz-transition: opacity 0.5s;
+            -o-transition: opacity 0.5s;
+            transition: opacity 0.5s;
+        }
+        {% endif %}
+
+        {% if module.shadowText|length > 0 %}
+        .wrap-comment#level{{ module.level.id }} .comment {
+            text-shadow: {{ module.shadowText }};
+        }
+        {% endif %}
+    </style>
+    <div class="wrap-comment level" id="level{{ module.level.id }}">
+        <div class="comment">
+
+            {% if module.comments|length > 0 %}
+                <!-- Comments Block -->
+                <ul>
+                {% for comment in module.comments %}
+                    <li>
+                        <div class="wrap_wrap">
+                            <div class="wrap">
+                                <div class="inner">
+                                    {% if comment.img|length > 0 %}
+                                        <div class="icon"><img src="{{ local }}{{ image(comment.webPath).cropResize(400) }}" alt=""/></div>
+                                    {% endif %}
+                                    {% if comment.text|length > 0 %}
+                                        <div class="text">{{ comment.text|raw }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+                <!-- end Squares Block -->
+            {% endif %}
+
+        </div>
+    </div>
+{% endmacro %}

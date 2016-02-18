@@ -55,6 +55,7 @@ backend:
         moduleLine: Модуль Линия
         moduleSquare: Модуль Квадраты
         moduleMap: Модуль Карта
+        moduleComment: Отзывы
         not_found: Уровень не существует
         updateBack: сохранить и перейти к уровням
     module_header:
@@ -129,6 +130,25 @@ backend:
         height: Высота
         code: Код карты
         enable: Вкл/Выкл
+    module_comment:
+        backgroundColor: Фоновый цвет
+        backgroundImg: Ссылка на изображение
+        file: Выберите изображение
+        backgroundPosition: Позиция фонового изображения
+        backgroundAttachment: Фиксированный фон или нет?
+        backgroundSize: Размер фонового изображения
+        shadowText: Тень текста
+        shadow: Затемнение
+        comments: Отзывы
+        height: Высота
+        width: Ширина
+        enable: Вкл/Выкл
+    module_comment_comments:
+        img: Ссылка на изображение
+        file: Выберите изображение
+        text: Текст
+        add: Добавить отзыв
+        delete: Удалить отзыв
     settings:
         h1_show: Настройки
         h1_list: Список настроек
@@ -150,6 +170,7 @@ backend:
     create_line: создать линию
     create_map: создать карту
     create_square: создать квадрат
+    create_comment: добавить отзывы
     delete: удалить
 
 frontend:

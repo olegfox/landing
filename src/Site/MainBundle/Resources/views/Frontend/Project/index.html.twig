@@ -4,6 +4,7 @@
 {% from 'SiteMainBundle:Frontend/Modules/ModuleLine:macros.html.twig' import moduleLine %}
 {% from 'SiteMainBundle:Frontend/Modules/ModuleSquare:macros.html.twig' import moduleSquare %}
 {% from 'SiteMainBundle:Frontend/Modules/ModuleMap:macros.html.twig' import moduleMap %}
+{% from 'SiteMainBundle:Frontend/Modules/ModuleComment:macros.html.twig' import moduleComment %}
 
 {% block title %}{{ project.style.metaTitle }}{% endblock %}
 {% block meta_description %}{{ project.style.metaDescription }}{% endblock %}
@@ -117,6 +118,14 @@
                 <!-- Module Map -->
                 {{ moduleMap(level.moduleMap) }}
                 <!-- end Module Map -->
+            {% endif %}
+        {% endif %}
+
+        {% if level.moduleComment.id is defined %}
+            {% if level.moduleComment.enable %}
+                <!-- Module Comment -->
+                {{ moduleComment(level.moduleComment) }}
+                <!-- end Module Comment -->
             {% endif %}
         {% endif %}
 

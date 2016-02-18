@@ -15,9 +15,9 @@
 
     {{ form_start(edit_form, { 'style': 'horizontal' , attr: {novalidate: 'novalidate'} }) }}
     {% for keyForm, form in edit_form %}
-        {% if keyForm != 'moduleHeader' and keyForm != 'moduleLine' %}
+        {% if keyForm != 'moduleHeader' and keyForm != 'moduleLine' and keyForm != 'moduleComment' %}
             {{ form_row(form) }}
-        {% elseif keyForm == 'moduleHeader' or keyForm == 'moduleLine' %}
+        {% elseif keyForm == 'moduleHeader' or keyForm == 'moduleLine' or keyForm == 'moduleComment' %}
             <div class="form-group">
                 {{ form_label(form) }}
                 <div class="col-lg-10">
@@ -25,7 +25,7 @@
                         <div class="form-group">
                             {{ form_label(field) }}
                             <div class="col-lg-10">
-                                {% if (keyField == 'backgroundImg' or keyField == 'logo') and field.vars.value | length > 0 %}
+                                {% if (keyField == 'backgroundImg' or keyField == 'logo' or keyField == 'img') and field.vars.value | length > 0 %}
                                     <div class="widget-img">
                                         <a href="{{ asset('uploads/'~entity.page.project.slug~'/'~keyForm~'/'~field.vars.value) }}" target="_blank">
                                             <img src="{{ image('uploads/'~entity.page.project.slug~'/'~keyForm~'/'~field.vars.value).cropResize(100) }}" width="100px" alt=""/>
