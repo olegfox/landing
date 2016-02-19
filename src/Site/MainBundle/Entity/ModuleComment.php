@@ -24,9 +24,24 @@ class ModuleComment
     private $id;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $time = 2000;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $height;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $lineHeight;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -37,6 +52,11 @@ class ModuleComment
      * @Assert\File()
      */
     protected $file;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $backgroundLine;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -465,5 +485,97 @@ class ModuleComment
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return ModuleComment
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set lineHeight
+     *
+     * @param string $lineHeight
+     * @return ModuleComment
+     */
+    public function setLineHeight($lineHeight)
+    {
+        $this->lineHeight = $lineHeight;
+
+        return $this;
+    }
+
+    /**
+     * Get lineHeight
+     *
+     * @return string 
+     */
+    public function getLineHeight()
+    {
+        return $this->lineHeight;
+    }
+
+    /**
+     * Set backgroundLine
+     *
+     * @param string $backgroundLine
+     * @return ModuleComment
+     */
+    public function setBackgroundLine($backgroundLine)
+    {
+        $this->backgroundLine = $backgroundLine;
+
+        return $this;
+    }
+
+    /**
+     * Get backgroundLine
+     *
+     * @return string 
+     */
+    public function getBackgroundLine()
+    {
+        return $this->backgroundLine;
+    }
+
+    /**
+     * Set time
+     *
+     * @param integer $time
+     * @return ModuleComment
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return integer 
+     */
+    public function getTime()
+    {
+        return $this->time;
     }
 }

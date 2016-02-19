@@ -1,7 +1,7 @@
 {% macro moduleHeader(module, local = '') %}
     <style type="text/css">
         {% if module.backgroundImg|length > 0 %}
-            .wrap-header#level{{ module.level.id }} {
+            .wrap-header.level{{ module.level.id }} {
                 {% if module.backgroundImg|length > 0 %}
                     background-image: url('{{ local }}{{ asset(module.webPath) }}');
                 {% endif %}
@@ -17,17 +17,17 @@
             }
         {% endif %}
         {% if module.shadow > 0 %}
-        .wrap-header#level{{ module.level.id }} .shadow {
+        .wrap-header.level{{ module.level.id }} .shadow {
             opacity: {{ (module.shadow) / 100 }};
         }
         {% endif %}
         {% if module.shadowText > 0 %}
-        .wrap-header#level{{ module.level.id }} * {
+        .wrap-header.level{{ module.level.id }} * {
             text-shadow: {{ module.shadowText }};
         }
         {% endif %}
     </style>
-    <div class="wrap-header level" id="level{{ module.level.id }}" {% if module.video|length > 0 %}data-video="{{ local }}{{ asset(module.webPathVideo) }}"{% endif %}>
+    <div class="wrap-header level-block level{{ module.level.id }}" {% if module.video|length > 0 %}data-video="{{ local }}{{ asset(module.webPathVideo) }}"{% endif %}>
         <div class="shadow"></div>
         <div class="header">
             <!-- Top -->

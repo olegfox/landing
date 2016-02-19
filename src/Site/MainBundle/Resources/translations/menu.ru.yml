@@ -131,6 +131,9 @@ backend:
         code: Код карты
         enable: Вкл/Выкл
     module_comment:
+        title: Заголовок
+        lineHeight: Высота линии заголовка
+        backgroundLine: Фоновый цвет линии заголовка
         backgroundColor: Фоновый цвет
         backgroundImg: Ссылка на изображение
         file: Выберите изображение
@@ -142,6 +145,7 @@ backend:
         comments: Отзывы
         height: Высота
         width: Ширина
+        time: Задержка слайдера (с)
         enable: Вкл/Выкл
     module_comment_comments:
         img: Ссылка на изображение

@@ -292,6 +292,40 @@ input, textarea, keygen, select, button {
 }
 // end Module Map
 
+// Module Comment
+.wrap-comment {
+  overflow: hidden;
+  .wrap-head{
+    .head{
+      text-align: center;
+    }
+  }
+  .comment {
+    text-align: center;
+    .wrap_wrap {
+      position: absolute;
+      display: table;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      .wrap {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+    .icon{
+      display: inline-block;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+  }
+}
+// end Module Comment
+
 .contact-form {
   display: none;
 }

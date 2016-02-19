@@ -16,6 +16,25 @@ class ModuleCommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title', 'textarea', array(
+                'required' => true,
+                'label' => 'backend.module_comment.title',
+                "attr" => array(
+                    "class" => "ckeditor"
+                )
+            ))
+            ->add('time', 'number', array(
+                'required' => true,
+                'label' => 'backend.module_comment.time'
+            ))
+            ->add('lineHeight', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_comment.lineHeight'
+            ))
+            ->add('backgroundLine', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_comment.backgroundLine'
+            ))
             ->add('height', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_comment.height'

@@ -1,13 +1,13 @@
 {% macro moduleSquare(module, local = '') %}
     <style type="text/css">
-        .wrap-square#level{{ module.level.id }} ul li {
+        .wrap-square.level{{ module.level.id }} ul li {
             min-height: {{ module.height }};
         {% if module.countSquareInCol > 0 %}
             width: {{ 100/module.countSquareInCol }}%;
         {% endif %}
         }
 
-        .wrap-square#level{{ module.level.id }} ul li .blur {
+        .wrap-square.level{{ module.level.id }} ul li .blur {
         {% if module.backgroundImg|length > 0 %}
             background-image: url('{{ local }}{{ asset(module.webPath) }}');
             {% if module.backgroundColor|length > 0 %}
@@ -25,14 +25,14 @@
         {% endif %}
         }
 
-        .wrap-square#level{{ module.level.id }} ul li .title {
+        .wrap-square.level{{ module.level.id }} ul li .title {
         {% if module.fontSize|length > 0 %}
             font-size: {{ module.fontSize }};
         {% endif %}
         }
 
         {% if module.shadow > 0 %}
-        .wrap-square#level{{ module.level.id }} .square ul li .shadow {
+        .wrap-square.level{{ module.level.id }} .square ul li .shadow {
             opacity: {{ (module.shadow) / 100 }};
             -webkit-transition: opacity 0.5s;
             -moz-transition: opacity 0.5s;
@@ -42,18 +42,18 @@
         {% endif %}
 
         {% if module.shadowHover > 0 %}
-        .wrap-square#level{{ module.level.id }} .square ul li:hover .shadow {
+        .wrap-square.level{{ module.level.id }} .square ul li:hover .shadow {
             opacity: {{ (module.shadowHover) / 100 }};
         }
         {% endif %}
 
         {% if module.shadowText|length > 0 %}
-        .wrap-square#level{{ module.level.id }} .square ul li .title {
+        .wrap-square.level{{ module.level.id }} .square ul li .title {
             text-shadow: {{ module.shadowText }};
         }
         {% endif %}
     </style>
-    <div class="wrap-square level" id="level{{ module.level.id }}">
+    <div class="wrap-square level-block level{{ module.level.id }}">
         <div class="square">
 
             {% if module.squares|length > 0 %}

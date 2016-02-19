@@ -1,11 +1,18 @@
 {% macro moduleComment(module, local = '') %}
     <style type="text/css">
-        .wrap-comment#level{{ module.level.id }} ul li {
+        .wrap-comment.level{{ module.level.id }} ul li {
+            {% if module.height|length > 0 %}
             min-height: {{ module.height }};
-            min-width: {{ module.width }};
+            {% endif %}
         }
 
-        .wrap-comment#level{{ module.level.id }} ul li .blur {
+        {% if module.width|length > 0 %}
+        .wrap-comment.level{{ module.level.id }} ul li .wrap_wrap {
+            max-width: {{ module.width }};
+        }
+        {% endif %}
+
+        .wrap-comment.level{{ module.level.id }} ul li .blur {
         {% if module.backgroundImg|length > 0 %}
             background-image: url('{{ local }}{{ asset(module.webPath) }}');
             {% if module.backgroundColor|length > 0 %}
@@ -24,7 +31,7 @@
         }
 
         {% if module.shadow > 0 %}
-        .wrap-comment#level{{ module.level.id }} .comment ul li .shadow {
+        .wrap-comment.level{{ module.level.id }} .comment ul li .shadow {
             opacity: {{ (module.shadow) / 100 }};
             -webkit-transition: opacity 0.5s;
             -moz-transition: opacity 0.5s;
@@ -34,24 +41,43 @@
         {% endif %}
 
         {% if module.shadowText|length > 0 %}
-        .wrap-comment#level{{ module.level.id }} .comment {
+        .wrap-comment.level{{ module.level.id }} .comment {
             text-shadow: {{ module.shadowText }};
         }
         {% endif %}
+
+
+        .wrap-comment.level{{ module.level.id }} .wrap-head .head {
+        {% if module.lineHeight|length > 0 %}
+            height: {{ module.lineHeight }};
+            line-height: {{ module.lineHeight }};
+        {% endif %}
+        {% if module.backgroundLine|length > 0 %}
+            background-color: {{ module.backgroundLine }};
+        {% endif %}
+        }
+
     </style>
-    <div class="wrap-comment level" id="level{{ module.level.id }}">
+    <div class="wrap-comment level-block level{{ module.level.id }}">
+        {% if module.title|length > 0 %}
+            <div class="wrap-head">
+                <div class="head">
+                    {{ module.title|raw }}
+                </div>
+            </div>
+        {% endif %}
         <div class="comment">
 
             {% if module.comments|length > 0 %}
                 <!-- Comments Block -->
-                <ul>
+                <ul data-slick='{ {% if module.time > 0 %}"autoplay": true, "autoplaySpeed": {{ module.time }},{% endif %} "infinite": true, "slidesToShow": 1, "slidesToScroll": 1}'>
                 {% for comment in module.comments %}
                     <li>
                         <div class="wrap_wrap">
                             <div class="wrap">
                                 <div class="inner">
                                     {% if comment.img|length > 0 %}
-                                        <div class="icon"><img src="{{ local }}{{ image(comment.webPath).cropResize(400) }}" alt=""/></div>
+                                        <div class="icon"><img src="{{ local }}{{ image(comment.webPath).zoomCrop(150, 150) }}" alt=""/></div>
                                     {% endif %}
                                     {% if comment.text|length > 0 %}
                                         <div class="text">{{ comment.text|raw }}</div>

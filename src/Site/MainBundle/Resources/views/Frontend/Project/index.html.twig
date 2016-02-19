@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/js/jquery-colorbox/example3/colorbox.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/animate.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/main.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/slick-theme.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/slick.css') }}"/>
     {% if project.style.font|length > 0 %}
         {{ project.style.font|raw }}
     {% endif %}
@@ -144,4 +146,12 @@
     <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/vide/dist/jquery.vide.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/wow.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/slick.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function(){
+            if($('.comment ul').length > 0) {
+                $('.comment ul').slick();
+            }
+        });
+    </script>
 {% endblock %}

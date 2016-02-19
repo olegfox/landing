@@ -1,7 +1,7 @@
 {% macro moduleLine(module, local = '') %}
     <style type="text/css">
 
-        .wrap-line#level{{ module.level.id }} {
+        .wrap-line.level{{ module.level.id }} {
             {% if module.height|length > 0 %}
                 height: {{ module.height }};
             {% endif %}
@@ -25,30 +25,30 @@
         }
 
         {% if module.verticalAlign|length > 0 %}
-            .wrap-line#level{{ module.level.id }} .line .wrap-center-block .center-block {
+            .wrap-line.level{{ module.level.id }} .line .wrap-center-block .center-block {
                 vertical-align: {{ module.verticalAlign }};
             }
         {% endif %}
 
         {% if module.width|length > 0 %}
-        .wrap-line#level{{ module.level.id }} .line .wrap-center-block .center-block .text-block {
+        .wrap-line.level{{ module.level.id }} .line .wrap-center-block .center-block .text-block {
             width: {{ module.width }};
         }
         {% endif %}
 
         {% if module.shadow > 0 %}
-        .wrap-line#level{{ module.level.id }} .shadow {
+        .wrap-line.level{{ module.level.id }} .shadow {
             opacity: {{ (module.shadow) / 100 }};
         }
         {% endif %}
 
         {% if module.shadowText > 0 %}
-        .wrap-line#level{{ module.level.id }} * {
+        .wrap-line.level{{ module.level.id }} * {
             text-shadow: {{ module.shadowText }};
         }
         {% endif %}
     </style>
-    <div class="wrap-line level" id="level{{ module.level.id }}">
+    <div class="wrap-line level-block level{{ module.level.id }}">
         <div class="shadow"></div>
         <div class="line">
 

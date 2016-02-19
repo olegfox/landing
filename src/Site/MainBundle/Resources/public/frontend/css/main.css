@@ -164,6 +164,30 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
   position: relative;
   height: 100%; }
 
+.wrap-comment {
+  overflow: hidden; }
+  .wrap-comment .wrap-head .head {
+    text-align: center; }
+  .wrap-comment .comment {
+    text-align: center; }
+    .wrap-comment .comment .wrap_wrap {
+      position: absolute;
+      display: table;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+      .wrap-comment .comment .wrap_wrap .wrap {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle; }
+    .wrap-comment .comment .icon {
+      display: inline-block;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 50px; }
+
 .contact-form {
   display: none; }
 
@@ -229,5 +253,98 @@ form .btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc; }
+
+@media screen and (max-width: 768px) {
+  .wrap-header .header .top {
+    height: 10px !important; }
+    .wrap-header .header .top .hint-left {
+      position: relative !important;
+      top: 25px;
+      left: 0 !important;
+      right: 0 !important;
+      font-size: 24px !important;
+      text-align: center !important; }
+      .wrap-header .header .top .hint-left .table {
+        display: table !important;
+        width: 100% !important; }
+        .wrap-header .header .top .hint-left .table .table-cell div.text {
+          display: inline-block !important;
+          width: 100% !important; }
+    .wrap-header .header .top .hint-right {
+      position: relative !important;
+      top: 50px !important;
+      left: 0 !important;
+      right: 0 !important;
+      font-size: 24px !important;
+      text-align: center !important; }
+  .wrap-header .header .wrap-center-block .center-block img {
+    max-width: 100px !important; }
+  .wrap-header .header .wrap-center-block .center-block .btn {
+    font-size: 18px !important;
+    margin-top: 15px !important; }
+
+  .wrap-line {
+    height: auto !important; }
+    .wrap-line .line .wrap-center-block .center-block .text-block {
+      margin: 0 auto !important;
+      padding: 20px 0 !important;
+      width: auto !important; }
+      .wrap-line .line .wrap-center-block .center-block .text-block img {
+        width: 100% !important;
+        height: auto !important; }
+      .wrap-line .line .wrap-center-block .center-block .text-block p {
+        padding: 0 15px !important; }
+
+  .wrap-square ul li {
+    width: 100% !important; } }
+@media screen and (max-width: 320px) {
+  h1 {
+    font-size: 24px !important; }
+
+  h2 {
+    font-size: 18px !important; }
+
+  .wrap-header .header .top .hint-left {
+    position: relative !important;
+    top: 25px;
+    left: 0 !important;
+    right: 0 !important;
+    font-size: 18px !important;
+    text-align: center !important; }
+    .wrap-header .header .top .hint-left .table {
+      display: table !important;
+      width: 100% !important; }
+      .wrap-header .header .top .hint-left .table .table-cell div.text {
+        display: inline-block !important;
+        width: 100% !important; }
+  .wrap-header .header .top .hint-right {
+    position: relative !important;
+    top: 50px !important;
+    left: 0 !important;
+    right: 0 !important;
+    font-size: 18px !important;
+    text-align: center !important; }
+  .wrap-header .header .wrap-center-block .center-block img {
+    max-width: 100px !important; }
+  .wrap-header .header .wrap-center-block .center-block .btn {
+    font-size: 16px !important;
+    margin-top: 15px !important; }
+
+  .wrap-line {
+    height: auto !important; }
+    .wrap-line .line .wrap-center-block .center-block .text-block {
+      margin: 0 auto !important;
+      padding: 20px 0 !important;
+      width: auto !important; }
+      .wrap-line .line .wrap-center-block .center-block .text-block img {
+        width: 100% !important;
+        height: auto !important; }
+      .wrap-line .line .wrap-center-block .center-block .text-block p {
+        padding: 0 15px !important; }
+
+  .wrap-square ul li {
+    width: 100% !important; }
+    .wrap-square ul li .title {
+      font-size: 18px !important; } }
 
 /*# sourceMappingURL=main.css.map */
