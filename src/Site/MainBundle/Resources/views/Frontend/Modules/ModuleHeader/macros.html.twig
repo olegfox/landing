@@ -36,14 +36,14 @@
                     <div class="table">
                         <div class="table-cell">
                             <div class="text">
-                                {{ module.hintLeft }}
+                                {{ module.hintLeft|raw }}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="hint-right">
-                    {{ module.hintRight1 }}
-                    {{ module.hintRight2 }}
+                    {{ module.hintRight1|raw }}
+                    {{ module.hintRight2|raw }}
                 </div>
             </div>
             <!-- end Top -->
@@ -54,8 +54,8 @@
                     {% if module.logo|length > 0 %}
                         <img src="{{ local }}{{ asset(module.webPathLogo) }}" alt=""/>
                     {% endif %}
-                    <h1>{{ module.head1 }}</h1>
-                    <h2>{{ module.head2 }}</h2>
+                    <h1>{{ module.head1|raw }}</h1>
+                    <h2>{{ module.head2|raw }}</h2>
                     {% if module.isButton %}
                         <button class="btn feedback">{{ module.textButton }}</button>
                     {% endif %}
