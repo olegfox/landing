@@ -1,0 +1,25 @@
+{% macro moduleForm(module = '', local = '') %}
+    <div class="wrap-form level-block level{{ module.level.id }}">
+
+        <form class="form" action="" novalidate="novalidate">
+
+            <!-- Form Block -->
+            <div class="form-field">
+                <input type="text" placeholder="Имя"/>
+            </div>
+
+            <div class="form-field">
+                <input type="text" placeholder="Телефон"/>
+            </div>
+
+            <div class="form-field">
+                <input type="text" placeholder="Электронная почта"/>
+            </div>
+
+            <button type="submit">Отправить заявку</button>
+            <!-- end Form Block -->
+
+        </form>
+
+    </div>
+{% endmacro %}
