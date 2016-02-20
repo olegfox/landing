@@ -302,14 +302,15 @@ input, textarea, keygen, select, button {
   }
   .comment {
     text-align: center;
-    .wrap_wrap {
+    .wrap_wrap { 
       position: absolute;
       display: table;
       margin: auto;
       top: 0;
       bottom: 0;
       left: 0;
-      right: 0;
+      right: 0;  
+      width: 100%;
       .wrap {
         display: table-cell;
         text-align: center;

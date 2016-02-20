@@ -177,7 +177,8 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
       top: 0;
       bottom: 0;
       left: 0;
-      right: 0; }
+      right: 0;
+      width: 100%; }
       .wrap-comment .comment .wrap_wrap .wrap {
         display: table-cell;
         text-align: center;

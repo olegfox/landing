@@ -1,5 +1,5 @@
 /*
-Errno::ENOENT: No such file or directory - ./src/SiteMainBundle/Resources/public/frontend/css/main.scss
+Errno::ENOENT: No such file or directory - ./src/Site/MainBundle/Resources/public/frontend/css/mains.scss
 
 Backtrace:
 /var/lib/gems/1.9.1/gems/sass-3.4.20/lib/sass/plugin/compiler.rb:482:in `read'
@@ -20,4 +20,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Errno::ENOENT: No such file or directory - ./src/SiteMainBundle/Resources/public/frontend/css/main.scss"; }
+  content: "Errno::ENOENT: No such file or directory - ./src/Site/MainBundle/Resources/public/frontend/css/mains.scss"; }
