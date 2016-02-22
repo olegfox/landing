@@ -76,6 +76,13 @@ class LevelType extends AbstractType
                         'label' => 'backend.level.moduleHeader'
                     ));
             }break;
+            default: {
+                $builder
+                    ->add('moduleForm', new ModuleFormType(), array(
+                        'required' => true,
+                        'label' => 'backend.level.moduleForm'
+                    ));
+            }break;
         }
     }
     

@@ -1,0 +1,30 @@
+{% macro moduleForm(module) %}
+    <style type="text/css">
+        .wrap-form.level{{ module.level.id }} {
+            background-color: #9a8a68;
+            {% if module.height|length > 0 %} min-height: {{ module.height }};
+            {% endif %}
+        }
+    </style>
+    <div class="wrap-form level-block level{{ module.level.id }}">
+        <form action="">
+            <h2>Отправить заявку</h2>
+
+            <div class="form-input-field">
+                <input type="text" placeholder="Имя"/>
+            </div>
+
+            <div class="form-input-field">
+                <input type="text" placeholder="Телефон"/>
+            </div>
+
+            <div class="form-input-field">
+                <input type="text" placeholder="Электронная почта"/>
+            </div>
+
+            <div class="form-input-field">
+                <button type="submit">Отправить заявку</button>
+            </div>
+        </form>
+    </div>
+{% endmacro %}

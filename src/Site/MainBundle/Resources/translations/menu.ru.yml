@@ -56,6 +56,7 @@ backend:
         moduleSquare: Модуль Квадраты
         moduleMap: Модуль Карта
         moduleComment: Отзывы
+        moduleForm: Форма
         not_found: Уровень не существует
         updateBack: сохранить и перейти к уровням
     module_header:
@@ -153,6 +154,11 @@ backend:
         text: Текст
         add: Добавить отзыв
         delete: Удалить отзыв
+    module_form:
+        title: Заголовок
+        height: Высота
+        width: Ширина
+        enable: Вкл/Выкл
     settings:
         h1_show: Настройки
         h1_list: Список настроек
@@ -175,6 +181,7 @@ backend:
     create_map: создать карту
     create_square: создать квадрат
     create_comment: добавить отзывы
+    create_form: добавить форму
     delete: удалить
 
 frontend:

@@ -49,6 +49,14 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
       top: 50px;
       right: 50px;
       font-size: 24px; }
+      .wrap-header .header .top .hint-right:after {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: -6px;
+        left: -60px;
+        background: url("../images/phone.png") center center no-repeat; }
     .wrap-header .header .wrap-center-block {
       display: table;
       height: 100%;
@@ -189,6 +197,41 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
       overflow: hidden;
       margin-bottom: 50px; }
 
+.wrap-form form {
+  padding: 0 30px;
+  text-align: center; }
+  .wrap-form form h2 {
+    font-size: 37px;
+    color: #fff;
+    text-align: center;
+    padding-top: 57px;
+    padding-bottom: 47px; }
+  .wrap-form form .form-input-field {
+    display: inline-block;
+    margin-right: 14px; }
+    .wrap-form form .form-input-field input {
+      font-size: 26px;
+      height: 61px;
+      padding: 0 16px;
+      border: 0;
+      color: #7c7c7c; }
+      .wrap-form form .form-input-field input::-webkit-input-placeholder {
+        color: #7c7c7c; }
+      .wrap-form form .form-input-field input::-moz-placeholder {
+        color: #7c7c7c; }
+      .wrap-form form .form-input-field input:-moz-placeholder {
+        color: #7c7c7c; }
+      .wrap-form form .form-input-field input:-ms-input-placeholder {
+        color: #7c7c7c; }
+    .wrap-form form .form-input-field button {
+      height: 61px;
+      background-color: #82c551;
+      border: 0;
+      color: #fff;
+      padding: 0 44px;
+      font-size: 27px;
+      cursor: pointer; }
+
 .contact-form {
   display: none; }
 
@@ -255,6 +298,9 @@ form .btn {
   background-color: #fff;
   border-color: #ccc; }
 
+@media screen and (max-width: 1024px) {
+  .wrap-form form .form-input-field {
+    margin-bottom: 15px; } }
 @media screen and (max-width: 768px) {
   .wrap-header .header .top {
     height: 10px !important; }
@@ -346,6 +392,9 @@ form .btn {
   .wrap-square ul li {
     width: 100% !important; }
     .wrap-square ul li .title {
-      font-size: 18px !important; } }
+      font-size: 18px !important; }
+
+  .wrap-form form .form-input-field {
+    display: block; } }
 
 /*# sourceMappingURL=main.css.map */

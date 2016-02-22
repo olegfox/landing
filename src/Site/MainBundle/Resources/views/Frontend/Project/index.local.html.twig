@@ -5,6 +5,7 @@
 {% from 'SiteMainBundle:Frontend/Modules/ModuleSquare:macros.html.twig' import moduleSquare %}
 {% from 'SiteMainBundle:Frontend/Modules/ModuleMap:macros.html.twig' import moduleMap %}
 {% from 'SiteMainBundle:Frontend/Modules/ModuleComment:macros.html.twig' import moduleComment %}
+{% from 'SiteMainBundle:Frontend/Modules/ModuleForm:macros.html.twig' import moduleForm %}
 
 {% block title %}{{ project.style.metaTitle }}{% endblock %}
 {% block meta_description %}{{ project.style.metaDescription }}{% endblock %}
@@ -129,6 +130,14 @@
                 <!-- Module Map -->
                 {{ moduleMap(level.moduleComment, '.') }}
                 <!-- end Module Map -->
+            {% endif %}
+        {% endif %}
+
+        {% if level.moduleForm.id is defined %}
+            {% if level.moduleForm.enable %}
+                <!-- Module Form -->
+                {{ moduleForm(level.moduleForm, '.') }}
+                <!-- end Module Form -->
             {% endif %}
         {% endif %}
 

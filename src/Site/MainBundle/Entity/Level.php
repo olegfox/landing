@@ -77,6 +77,12 @@ class Level
     protected $moduleComment;
 
     /**
+     * @ORM\OneToOne(targetEntity="ModuleForm", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="moduleForm_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     */
+    protected $moduleForm;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=100, nullable=true)
@@ -324,5 +330,28 @@ class Level
     public function getModuleComment()
     {
         return $this->moduleComment;
+    }
+
+    /**
+     * Set moduleForm
+     *
+     * @param \Site\MainBundle\Entity\ModuleForm $moduleForm
+     * @return Level
+     */
+    public function setModuleForm(\Site\MainBundle\Entity\ModuleForm $moduleForm = null)
+    {
+        $this->moduleForm = $moduleForm;
+
+        return $this;
+    }
+
+    /**
+     * Get moduleForm
+     *
+     * @return \Site\MainBundle\Entity\ModuleForm 
+     */
+    public function getModuleForm()
+    {
+        return $this->moduleForm;
     }
 }

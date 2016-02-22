@@ -12,6 +12,7 @@ use Site\MainBundle\Entity\ModuleLine;
 use Site\MainBundle\Entity\ModuleMap;
 use Site\MainBundle\Entity\ModuleSquare;
 use Site\MainBundle\Entity\ModuleComment;
+use Site\MainBundle\Entity\ModuleForm;
 use Site\MainBundle\Form\LevelType;
 
 /**
@@ -104,6 +105,15 @@ class LevelController extends Controller
                     $entity->setModuleComment($moduleComment);
                     $em->flush();
                 }break;
+                case 'form': {
+                    // Модуль формы
+                    $moduleForm = new ModuleForm();
+                    $moduleForm->setLevel($entity);
+                    $em->persist($moduleForm);
+                    $em->flush();
+                    $entity->setModuleForm($moduleForm);
+                    $em->flush();
+                }break;
                 default: {
                     // Модуль шапка
                     $moduleHeader = new ModuleHeader();
@@ -155,6 +165,7 @@ class LevelController extends Controller
         $form->remove('moduleSquare');
         $form->remove('moduleMap');
         $form->remove('moduleComment');
+        $form->remove('moduleForm');
         $form->add('submit', 'submit', array('label' => 'backend.create'));
 
         return $form;
