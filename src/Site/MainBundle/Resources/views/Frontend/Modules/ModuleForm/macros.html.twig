@@ -1,10 +1,30 @@
 {% macro moduleForm(module, local = '') %}
     <style type="text/css">
         .wrap-form.level{{ module.level.id }} {
-            background-color: #9a8a68;
             {% if module.height|length > 0 %} min-height: {{ module.height }};
             {% endif %}
         }
+        {% if module.backgroundColor|length > 0 %}
+        .wrap-form.level{{ module.level.id }} {
+            background-color: {{ module.backgroundColor }};
+        }
+        {% endif %}
+        {% if module.backgroundImg|length > 0 %}
+        .wrap-form.level{{ module.level.id }} {
+        {% if module.backgroundImg|length > 0 %}
+            background-image: url('{{ local }}{{ asset(module.webPath) }}');
+        {% endif %}
+        {% if module.backgroundPosition|length > 0 %}
+            background-position: {{ module.backgroundPosition }};
+        {% endif %}
+        {% if module.backgroundAttachment|length > 0 %}
+            background-attachment: {{ module.backgroundAttachment }};
+        {% endif %}
+        {% if module.backgroundSize|length > 0 %}
+            background-size: {{ module.backgroundSize }};
+        {% endif %}
+        }
+        {% endif %}
     </style>
     <div class="wrap-form level-block level{{ module.level.id }}">
         {{ render(url('frontend_project_form', {'slug': module.level.page.project.slug, 'level': module.level.slug})) }}

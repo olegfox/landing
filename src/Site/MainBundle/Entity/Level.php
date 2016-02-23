@@ -318,6 +318,7 @@ class Level
     public function setModuleComment(\Site\MainBundle\Entity\ModuleComment $moduleComment = null)
     {
         $this->moduleComment = $moduleComment;
+        $moduleComment->setLevel($this);
 
         return $this;
     }
@@ -341,6 +342,7 @@ class Level
     public function setModuleForm(\Site\MainBundle\Entity\ModuleForm $moduleForm = null)
     {
         $this->moduleForm = $moduleForm;
+        $moduleForm->setLevel($this);
 
         return $this;
     }
