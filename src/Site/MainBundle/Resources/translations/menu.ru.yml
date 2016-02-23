@@ -158,7 +158,33 @@ backend:
         title: Заголовок
         height: Высота
         width: Ширина
+        mailerHost: Хост-mail
+        mailerUser: Пользователь
+        mailerPassword: Пароль
+        emailTo: Почта получателя
+        themeLetter: Тема письма
+        emailFrom: Почта отправителя
+        emailFromTitle: Имя отправителя
+        backgroundImg: Ссылка на изображение
+        backgroundColor: Фоновый цвет
+        backgroundPosition: Позиция фонового изображения
+        backgroundAttachment: Фиксированный фон или нет?
+        backgroundSize: Размер фонового изображения
+        shadow: Затемнение
+        blur: Размытие
+        fields: Поля формы
+        file: Выберите изображение
         enable: Вкл/Выкл
+    module_form_field:
+        type: Тип поля
+        enableLabel: Отображать label?
+        enablePlaceholder: Отображать placeholder?
+        enableRequire: Обязательное поле?
+        title: Название поля
+        placeholder: Placeholder
+        validateMessage: Сообщение валидации
+        add: Добавить поле
+        delete: Удалить поле
     settings:
         h1_show: Настройки
         h1_list: Список настроек

@@ -1,4 +1,4 @@
-{% macro moduleForm(module) %}
+{% macro moduleForm(module, local = '') %}
     <style type="text/css">
         .wrap-form.level{{ module.level.id }} {
             background-color: #9a8a68;
@@ -7,24 +7,6 @@
         }
     </style>
     <div class="wrap-form level-block level{{ module.level.id }}">
-        <form action="">
-            <h2>Отправить заявку</h2>
-
-            <div class="form-input-field">
-                <input type="text" placeholder="Имя"/>
-            </div>
-
-            <div class="form-input-field">
-                <input type="text" placeholder="Телефон"/>
-            </div>
-
-            <div class="form-input-field">
-                <input type="text" placeholder="Электронная почта"/>
-            </div>
-
-            <div class="form-input-field">
-                <button type="submit">Отправить заявку</button>
-            </div>
-        </form>
+        {{ render(url('frontend_project_form', {'slug': module.level.page.project.slug, 'level': module.level.slug})) }}
     </div>
 {% endmacro %}

@@ -14,7 +14,7 @@ class BackendMenuBuilder extends ContainerAware
         $menu->setCurrent($this->container->get('request')->getRequestUri());
 
         $menu->addChild('Проекты', array('route' => 'backend_project_index'));
-        $menu->addChild('Настройки формы', array('route' => 'backend_settings_index'));
+        $menu->addChild('Настройки', array('route' => 'backend_settings_index'));
 
         return $menu;
     }

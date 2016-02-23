@@ -208,12 +208,14 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
     padding-bottom: 47px; }
   .wrap-form form .form-input-field {
     display: inline-block;
-    margin-right: 14px; }
+    margin-right: 14px;
+    vertical-align: top; }
     .wrap-form form .form-input-field input {
       font-size: 26px;
       height: 61px;
       padding: 0 16px;
       border: 0;
+      border-radius: 0;
       color: #7c7c7c; }
       .wrap-form form .form-input-field input::-webkit-input-placeholder {
         color: #7c7c7c; }
@@ -223,10 +225,13 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
         color: #7c7c7c; }
       .wrap-form form .form-input-field input:-ms-input-placeholder {
         color: #7c7c7c; }
+      .wrap-form form .form-input-field input.error {
+        border: red solid 1px; }
     .wrap-form form .form-input-field button {
       height: 61px;
       background-color: #82c551;
       border: 0;
+      border-radius: 0;
       color: #fff;
       padding: 0 44px;
       font-size: 27px;
@@ -395,6 +400,7 @@ form .btn {
       font-size: 18px !important; }
 
   .wrap-form form .form-input-field {
-    display: block; } }
+    display: block;
+    margin-right: 0; } }
 
 /*# sourceMappingURL=main.css.map */

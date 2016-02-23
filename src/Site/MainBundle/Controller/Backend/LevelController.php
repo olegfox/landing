@@ -48,6 +48,13 @@ class LevelController extends Controller
                 }
             }
 
+//          Поля формы
+            if(is_object($entity->getModuleForm())) {
+                foreach ($entity->getModuleForm()->getFields() as $field) {
+                    $field->setModuleForm($entity->getModuleForm());
+                }
+            }
+
             $em = $this->getDoctrine()->getManager();
             $page = $this->getDoctrine()->getRepository('SiteMainBundle:Page')->find($page_id);
 
@@ -289,6 +296,15 @@ class LevelController extends Controller
             }
         }
 
+//      Поля формы
+        $originalFields = new ArrayCollection();
+
+        if(is_object($entity->getModuleForm())) {
+            foreach ($entity->getModuleForm()->getFields() as $field) {
+                $originalFields->add($field);
+            }
+        }
+
         $deleteForm = $this->createDeleteForm($id, $project_id, $page_id);
         $editForm = $this->createEditForm($entity, $project_id, $page_id, $type);
         $editForm->handleRequest($request);
@@ -333,6 +349,25 @@ class LevelController extends Controller
                 foreach ($entity->getModuleComment()->getComments() as $comment) {
                     $comment->setModuleComment($entity->getModuleComment());
                     $comment->upload();
+                }
+            }
+
+//          Поля формы
+            foreach ($originalFields as $field) {
+
+                if (false === $entity->getModuleForm()->getFields()->contains($field)) {
+
+                    $entity->getModuleFormField()->getFields()->removeElement($field);
+
+                    $em->remove($field);
+
+                }
+
+            }
+
+            if(is_object($entity->getModuleForm())) {
+                foreach ($entity->getModuleForm()->getFields() as $field) {
+                    $field->setModuleForm($entity->getModuleForm());
                 }
             }
 

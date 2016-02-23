@@ -64,4 +64,48 @@ $(function(){
         );
         wow.init();
     }
+
+    /* Validate Module Form */
+    $('.wrap-form form').each(function(i, e){
+        $(e).submit(function(){
+            var $form = $(e);
+
+            $.post($form.attr('action'), $form.serialize(), function(response){
+                if(response.status == "OK") {
+                    $form[0].reset();
+                    $form.find('input').removeClass('error');
+                    $form.find('textarea').removeClass('error');
+                    $form.parent().find('.flash-notice').html(response.message).show();
+                    setTimeout(function(){
+                        $form.parent().find('.flash-notice').hide();
+                    }, 4000);
+                }
+                else {
+
+                    for (var err in response.errors) {
+
+                        if (response.errors.hasOwnProperty(err)) {
+
+                            if(response.errors[err].status != "OK"){
+
+                                $form.find('#' + err).addClass('error');
+
+                            } else {
+
+                                $form.find('#' + err).removeClass('error');
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+            return false;
+        });
+    });
+    /* end Validate Module Form */
 });

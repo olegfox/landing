@@ -351,11 +351,13 @@ input, textarea, keygen, select, button {
     .form-input-field {
       display: inline-block;
       margin-right: 14px;
+      vertical-align: top;
       input {
         font-size: 26px;
         height: 61px;
         padding: 0 16px;
         border: 0;
+        border-radius: 0;
         color: #7c7c7c;
         &::-webkit-input-placeholder {
           color: #7c7c7c;
@@ -369,11 +371,15 @@ input, textarea, keygen, select, button {
         &:-ms-input-placeholder {
           color: #7c7c7c;
         }
+        &.error {
+          border: red solid 1px;
+        }
       }
       button {
         height: 61px;
         background-color: #82c551;
         border: 0;
+        border-radius: 0;
         color: #fff;
         padding: 0 44px;
         font-size: 27px;
@@ -652,6 +658,7 @@ form {
     form {
       .form-input-field {
         display: block;
+        margin-right: 0;
       }
     }
   }

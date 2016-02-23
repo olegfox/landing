@@ -1,0 +1,12 @@
+{{ form_start(form, { 'style': 'horizontal' , attr: {novalidate: 'novalidate'} }) }}
+<h2>{{ module.title }}</h2>
+
+<div class="flash-notice"></div>
+
+{% for field in form %}
+<div class="form-input-field">
+    {{ form_widget(field) }}
+</div>
+{% endfor %}
+
+{{ form_end(form) }}

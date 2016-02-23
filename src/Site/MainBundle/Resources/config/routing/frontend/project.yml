@@ -9,3 +9,7 @@ frontend_project_index_local:
 frontend_project_index:
     path:     /{slug}
     defaults: { _controller: "SiteMainBundle:Frontend/Project:index" }
+
+frontend_project_form:
+    path:     /{slug}/{level}
+    defaults: { _controller: "SiteMainBundle:Frontend/Project:createForm" }
