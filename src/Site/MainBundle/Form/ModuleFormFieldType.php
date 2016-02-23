@@ -57,10 +57,6 @@ class ModuleFormFieldType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_form_field.placeholder'
             ))
-            ->add('validateMessage', 'textarea', array(
-                'required' => true,
-                'label' => 'backend.module_form_field.validateMessage'
-            ))
         ;
     }
     

@@ -75,10 +75,7 @@ $(function(){
                     $form[0].reset();
                     $form.find('input').removeClass('error');
                     $form.find('textarea').removeClass('error');
-                    $form.parent().find('.flash-notice').html(response.message).show();
-                    setTimeout(function(){
-                        $form.parent().find('.flash-notice').hide();
-                    }, 4000);
+                    alert(response.notice);
                 }
                 else {
 
@@ -88,11 +85,11 @@ $(function(){
 
                             if(response.errors[err].status != "OK"){
 
-                                $form.find('#' + err).addClass('error');
+                                $form.find('#form_' + err).addClass('error');
 
                             } else {
 
-                                $form.find('#' + err).removeClass('error');
+                                $form.find('#form_' + err).removeClass('error');
 
                             }
 

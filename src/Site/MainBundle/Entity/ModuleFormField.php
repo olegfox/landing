@@ -57,11 +57,6 @@ class ModuleFormField
     protected $enablePlaceholder;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $validateMessage;
-
-    /**
      * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(length=255, unique=true)
      */
@@ -196,29 +191,6 @@ class ModuleFormField
     public function getEnableRequire()
     {
         return $this->enableRequire;
-    }
-
-    /**
-     * Set validateMessage
-     *
-     * @param string $validateMessage
-     * @return ModuleFormField
-     */
-    public function setValidateMessage($validateMessage)
-    {
-        $this->validateMessage = $validateMessage;
-
-        return $this;
-    }
-
-    /**
-     * Get validateMessage
-     *
-     * @return string 
-     */
-    public function getValidateMessage()
-    {
-        return $this->validateMessage;
     }
 
     /**

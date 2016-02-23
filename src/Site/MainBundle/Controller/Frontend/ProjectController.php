@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Site\MainBundle\Entity\ModuleFormField as Field;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProjectController extends Controller
 {
@@ -144,7 +145,10 @@ class ProjectController extends Controller
             // Require field
             if($field->getEnableRequire()) {
                 $params = array_merge($params, array(
-                    'required' => true
+                    'required' => true,
+                    'constraints' => array(
+                        new NotBlank(array('message' => '')),
+                    )
                 ));
             }
 
@@ -186,7 +190,7 @@ class ProjectController extends Controller
                     ->setTo(array_map('trim', explode(',', $moduleForm->getEmailTo())))
                     ->setBody(
                         $this->renderView(
-                            'SiteMainBundle:Frontend/Feedback:message.html.twig',
+                            'SiteMainBundle:Frontend/Modules/ModuleForm:message.html.twig',
                             array(
                                 'form' => $form
                             )
@@ -206,7 +210,6 @@ class ProjectController extends Controller
                         if (!$child->isValid()) {
                             $field = $repository_module_form_field->findOneBySlug($child->getName());
                             $errors[$child->getName()]['status'] = 'ERROR';
-                            $errors[$child->getName()]['message'] = $field->getValidateMessage();
                         } else {
                             $errors[$child->getName()]['status'] = "OK";
                         }
