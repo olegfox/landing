@@ -3,15 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>{{ settings['theme_letter'] }}</title>
+    <title>{{ module.themeLetter }}</title>
 </head>
 <body style="margin: 0px; width: 700px; font-family: Arial; letter-spacing: 2px;">
 <div class="content">
     <table class="table" style="border-collapse: collapse;">
-        <tr>
-            <td>{{ 'frontend.feedback.placeholder.name'|trans({}, 'menu') }}</td>
-            <td>{{ form.name }}</td>
-        </tr>
+        {% for field in module.fields %}
+            {% if field.type != 2 %}
+                <tr>
+                    <td>{{ field.title }}</td>
+                    <td>{{ request.query.get('form[' ~ field.slug ~ ']') }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
     </table>
 </div>
 </body>

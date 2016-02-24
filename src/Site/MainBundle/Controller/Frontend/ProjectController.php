@@ -192,7 +192,8 @@ class ProjectController extends Controller
                         $this->renderView(
                             'SiteMainBundle:Frontend/Modules/ModuleForm:message.html.twig',
                             array(
-                                'form' => $form
+                                'module' => $moduleForm,
+                                'request' => $request
                             )
                         )
                         , 'text/html'
