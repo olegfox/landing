@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="hint-right">
+                <div class="hint-right{% if module.hintRight1|length == 0 and module.hintRight2|length == 0 %} hint-right-none{% endif %}">
                     {{ module.hintRight1|raw }}
                     {{ module.hintRight2|raw }}
                 </div>

@@ -614,7 +614,6 @@ class ModuleForm
         }
 
         $this->backgroundImg = $this->getFile()->getClientOriginalName();
-
         $this->getFile()->move(
             $this->getUploadDir(),
             $this->backgroundImg

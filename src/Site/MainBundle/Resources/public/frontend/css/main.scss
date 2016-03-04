@@ -90,6 +90,11 @@ input, textarea, keygen, select, button {
           left: -60px;
           background: url("../images/phone.png") center center no-repeat;
         }
+        &-none {
+          &:after {
+            display: none;
+          }
+        }
       }
 
     }

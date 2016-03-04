@@ -15,9 +15,9 @@
 
     {{ form_start(edit_form, { 'style': 'horizontal' , attr: {novalidate: 'novalidate'} }) }}
     {% for keyForm, form in edit_form %}
-        {% if keyForm != 'moduleHeader' and keyForm != 'moduleLine' and keyForm != 'moduleComment' %}
+        {% if keyForm != 'moduleHeader' and keyForm != 'moduleLine' and keyForm != 'moduleComment' and keyForm != 'moduleForm' %}
             {{ form_row(form) }}
-        {% elseif keyForm == 'moduleHeader' or keyForm == 'moduleLine' or keyForm == 'moduleComment' %}
+        {% elseif keyForm == 'moduleHeader' or keyForm == 'moduleLine' or keyForm == 'moduleComment' or keyForm == 'moduleForm' %}
             <div class="form-group">
                 {{ form_label(form) }}
                 <div class="col-lg-10">

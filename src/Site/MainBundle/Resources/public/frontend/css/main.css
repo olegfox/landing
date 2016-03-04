@@ -57,6 +57,8 @@ input:focus, textarea:focus, keygen:focus, select:focus, button:focus {
         top: -6px;
         left: -60px;
         background: url("../images/phone.png") center center no-repeat; }
+      .wrap-header .header .top .hint-right-none:after {
+        display: none; }
     .wrap-header .header .wrap-center-block {
       display: table;
       height: 100%;
