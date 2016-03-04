@@ -1,7 +1,9 @@
 {% macro moduleHeader(module, local = '') %}
     <style type="text/css">
         .wrap-header.level{{ module.level.id }} .video-vide {
-        {% if module.backgroundPosition == 'scroll' %}
+        {% if module.backgroundPosition == 'fixed' %}
+            position: fixed;
+        {% else %}
             position: absolute;
         {% endif %}
         }
