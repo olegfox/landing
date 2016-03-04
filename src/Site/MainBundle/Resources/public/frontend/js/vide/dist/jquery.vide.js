@@ -239,7 +239,7 @@
     var $wrapper;
 
     // Set styles of a video wrapper
-    $wrapper = vide.$wrapper = $('<div>').css({
+    $wrapper = vide.$wrapper = $('<div class="video-vide">').css({
       position: 'fixed',
       'z-index': -1,
       top: 0,
