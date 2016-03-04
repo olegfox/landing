@@ -21,7 +21,7 @@ $(function(){
     $(".arrow").each(function(i, el) {
         $(el).click(function(e){
             e.preventDefault();
-            $("html, body").animate({scrollTop: $("." + $(el).data('current-level')).nextAll('.level').first().offset().top}, 1000);
+            $("html, body").animate({scrollTop: $("." + $(el).data('current-level')).nextAll('.level-block').first().offset().top}, 1000);
         });
     });
 
