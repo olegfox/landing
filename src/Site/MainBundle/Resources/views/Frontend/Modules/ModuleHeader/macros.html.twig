@@ -1,11 +1,11 @@
 {% macro moduleHeader(module, local = '') %}
     <style type="text/css">
+        .wrap-header.level{{ module.level.id }} .video-vide {
+        {% if module.backgroundPosition == 'scroll' %}
+            position: absolute;
+        {% endif %}
+        }
         {% if module.backgroundImg|length > 0 %}
-            .wrap-header.level{{ module.level.id }} .video-vide {
-                {% if module.backgroundPosition == 'scroll' %}
-                    position: absolute;
-                {% endif %}
-            }
             .wrap-header.level{{ module.level.id }} {
                 {% if module.backgroundImg|length > 0 %}
                     background-image: url('{{ local }}{{ asset(module.webPath) }}');
