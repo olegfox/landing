@@ -2,9 +2,9 @@
     <style type="text/css">
         .wrap-header.level{{ module.level.id }} .video-vide {
         {% if module.backgroundPosition == 'fixed' %}
-            position: fixed;
+            position: fixed!important;
         {% else %}
-            position: absolute;
+            position: absolute!important;
         {% endif %}
         }
         {% if module.backgroundImg|length > 0 %}
