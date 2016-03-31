@@ -3,14 +3,8 @@ html, body {
   height: 100%;
   line-height: 1.42857143; }
 
-table {
-  padding: initial; }
-  table tr {
-    padding: initial; }
-    table tr td {
-      padding: initial; }
-      table tr td img {
-        padding: initial; }
+table tr td {
+  padding: 10px; }
 
 a {
   text-decoration: none; }
