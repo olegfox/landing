@@ -7,7 +7,7 @@
         {% endif %}
         }
 
-        .wrap-square.level{{ module.level.id }} ul li .blur {
+        .wrap-square.level{{ module.level.id }} ul {
         {% if module.backgroundImg|length > 0 %}
             background-image: url('{{ local }}{{ asset(module.webPath) }}');
             {% if module.backgroundColor|length > 0 %}
