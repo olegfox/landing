@@ -61,7 +61,7 @@
                 <ul>
                 {% for square in module.squares %}
                     <li style="
-                            {% if square.backgroundImg|length > 0 %}background-image: url('{{ local }}{{ image(square.webPath).cropResize(500) }}');{% endif %}
+                            {% if square.backgroundImg|length > 0 %}background-image: url('{{ local }}{{ image(square.webPath).cropResize(1920) }}');{% endif %}
                             {% if square.backgroundColor|length > 0 %}background-color: {{ square.backgroundColor }};{% endif %}
                             {% if square.backgroundPosition|length > 0 %}background-position: {{ square.backgroundPosition }};{% endif %}
                             {% if square.backgroundSize|length > 0 %}background-size: {{ square.backgroundSize }};{% endif %}
