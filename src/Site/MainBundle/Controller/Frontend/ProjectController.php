@@ -111,7 +111,7 @@ class ProjectController extends Controller
 
         $actionForm = $this->generateUrl('frontend_project_form', array('slug' => $slug, 'level' => $level));
 
-        if ($local) {
+        if ($local == 1) {
 
             $actionForm = 'http://' . $request->getHost() . $actionForm;
 
