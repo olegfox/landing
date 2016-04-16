@@ -101,7 +101,7 @@ class ProjectController extends Controller
         return $response;
     }
 
-    public function createFormAction(Request $request, $slug, $level){
+    public function createFormAction(Request $request, $slug, $level, $local){
         $repository_level = $this->getDoctrine()->getRepository('SiteMainBundle:Level');
         $repository_module_form_field = $this->getDoctrine()->getRepository('SiteMainBundle:ModuleFormField');
 
@@ -109,8 +109,16 @@ class ProjectController extends Controller
 
         $moduleForm = $lev->getModuleForm();
 
+        $actionForm = $this->generateUrl('frontend_project_form', array('slug' => $slug, 'level' => $level));
+
+        if ($local) {
+
+            $actionForm = 'http://' . $request->getHost() . $actionForm;
+
+        }
+
         $formBuilder =  $this->createFormBuilder()
-            ->setAction($this->generateUrl('frontend_project_form', array('slug' => $slug, 'level' => $level)));
+            ->setAction($actionForm);
 
         foreach($moduleForm->getFields() as $field) {
 

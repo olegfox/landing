@@ -27,6 +27,11 @@
         {% endif %}
     </style>
     <div class="wrap-form level-block level{{ module.level.id }}">
+        {% if local %}
+            {% set action = 'frontend_project_form_local' %}
+        {% else %}
+            {% set action = 'frontend_project_form' %}
+        {% endif %}
         {{ render(url('frontend_project_form', {'slug': module.level.page.project.slug, 'level': module.level.slug})) }}
     </div>
 {% endmacro %}
