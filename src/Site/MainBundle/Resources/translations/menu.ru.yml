@@ -75,12 +75,20 @@ backend:
         head2: Заголовок 2
         isButton: Кнопка будет?
         textButton: Текст кнопки
+        mailerHost: Хост-mail
+        mailerUser: Пользователь
+        mailerPassword: Пароль
+        emailTo: Почта получателя
+        themeLetter: Тема письма
+        emailFrom: Почта отправителя
+        emailFromTitle: Имя отправителя
         hintLeft: Надпись слева
         hintRight1: Надпись справа 1
         hintRight2: Надпись справа 2
         isArrow: Стрелка вниз будет или нет?
         isArrowFlashing: Стрелка моргает или нет?
         enable: Вкл/Выкл
+        not_found: Модуль Шапка с таким id не существует
     module_line:
         height: Высота
         width: Ширина

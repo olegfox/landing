@@ -7,5 +7,5 @@ frontend_work:
     prefix: /project
 
 frontend_feedback:
-    path:     /feedback/{local}
+    path:     /feedback/{idModuleHeader}/{local}
     defaults: { _controller: "SiteMainBundle:Frontend/Main:feedback", local: false }

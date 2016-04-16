@@ -91,6 +91,34 @@ class ModuleHeaderType extends AbstractType
                 'required' => true,
                 'label' => 'backend.module_header.textButton'
             ))
+            ->add('mailerHost', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_header.mailerHost'
+            ))
+            ->add('mailerUser', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_header.mailerUser'
+            ))
+            ->add('mailerPassword', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_header.mailerPassword'
+            ))
+            ->add('emailTo', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_header.emailTo'
+            ))
+            ->add('themeLetter', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_header.themeLetter'
+            ))
+            ->add('emailFrom', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_header.emailFrom'
+            ))
+            ->add('emailFromTitle', 'text', array(
+                'required' => true,
+                'label' => 'backend.module_header.emailFromTitle'
+            ))            
             ->add('hintLeft', 'text', array(
                 'required' => true,
                 'label' => 'backend.module_header.hintLeft'

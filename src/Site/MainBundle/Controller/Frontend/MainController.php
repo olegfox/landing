@@ -55,7 +55,14 @@ class MainController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function feedbackAction(Request $request, $local){
+    public function feedbackAction(Request $request, $local, $idModuleHeader){
+        $repository_module_header = $this->getDoctrine()->getRepository('SiteMainBundle:ModuleHeader');
+        $moduleHeader = $repository_module_header->find($idModuleHeader);
+
+        if (!$moduleHeader) {
+            throw $this->createNotFoundException($this->get('translator')->trans('backend.module_header.not_found'));
+        }
+
         $feedback = new Feedback();
         $form = $this->createForm(new FeedbackType(), $feedback);
 
@@ -65,16 +72,24 @@ class MainController extends Controller
             if($form->isValid()){
                 $settings = $this->getDoctrine()->getRepository('SiteMainBundle:Settings')->findAllArray();
 
-                $transport = \Swift_SmtpTransport::newInstance($settings['mailer_host'], 465, 'ssl')
-                    ->setUsername($settings['mailer_user'])
-                    ->setPassword($settings['mailer_password']);
+                $mailer_host = !empty($moduleHeader->getMailerHost()) ? $moduleHeader->getMailerHost() : $settings['mailer_host'];
+                $mailer_user = !empty($moduleHeader->getMailerUser()) ? $moduleHeader->getMailerUser() : $settings['mailer_user'];
+                $mailer_password = !empty($moduleHeader->getMailerPassword()) ? $moduleHeader->getMailerPassword() : $settings['mailer_password'];
+                $theme_letter = !empty($moduleHeader->getThemeLetter()) ? $moduleHeader->getThemeLetter() : $settings['theme_letter'];
+                $email_from = !empty($moduleHeader->getEmailFrom()) ? $moduleHeader->getEmailFrom() : $settings['email_from'];
+                $email_from_title = !empty($moduleHeader->getEmailFromTitle()) ? $moduleHeader->getEmailFromTitle() : $settings['email_from_title'];
+                $email_to = !empty($moduleHeader->getEmailTo()) ? $moduleHeader->getEmailTo() : $settings['email_to'];
+
+                $transport = \Swift_SmtpTransport::newInstance($mailer_host, 465, 'ssl')
+                    ->setUsername($mailer_user)
+                    ->setPassword($mailer_password);
 
                 $mailer = \Swift_Mailer::newInstance($transport);
 
                 $swift = \Swift_Message::newInstance()
-                    ->setSubject($settings['theme_letter'])
-                    ->setFrom(array($settings['email_from'] => $settings['email_from_title']))
-                    ->setTo(array_map('trim', explode(',', $settings['email_to'])))
+                    ->setSubject($theme_letter)
+                    ->setFrom(array($email_from => $email_from_title))
+                    ->setTo(array_map('trim', explode(',', $email_to)))
                     ->setBody(
                         $this->renderView(
                             'SiteMainBundle:Frontend/Feedback:message.html.twig',
@@ -96,7 +111,8 @@ class MainController extends Controller
 
         return $this->render('SiteMainBundle:Frontend/Feedback:form.html.twig', array(
             'form' => $form->createView(),
-            'local' => $local
+            'local' => $local,
+            'idModuleHeader' => $idModuleHeader
         ));
     }
 

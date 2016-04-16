@@ -134,6 +134,41 @@ class ModuleHeader
      */
     protected $level;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $mailerHost;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $mailerUser;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $mailerPassword;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $emailTo;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $themeLetter;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $emailFrom;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $emailFromTitle;
+
     public function getAbsolutePath()
     {
         return null === $this->backgroundImg
@@ -776,5 +811,28 @@ class ModuleHeader
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    /**
+     * Set shadowText
+     *
+     * @param string $shadowText
+     * @return ModuleHeader
+     */
+    public function setShadowText($shadowText)
+    {
+        $this->shadowText = $shadowText;
+
+        return $this;
+    }
+
+    /**
+     * Get shadowText
+     *
+     * @return string 
+     */
+    public function getShadowText()
+    {
+        return $this->shadowText;
     }
 }

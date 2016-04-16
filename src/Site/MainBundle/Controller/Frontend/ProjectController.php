@@ -178,16 +178,26 @@ class ProjectController extends Controller
             $form->handleRequest($request);
 
             if($form->isValid()){
-                $transport = \Swift_SmtpTransport::newInstance($moduleForm->getMailerHost(), 465, 'ssl')
-                    ->setUsername($moduleForm->getMailerUser())
-                    ->setPassword($moduleForm->getMailerPassword());
+                $settings = $this->getDoctrine()->getRepository('SiteMainBundle:Settings')->findAllArray();
+
+                $mailer_host = !empty($moduleForm->getMailerHost()) ? $moduleForm->getMailerHost() : $settings['mailer_host'];
+                $mailer_user = !empty($moduleForm->getMailerUser()) ? $moduleForm->getMailerUser() : $settings['mailer_user'];
+                $mailer_password = !empty($moduleForm->getMailerPassword()) ? $moduleForm->getMailerPassword() : $settings['mailer_password'];
+                $theme_letter = !empty($moduleForm->getThemeLetter()) ? $moduleForm->getThemeLetter() : $settings['theme_letter'];
+                $email_from = !empty($moduleForm->getEmailFrom()) ? $moduleForm->getEmailFrom() : $settings['email_from'];
+                $email_from_title = !empty($moduleForm->getEmailFromTitle()) ? $moduleForm->getEmailFromTitle() : $settings['email_from_title'];
+                $email_to = !empty($moduleForm->getEmailTo()) ? $moduleForm->getEmailTo() : $settings['email_to'];
+
+                $transport = \Swift_SmtpTransport::newInstance($mailer_host, 465, 'ssl')
+                    ->setUsername($mailer_user)
+                    ->setPassword($mailer_password);
 
                 $mailer = \Swift_Mailer::newInstance($transport);
 
                 $swift = \Swift_Message::newInstance()
-                    ->setSubject($moduleForm->getMailerHost())
-                    ->setFrom(array($moduleForm->getEmailFrom() => $moduleForm->getEmailFromTitle()))
-                    ->setTo(array_map('trim', explode(',', $moduleForm->getEmailTo())))
+                    ->setSubject($theme_letter)
+                    ->setFrom(array($email_from => $email_from_title))
+                    ->setTo(array_map('trim', explode(',', $email_to)))
                     ->setBody(
                         $this->renderView(
                             'SiteMainBundle:Frontend/Modules/ModuleForm:message.html.twig',

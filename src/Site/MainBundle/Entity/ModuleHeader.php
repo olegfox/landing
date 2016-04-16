@@ -134,6 +134,41 @@ class ModuleHeader
      */
     protected $level;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $mailerHost;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $mailerUser;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $mailerPassword;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $emailTo;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $themeLetter;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $emailFrom;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $emailFromTitle;
+
     public function getAbsolutePath()
     {
         return null === $this->backgroundImg
@@ -799,5 +834,166 @@ class ModuleHeader
     public function getShadowText()
     {
         return $this->shadowText;
+    }
+
+    /**
+     * Set mailerHost
+     *
+     * @param string $mailerHost
+     * @return ModuleHeader
+     */
+    public function setMailerHost($mailerHost)
+    {
+        $this->mailerHost = $mailerHost;
+
+        return $this;
+    }
+
+    /**
+     * Get mailerHost
+     *
+     * @return string 
+     */
+    public function getMailerHost()
+    {
+        return $this->mailerHost;
+    }
+
+    /**
+     * Set mailerUser
+     *
+     * @param string $mailerUser
+     * @return ModuleHeader
+     */
+    public function setMailerUser($mailerUser)
+    {
+        $this->mailerUser = $mailerUser;
+
+        return $this;
+    }
+
+    /**
+     * Get mailerUser
+     *
+     * @return string 
+     */
+    public function getMailerUser()
+    {
+        return $this->mailerUser;
+    }
+
+    /**
+     * Set mailerPassword
+     *
+     * @param string $mailerPassword
+     * @return ModuleHeader
+     */
+    public function setMailerPassword($mailerPassword)
+    {
+        $this->mailerPassword = $mailerPassword;
+
+        return $this;
+    }
+
+    /**
+     * Get mailerPassword
+     *
+     * @return string 
+     */
+    public function getMailerPassword()
+    {
+        return $this->mailerPassword;
+    }
+
+    /**
+     * Set emailTo
+     *
+     * @param string $emailTo
+     * @return ModuleHeader
+     */
+    public function setEmailTo($emailTo)
+    {
+        $this->emailTo = $emailTo;
+
+        return $this;
+    }
+
+    /**
+     * Get emailTo
+     *
+     * @return string 
+     */
+    public function getEmailTo()
+    {
+        return $this->emailTo;
+    }
+
+    /**
+     * Set themeLetter
+     *
+     * @param string $themeLetter
+     * @return ModuleHeader
+     */
+    public function setThemeLetter($themeLetter)
+    {
+        $this->themeLetter = $themeLetter;
+
+        return $this;
+    }
+
+    /**
+     * Get themeLetter
+     *
+     * @return string 
+     */
+    public function getThemeLetter()
+    {
+        return $this->themeLetter;
+    }
+
+    /**
+     * Set emailFrom
+     *
+     * @param string $emailFrom
+     * @return ModuleHeader
+     */
+    public function setEmailFrom($emailFrom)
+    {
+        $this->emailFrom = $emailFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get emailFrom
+     *
+     * @return string 
+     */
+    public function getEmailFrom()
+    {
+        return $this->emailFrom;
+    }
+
+    /**
+     * Set emailFromTitle
+     *
+     * @param string $emailFromTitle
+     * @return ModuleHeader
+     */
+    public function setEmailFromTitle($emailFromTitle)
+    {
+        $this->emailFromTitle = $emailFromTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get emailFromTitle
+     *
+     * @return string 
+     */
+    public function getEmailFromTitle()
+    {
+        return $this->emailFromTitle;
     }
 }

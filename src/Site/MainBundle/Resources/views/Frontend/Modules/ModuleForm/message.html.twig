@@ -12,7 +12,7 @@
             {% if field.type != 2 %}
                 <tr>
                     <td>{{ field.title }}</td>
-                    <td>{{ request.query.get('form[' ~ field.slug ~ ']') }}</td>
+                    <td>{{ request.request.all()['form'][field.slug] }}</td>
                 </tr>
             {% endif %}
         {% endfor %}

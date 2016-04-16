@@ -77,4 +77,8 @@
             {% endif %}
         </div>
     </div>
+
+    {# Forms #}
+    {{ render(url('frontend_feedback', {local: local|length > 0, idModuleHeader: module.id})) }}
+    {# end Forms #}
 {% endmacro %}
