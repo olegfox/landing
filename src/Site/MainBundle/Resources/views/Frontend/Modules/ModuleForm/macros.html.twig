@@ -32,6 +32,6 @@
         {% else %}
             {% set action = 'frontend_project_form' %}
         {% endif %}
-        {{ render(url('frontend_project_form', {'slug': module.level.page.project.slug, 'level': module.level.slug})) }}
+        {{ render(url(action, {'slug': module.level.page.project.slug, 'level': module.level.slug})) }}
     </div>
 {% endmacro %}
