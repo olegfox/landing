@@ -117,7 +117,9 @@ class ProjectController extends Controller
 
         }
 
-        $formBuilder =  $this->createFormBuilder()
+        $formBuilder =  $this->createFormBuilder(array(
+            'csrf_protection' => false
+        ))
             ->setAction($actionForm);
 
         foreach($moduleForm->getFields() as $field) {
