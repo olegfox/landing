@@ -33,8 +33,6 @@
             {% set action = url('frontend_project_form', {'slug': module.level.page.project.slug, 'level': module.level.slug, local: 0}) %}
         {% endif %}
 
-        action = {{ action }}
-
         {{ render(action) }}
     </div>
 {% endmacro %}
