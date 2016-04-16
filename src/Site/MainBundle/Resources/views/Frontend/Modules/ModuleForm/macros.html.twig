@@ -28,10 +28,13 @@
     </style>
     <div class="wrap-form level-block level{{ module.level.id }}">
         {% if local %}
-            {% set action = 'frontend_project_form_local' %}
+            {% set action = url('frontend_project_form_local', {'slug': module.level.page.project.slug, 'level': module.level.slug, local: 1}) %}
         {% else %}
-            {% set action = 'frontend_project_form' %}
+            {% set action = url('frontend_project_form', {'slug': module.level.page.project.slug, 'level': module.level.slug, local: 0}) %}
         {% endif %}
-        {{ render(url(action, {'slug': module.level.page.project.slug, 'level': module.level.slug})) }}
+
+        action = {{ action }}
+
+        {{ render(action) }}
     </div>
 {% endmacro %}

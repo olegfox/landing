@@ -11,9 +11,9 @@ frontend_project_index:
     defaults: { _controller: "SiteMainBundle:Frontend/Project:index" }
 
 frontend_project_form:
-    path:     /{slug}/{level}
+    path:     /{slug}/{level}/{local}
     defaults: { _controller: "SiteMainBundle:Frontend/Project:createForm", local: 0 }
 
 frontend_project_form_local:
-    path:     /{slug}/{level}
+    path:     /{slug}/{level}/{local}
     defaults: { _controller: "SiteMainBundle:Frontend/Project:createForm", local: 1 }
